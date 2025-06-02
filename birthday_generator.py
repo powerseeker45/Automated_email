@@ -58,77 +58,63 @@ class BirthdayImageGenerator:
                 birthday_employees.append(employee)
         
         return birthday_employees
-    
+        
     def create_birthday_image(self, name):
-        """Create a personalized birthday image"""
-        # Create image dimensions
+        """Create a personalized Airtel-red themed birthday image"""
+        from PIL import ImageFont
+
+        # Image size
         width, height = 800, 600
-        
-        # Create a new image with gradient background
-        img = Image.new('RGB', (width, height), color='white')
+        img = Image.new('RGB', (width, height), color='#e40000')
         draw = ImageDraw.Draw(img)
-        
-        # Create gradient background
-        for y in range(height):
-            # Purple to pink gradient
-            r = int(255 * (y / height))
-            g = int(100 + 155 * (1 - y / height))
-            b = int(255 * (1 - y / height))
-            color = (min(255, r), min(255, g), min(255, b))
-            draw.line([(0, y), (width, y)], fill=color)
-        
-        # Try to load a nice font, fallback to default if not available
+
+        # Load fonts
         try:
-            title_font = ImageFont.truetype("arial.ttf", 60)
-            name_font = ImageFont.truetype("arial.ttf", 40)
-            subtitle_font = ImageFont.truetype("arial.ttf", 30)
+            header_font = ImageFont.truetype("arial.ttf", 24)
+            main_font = ImageFont.truetype("arialbd.ttf", 60)
+            sub_font = ImageFont.truetype("arial.ttf", 20)
+            name_font = ImageFont.truetype("arialbd.ttf", 28)
         except:
-            # Fallback to default font with different sizes
-            title_font = ImageFont.load_default()
+            header_font = ImageFont.load_default()
+            main_font = ImageFont.load_default()
+            sub_font = ImageFont.load_default()
             name_font = ImageFont.load_default()
-            subtitle_font = ImageFont.load_default()
-        
-        # Add text elements
-        # Main title
-        title_text = "🎉 HAPPY BIRTHDAY! 🎉"
-        title_bbox = draw.textbbox((0, 0), title_text, font=title_font)
-        title_width = title_bbox[2] - title_bbox[0]
-        title_x = (width - title_width) // 2
-        draw.text((title_x, 100), title_text, fill='white', font=title_font)
-        
-        # Employee name
-        name_text = f"Dear {name}!"
-        name_bbox = draw.textbbox((0, 0), name_text, font=name_font)
-        name_width = name_bbox[2] - name_bbox[0]
-        name_x = (width - name_width) // 2
-        draw.text((name_x, 220), name_text, fill='white', font=name_font)
-        
-        # Birthday message
-        message_lines = [
-            "Wishing you a fantastic day filled with",
-            "happiness, joy, and wonderful surprises!",
-            "🎂🎈🎁"
-        ]
-        
-        y_pos = 320
-        for line in message_lines:
-            line_bbox = draw.textbbox((0, 0), line, font=subtitle_font)
-            line_width = line_bbox[2] - line_bbox[0]
-            line_x = (width - line_width) // 2
-            draw.text((line_x, y_pos), line, fill='white', font=subtitle_font)
-            y_pos += 50
-        
-        # Add decorative elements
-        # Draw some celebration circles
-        for i in range(20):
-            import random
-            x = random.randint(50, width - 50)
-            y = random.randint(50, height - 50)
-            radius = random.randint(5, 15)
-            color = random.choice(['yellow', 'orange', 'pink', 'lightblue'])
-            draw.ellipse([x-radius, y-radius, x+radius, y+radius], fill=color)
-        
+
+        # Draw "Dear <name>" at the top
+        dear_text = f"Dear {name},"
+        dear_bbox = draw.textbbox((0, 0), dear_text, font=name_font)
+        dear_w = dear_bbox[2] - dear_bbox[0]
+        draw.text(((width - dear_w) // 2, 40), dear_text, fill="white", font=name_font)
+
+        # Draw "Wishing you a very"
+        header_text = "Wishing you a very"
+        header_bbox = draw.textbbox((0, 0), header_text, font=header_font)
+        header_w = header_bbox[2] - header_bbox[0]
+        draw.text(((width - header_w) // 2, 140), header_text, fill="white", font=header_font)
+
+        # Draw "Happy Birthday!"
+        main_text = "Happy Birthday!"
+        main_bbox = draw.textbbox((0, 0), main_text, font=main_font)
+        main_w = main_bbox[2] - main_bbox[0]
+        draw.text(((width - main_w) // 2, 180), main_text, fill="white", font=main_font)
+
+        # Draw sub-message
+        message = (
+            "May your birthday be full of happy hours\n"
+            "and special moments to remember for a\n"
+            "long long time!"
+        )
+        lines = message.split('\n')
+        y = 280
+        for line in lines:
+            line_bbox = draw.textbbox((0, 0), line, font=sub_font)
+            line_w = line_bbox[2] - line_bbox[0]
+            draw.text(((width - line_w) // 2, y), line, fill="white", font=sub_font)
+            y += 30
+
         return img
+
+
     
     def send_birthday_email(self, employee_email, first_name, full_name, department, image_data):
         """Send birthday email with generated image"""
