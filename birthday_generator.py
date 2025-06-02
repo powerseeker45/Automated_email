@@ -60,7 +60,7 @@ class BirthdayImageGenerator:
         return birthday_employees
         
     def create_birthday_image(self, name):
-        """Create a personalized Airtel-red themed birthday image"""
+        """Create a personalized Airtel-themed birthday image with larger logo, cake, and gradient confetti"""
         from PIL import ImageFont
 
         # Image size
@@ -68,51 +68,87 @@ class BirthdayImageGenerator:
         img = Image.new('RGB', (width, height), color='#e40000')
         draw = ImageDraw.Draw(img)
 
-        # Load fonts
+        # Load bold/enlarged fonts
         try:
-            header_font = ImageFont.truetype("arial.ttf", 24)
-            main_font = ImageFont.truetype("arialbd.ttf", 60)
-            sub_font = ImageFont.truetype("arial.ttf", 20)
-            name_font = ImageFont.truetype("arialbd.ttf", 28)
+            header_font = ImageFont.truetype("arialbd.ttf", 36)  # Bold header
+            main_font = ImageFont.truetype("arialbd.ttf", 80)    # Bold main message
+            sub_font = ImageFont.truetype("arialbd.ttf", 28)     # Sub-message
+            name_font = ImageFont.truetype("arialbd.ttf", 32)    # Name
         except:
             header_font = ImageFont.load_default()
             main_font = ImageFont.load_default()
             sub_font = ImageFont.load_default()
             name_font = ImageFont.load_default()
 
-        # Draw "Dear <name>" at the top
+        # Airtel logo (top-right) - Larger
+        try:
+            logo = Image.open("airtel_logo.png").convert("RGBA")
+            logo.thumbnail((150, 150))  # Bigger logo
+            img.paste(logo, (width - logo.width - 20, 20), mask=logo)
+        except Exception as e:
+            print(f"Could not load Airtel logo: {e}")
+
+        # Draw "Dear <name>"
         dear_text = f"Dear {name},"
         dear_bbox = draw.textbbox((0, 0), dear_text, font=name_font)
         dear_w = dear_bbox[2] - dear_bbox[0]
-        draw.text(((width - dear_w) // 2, 40), dear_text, fill="white", font=name_font)
+        draw.text(((width - dear_w) // 2, 50), dear_text, fill="white", font=name_font)
 
-        # Draw "Wishing you a very"
+        # "Wishing you a very"
         header_text = "Wishing you a very"
         header_bbox = draw.textbbox((0, 0), header_text, font=header_font)
         header_w = header_bbox[2] - header_bbox[0]
         draw.text(((width - header_w) // 2, 140), header_text, fill="white", font=header_font)
 
-        # Draw "Happy Birthday!"
+        # "Happy Birthday!"
         main_text = "Happy Birthday!"
         main_bbox = draw.textbbox((0, 0), main_text, font=main_font)
         main_w = main_bbox[2] - main_bbox[0]
-        draw.text(((width - main_w) // 2, 180), main_text, fill="white", font=main_font)
+        draw.text(((width - main_w) // 2, 200), main_text, fill="white", font=main_font)
 
-        # Draw sub-message
+        # Add Cake image (larger)
+        try:
+            cake = Image.open("cake.png").convert("RGBA")
+            cake.thumbnail((200, 200))
+            cake_x = (width - cake.width) // 2
+            cake_y = 300
+            img.paste(cake, (cake_x, cake_y), mask=cake)
+            y = cake_y + cake.height + 10
+        except Exception as e:
+            print(f"Could not load cake image: {e}")
+            y = 330
+
+        # Sub-message
         message = (
             "May your birthday be full of happy hours\n"
             "and special moments to remember for a\n"
             "long long time!"
         )
-        lines = message.split('\n')
-        y = 280
-        for line in lines:
+        for line in message.split('\n'):
             line_bbox = draw.textbbox((0, 0), line, font=sub_font)
             line_w = line_bbox[2] - line_bbox[0]
             draw.text(((width - line_w) // 2, y), line, fill="white", font=sub_font)
-            y += 30
+            y += 35
 
-        return img
+        # Add confetti (gradient, soft, sparse)
+        import random
+        confetti_colors = ['#ffffff', '#ffd700', '#00ffcc', '#ff69b4', '#add8e6']
+        confetti_img = Image.new('RGBA', img.size, (255, 0, 0, 0))
+        confetti_draw = ImageDraw.Draw(confetti_img)
+
+        for _ in range(100):  # Reduced count
+            x = random.randint(0, width)
+            y = random.randint(height - 150, height)
+            r = random.randint(2, 4)
+            color = random.choice(confetti_colors)
+            alpha = int(255 * (y - (height - 150)) / 150)  # Gradient opacity
+            confetti_color = tuple(int(color[i:i+2], 16) for i in (1, 3, 5)) + (alpha,)
+            confetti_draw.ellipse((x - r, y - r, x + r, y + r), fill=confetti_color)
+
+        # Merge confetti with main image
+        img = Image.alpha_composite(img.convert('RGBA'), confetti_img)
+
+        return img.convert('RGB')  # Return RGB image for saving/sending
 
 
     
@@ -132,12 +168,12 @@ class BirthdayImageGenerator:
                     <h2>Happy Birthday, {first_name}!</h2>
                     <p>Dear {full_name},</p>
                     <p>We hope your special day is filled with happiness, laughter, and joy!</p>
-                    <p>Best wishes from everyone in the {department} department and the entire team!</p>
+                    <p>Best wishes from everyone from Bharti Airtel Family!</p>
                     <br>
                     <img src="cid:birthday_image" alt="Birthday Wishes" style="max-width: 100%; height: auto;">
                     <br><br>
                     <p>Have a wonderful birthday!</p>
-                    <p>Warm regards,<br>The Team</p>
+                    <p>Warm regards,<br>CEO,<br> Bharti Airtel</p>
                 </body>
             </html>
             """
