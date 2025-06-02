@@ -10,4 +10,3 @@ unit_tests.py checks every function in birthday_generator.py
 To Do:-
 1. change the sender login password from app password to environment variable.
 2. this code currently needs to be run everyday manually, automate so dont have to do this
-3. change the image generated and the message.
