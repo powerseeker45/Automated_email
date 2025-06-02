@@ -1,5 +1,5 @@
 empid,first_name,second_name,email,dob,department
-EMP001,Alice,Johnson,shashwat.airtel@gmail.com,02-06-1990,Engineering
-EMP002,Bob,Smith,shashwat.airtel@gmail.com,15-12-1985,Marketing
-EMP003,Carol,Davis,shashwat.airtel@gmail.com,08-03-1992,HR
-EMP004,David,Wilson,shashwat.airtel@gmail.com,02-06-1988,Engineering
+EMP001,Alice,Johnson,parikshit.cansat@gmail.com,1990-06-02,Engineering
+EMP002,Bob,Smith,parikshit.cansat@gmail.com,1985-06-03,Marketing
+EMP003,Carol,Davis,parikshit.cansat@gmail.com,1992-06-02,HR
+EMP004,David,Wilson,parikshit.cansat@gmail.com,1988-06-03,Engineering
