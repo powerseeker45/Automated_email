@@ -290,3 +290,21 @@
 2025-06-04 16:19:34,815 - INFO - Configuration loaded successfully
 2025-06-04 16:19:34,819 - INFO - Fonts loaded successfully
 2025-06-04 16:19:34,835 - INFO - Base birthday image created successfully
+2025-06-04 16:20:34,919 - INFO - Configuration loaded successfully
+2025-06-04 16:20:34,919 - INFO - Starting birthday automation scheduler - will run daily at 09:00
+2025-06-04 16:20:34,920 - INFO - Running initial birthday check...
+2025-06-04 16:20:34,920 - INFO - Running daily birthday check...
+2025-06-04 16:20:34,920 - INFO - Starting birthday processing...
+2025-06-04 16:20:34,926 - INFO - Loaded 8 employee records
+2025-06-04 16:20:34,927 - INFO - Found 2 employees with birthdays on 2025-06-04
+2025-06-04 16:20:34,927 - INFO - Creating base birthday image template...
+2025-06-04 16:20:34,936 - INFO - Fonts loaded successfully
+2025-06-04 16:20:34,978 - INFO - Base birthday image created successfully
+2025-06-04 16:20:34,979 - INFO - Processing birthday for Alice Johnson (ID: EMP001, Dept: Engineering)
+2025-06-04 16:20:35,005 - INFO - Image saved: output_img\birthday_EMP001_Alice_Johnson_20250604.png
+2025-06-04 16:20:40,081 - INFO - Birthday email sent successfully to Alice Johnson (alice.johnson@company.com)
+2025-06-04 16:20:40,082 - INFO - Processing birthday for Carol Davis (ID: EMP003, Dept: HR)
+2025-06-04 16:20:40,112 - INFO - Image saved: output_img\birthday_EMP003_Carol_Davis_20250604.png
+2025-06-04 16:20:44,542 - INFO - Birthday email sent successfully to Carol Davis (carol.davis@company.com)
+2025-06-04 16:20:44,543 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-04 16:20:44,544 - INFO - Processed 2 birthdays - Successful: 2, Failed: 0
