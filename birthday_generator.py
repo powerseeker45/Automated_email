@@ -279,7 +279,7 @@ def main():
     
     # Optional: Use a custom base image instead of generating one
     # Set to None to use the generated image, or provide path to your PNG file
-    CUSTOM_BASE_IMAGE = None  # Example: "custom_birthday_template.png"
+    CUSTOM_BASE_IMAGE ="visual_test_outputs/base_template.png"   # Example: "custom_birthday_template.png"
 
     birthday_gen = BirthdayImageGenerator(
         csv_file=CSV_FILE,
