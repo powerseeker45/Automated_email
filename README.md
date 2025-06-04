@@ -1,317 +1,479 @@
-# Birthday Image Generator
+# 🎂 Birthday Email Automation System
 
-An automated system that generates personalized birthday images and sends them via email to employees on their special day. The system is optimized for performance and supports both auto-generated and custom birthday templates.
+An automated system that generates personalized birthday images and sends them via email to employees on their special day. Features environment-based configuration, automatic scheduling, and comprehensive error handling.
 
-## To Do:-
-1. change the sender login password from app password to environment variable.
-2. this code currently needs to be run everyday manually, automate so dont have to do this
+## ✨ Features
 
-
-## Features
-
-- 🎂 **Automated Birthday Detection**: Automatically identifies employees with birthdays today
+- 🎂 **Automated Birthday Detection**: Identifies employees with birthdays today
 - 🖼️ **Personalized Images**: Creates custom birthday images with employee names
-- 📧 **Email Integration**: Sends beautiful HTML emails with embedded birthday images
-- 🎨 **Custom Templates**: Support for using your own PNG templates
-- ⚡ **Performance Optimized**: Creates base template once and reuses it for multiple employees
-- 💾 **Image Saving**: Optionally saves generated images to disk
-- 🛡️ **Error Handling**: Robust error handling with graceful fallbacks
+- 📧 **Professional Email Templates**: Sends beautiful HTML emails with embedded images
+- 🔒 **Secure Configuration**: Uses environment variables for sensitive data
+- ⏰ **Automated Scheduling**: Runs daily automatically with built-in scheduler
+- 🎨 **Custom Templates**: Support for custom PNG templates
+- 📊 **Comprehensive Logging**: Detailed logs for monitoring and debugging
+- 🛡️ **Error Handling**: Graceful error recovery and detailed error reporting
+- 🧪 **Testing Suite**: Comprehensive tests with visual validation
 
-## Prerequisites
+## 🚀 Quick Start
 
-### Required Python Packages
+### 1. Installation
 
 ```bash
-pip install pandas pillow smtplib datetime
+# Clone or download the project
+git clone <your-repo-url>
+cd birthday-automation
+
+# Run setup script (recommended)
+python setup.py
+
+# Or install manually
+pip install -r requirements.txt
 ```
 
-### Required Files
+### 2. Configuration
 
-1. **Employee CSV file** (`employees.csv`) with columns:
-   - `empid`: Employee ID
-   - `first_name`: Employee's first name
-   - `second_name`: Employee's last name
-   - `email`: Employee's email address
-   - `dob`: Date of birth (various formats supported)
-   - `department`: Employee's department
+```bash
+# Create environment file
+cp .env.template .env
 
-2. **Optional Image Assets**:
-   - `airtel_logo.png`: Company logo (150x150px recommended)
-   - `cake.png`: Birthday cake image (200x200px recommended)
-   - `arialbd.ttf`: Arial Bold font file (falls back to system default if not found)
-
-3. **Optional Custom Template**:
-   - Any PNG file to use as birthday template background
-
-## Installation
-
-1. Clone or download the script
-2. Install required Python packages
-3. Prepare your CSV file with employee data
-4. Configure email settings in the script
-5. Add optional image assets to the same directory
-
-## Configuration
-
-### Email Settings
-
-Update these variables in the `main()` function:
-
-```python
-CSV_FILE = "employees.csv"                    # Path to your employee CSV
-SMTP_SERVER = "smtp.gmail.com"               # Your SMTP server
-SMTP_PORT = 587                              # SMTP port
-EMAIL_USER = "your-email@company.com"        # Sender email
-EMAIL_PASSWORD = "your-app-password"         # Email password/app password
-CUSTOM_BASE_IMAGE = None                     # Path to custom PNG template (optional)
+# Edit with your settings
+nano .env
 ```
 
-### CSV Format Example
+Required configuration in `.env`:
+```bash
+EMAIL_USER=your-email@company.com
+EMAIL_PASSWORD=your-gmail-app-password
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+```
 
+### 3. Prepare Employee Data
+
+Update `employees.csv` with your employee information:
 ```csv
 empid,first_name,second_name,email,dob,department
-001,John,Doe,john.doe@company.com,15/06/1990,Engineering
-002,Jane,Smith,jane.smith@company.com,04/06/1985,Marketing
-003,Bob,Johnson,bob.johnson@company.com,04/06/1992,Sales
+EMP001,John,Doe,john.doe@company.com,1990-06-15,Engineering
+EMP002,Jane,Smith,jane.smith@company.com,1985-06-04,Marketing
 ```
 
-### Supported Date Formats
+### 4. Test the System
 
-The system automatically handles various date formats:
-- `DD/MM/YYYY`
-- `MM/DD/YYYY` 
-- `YYYY-MM-DD`
-- And other common formats
+```bash
+# Run tests
+python test_birthday_system.py
 
-## Usage
-
-### Basic Usage
-
-```python
-python birthday_generator.py
+# Test with today's birthdays
+python birthday_automation.py --run-once
 ```
 
-The script will:
-1. Check for today's birthdays
-2. Generate personalized images
-3. Send birthday emails
-4. Save images to `output_img/` directory
+### 5. Start Automation
 
-### Using Custom Templates
+```bash
+# Start automated daily scheduler (runs at 9:00 AM daily)
+python birthday_automation.py
+
+# Or specify custom time
+python birthday_automation.py --schedule-time 08:30
+```
+
+## 📧 Gmail Setup
+
+1. **Enable 2-Factor Authentication** on your Gmail account
+2. **Generate App Password**:
+   - Google Account Settings → Security → 2-Step Verification
+   - Click "App passwords" → Generate password for "Mail"
+   - Use this password in your `.env` file (not your regular password)
+
+## 📁 Project Structure
+
+```
+birthday-automation/
+├── birthday_automation.py      # Main automation script
+├── setup.py                   # Setup and installation script
+├── test_birthday_system.py    # Comprehensive test suite
+├── requirements.txt           # Python dependencies
+├── .env.template             # Configuration template
+├── .env                      # Your configuration (create from template)
+├── employees.csv             # Employee data
+├── README.md                 # This file
+├── output_img/              # Generated birthday images
+├── assets/                  # Optional company assets
+│   ├── logo.png
+│   └── cake.png
+└── logs/                   # Application logs
+```
+
+## 🛠️ Usage Options
+
+### Manual Execution
+```bash
+# Run for today's birthdays
+python birthday_automation.py --run-once
+
+# Run for specific date
+python birthday_automation.py --run-once --date 2024-12-25
+
+# Run without saving images to disk
+python birthday_automation.py --run-once --no-save-images
+```
+
+### Automated Scheduling
+```bash
+# Start scheduler (default: 9:00 AM daily)
+python birthday_automation.py
+
+# Custom schedule time
+python birthday_automation.py --schedule-time 07:30
+```
+
+### System-Level Automation
+
+**Linux/Mac (Cron):**
+```bash
+# Edit crontab
+crontab -e
+
+# Add this line for daily 9:00 AM execution
+0 9 * * * cd /path/to/birthday-automation && python birthday_automation.py --run-once
+```
+
+**Windows (Task Scheduler):**
+1. Open Task Scheduler
+2. Create Basic Task
+3. Set trigger: Daily at 9:00 AM
+4. Action: Start program `python` with arguments `birthday_automation.py --run-once`
+
+## ⚙️ Configuration Options
+
+### Environment Variables (.env file)
+
+| Variable | Required | Default | Description |
+|----------|----------|---------|-------------|
+| `EMAIL_USER` | ✅ | - | Sender email address |
+| `EMAIL_PASSWORD` | ✅ | - | Email app password |
+| `SMTP_SERVER` | ❌ | smtp.gmail.com | SMTP server |
+| `SMTP_PORT` | ❌ | 587 | SMTP port |
+| `EMPLOYEE_CSV_FILE` | ❌ | employees.csv | Employee data file |
+| `CUSTOM_BASE_IMAGE` | ❌ | - | Custom template PNG |
+| `OUTPUT_DIR` | ❌ | output_img | Image save directory |
+| `COMPANY_NAME` | ❌ | Your Company | Company name in emails |
+| `SENDER_TITLE` | ❌ | CEO | Sender title in emails |
+
+### CSV Format
+
+Required columns in your employee CSV:
+- `empid`: Unique employee identifier
+- `first_name`: Employee's first name
+- `second_name`: Employee's last name
+- `email`: Email address
+- `dob`: Date of birth (YYYY-MM-DD, DD/MM/YYYY, etc.)
+- `department`: Department name
+
+## 🎨 Customization
+
+### Custom Birthday Templates
 
 1. Create your birthday template as a PNG file
-2. Update the configuration:
+2. Set the path in `.env`:
+   ```bash
+   CUSTOM_BASE_IMAGE=path/to/your/template.png
+   ```
+3. Employee names will be added at the top center
 
-```python
-CUSTOM_BASE_IMAGE = "my_birthday_template.png"
+### Company Branding
+
+Place these files in your project directory or `assets/` folder:
+- `logo.png` or `airtel_logo.png`: Company logo
+- `cake.png`: Birthday cake image
+
+### Email Templates
+
+Modify the `create_email_content()` method in `birthday_automation.py` to customize:
+- Email styling and layout
+- Message content and tone
+- Company branding elements
+
+## 🔍 Monitoring & Logging
+
+### Log Files
+
+The system creates detailed logs in `birthday_automation.log`:
+- Employee data loading status
+- Birthday detection results
+- Image generation progress
+- Email sending status
+- Error details and stack traces
+
+### Monitoring Commands
+
+```bash
+# Watch logs in real-time
+tail -f birthday_automation.log
+
+# Check for errors
+grep ERROR birthday_automation.log
+
+# View recent activity
+tail -n 50 birthday_automation.log
 ```
 
-3. Run the script normally
+### Log Levels
 
-The system will use your custom image and add employee names to it.
-
-### Programmatic Usage
-
-```python
-from birthday_generator import BirthdayImageGenerator
-
-# Initialize
-birthday_gen = BirthdayImageGenerator(
-    csv_file="employees.csv",
-    smtp_server="smtp.gmail.com",
-    smtp_port=587,
-    email_user="sender@company.com",
-    email_password="app-password",
-    base_image_path="custom_template.png"  # Optional
-)
-
-# Process birthdays
-birthday_gen.process_birthdays(save_images=True)
+Set log level in `.env`:
+```bash
+LOG_LEVEL=DEBUG    # Verbose logging
+LOG_LEVEL=INFO     # Standard logging (default)
+LOG_LEVEL=WARNING  # Warnings and errors only
+LOG_LEVEL=ERROR    # Errors only
 ```
 
-## Generated Image Details
+## 🧪 Testing
 
-### Auto-Generated Template Features
+### Run Test Suite
+```bash
+# Complete test suite with system check
+python test_birthday_system.py
 
-- **Dimensions**: 800x624 pixels
-- **Background**: Company red (#e40000)
-- **Elements**: 
-  - Company logo (top-right)
-  - Personalized greeting
-  - "Happy Birthday!" message
-  - Cake illustration
-  - Birthday wishes text
-  - Confetti animation effect
-
-### Custom Template Usage
-
-- Use any PNG image as your base template
-- Employee names are added at the top center
-- Original image dimensions are preserved
-- White text color for name (ensure good contrast)
-
-## Output
-
-### Generated Files
-
-Images are saved in `output_img/` directory with format:
-```
-birthday_{empid}_{full_name}_{date}.png
+# Unit tests only
+python -m unittest test_birthday_system -v
 ```
 
-Example: `birthday_001_John_Doe_20240604.png`
+### Test Categories
 
-### Email Content
+1. **System Compatibility**: Python version, modules, permissions
+2. **Employee Data Loading**: CSV parsing, validation, error handling
+3. **Birthday Detection**: Date matching, edge cases
+4. **Image Generation**: Template creation, personalization
+5. **Email Functionality**: Content generation, SMTP handling
+6. **Integration Tests**: Complete workflow validation
+7. **Visual Tests**: Generate sample images for manual inspection
 
-- **Subject**: 🎉 Happy Birthday [FirstName]! 🎉
-- **Content**: Personalized HTML email with embedded image
-- **Sender**: Configured email address
-- **Signature**: CEO, Bharti Airtel (customizable)
+### Test Outputs
 
-## Email Setup
+- Unit test results in terminal
+- Visual test images in `visual_test_outputs/`
+- Test logs and debugging information
 
-### Gmail Configuration
-
-1. Enable 2-Factor Authentication
-2. Generate an App Password:
-   - Go to Google Account settings
-   - Security → 2-Step Verification → App passwords
-   - Generate password for "Mail"
-3. Use the app password in `EMAIL_PASSWORD`
-
-### Other Email Providers
-
-Update `SMTP_SERVER` and `SMTP_PORT`:
-- **Outlook**: smtp-mail.outlook.com:587
-- **Yahoo**: smtp.mail.yahoo.com:587
-- **Custom**: Contact your IT department
-
-## Performance Optimization
-
-The system includes several optimizations:
-
-- **Single Base Image**: Template created once, reused for all employees
-- **Font Caching**: Fonts loaded once and cached
-- **Memory Efficient**: Uses image copies instead of recreation
-- **Error Resilience**: Continues processing even if individual emails fail
-
-## Troubleshooting
+## 🔧 Troubleshooting
 
 ### Common Issues
 
-1. **"No birthdays today!"**
-   - Check date formats in CSV
-   - Verify system date
-   - Ensure CSV has valid birth dates
+**Environment Setup:**
+```bash
+# "No module named 'dotenv'"
+pip install python-dotenv
 
-2. **Email sending fails**
-   - Check SMTP settings
-   - Verify email credentials
-   - Ensure app password is used (not account password)
+# "EMAIL_USER and EMAIL_PASSWORD required"
+# Edit .env file with your credentials
+```
 
-3. **Images not generating**
-   - Check file permissions
-   - Verify image assets exist
-   - Check font file availability
+**Email Issues:**
+```bash
+# "Authentication failed"
+# - Use Gmail App Password, not regular password
+# - Ensure 2FA is enabled
+# - Check EMAIL_USER and EMAIL_PASSWORD in .env
+```
 
-4. **Custom image not loading**
-   - Verify file path is correct
-   - Ensure PNG format
-   - Check file permissions
+**CSV Issues:**
+```bash
+# "No birthdays found"
+# - Check date formats in CSV (use YYYY-MM-DD)
+# - Verify employee data loads correctly
+# - Check system date and timezone
+```
+
+**Image Issues:**
+```bash
+# "Font loading failed"
+# - System fonts not found (uses defaults automatically)
+# - Check file permissions
+
+# "Custom image not loading"
+# - Verify CUSTOM_BASE_IMAGE path is correct
+# - Ensure file is PNG format
+```
 
 ### Debug Mode
 
-Add print statements to see processing details:
-
-```python
-birthday_gen.process_birthdays(save_images=True)
-```
-
-The system automatically prints status messages for debugging.
-
-## Customization
-
-### Modify Email Content
-
-Edit the `html_body` in `send_birthday_email()` method:
-
-```python
-html_body = f"""
-<html>
-    <body>
-        <h2>Happy Birthday, {first_name}!</h2>
-        <!-- Customize your email content here -->
-    </body>
-</html>
-"""
-```
-
-### Change Image Dimensions
-
-Modify `width, height = 800, 624` in `create_base_image()`:
-
-```python
-width, height = 1200, 800  # Your preferred size
-```
-
-### Adjust Text Positioning
-
-Update coordinates in `add_name_to_image()`:
-
-```python
-name_y_position = 100  # Adjust vertical position
-```
-
-## Scheduling
-
-### Daily Automation
-
-Set up daily execution using:
-
-**Windows (Task Scheduler)**:
-1. Open Task Scheduler
-2. Create Basic Task
-3. Set daily trigger
-4. Set action to run Python script
-
-**Linux/Mac (Cron)**:
+Enable verbose logging in `.env`:
 ```bash
-# Run daily at 9:00 AM
-0 9 * * * /usr/bin/python3 /path/to/birthday_generator.py
+LOG_LEVEL=DEBUG
 ```
 
-## Security Notes
+This provides detailed information about:
+- Configuration loading
+- Font discovery
+- Image processing steps
+- Email construction
+- SMTP communication
 
-- Store email passwords securely (consider environment variables)
-- Keep employee data CSV secure
-- Use app passwords instead of account passwords
-- Regularly update email credentials
+### Performance Issues
 
-## Contributing
+For large employee databases:
+- Consider batch processing
+- Implement email rate limiting
+- Use database instead of CSV
+- Add progress indicators
 
-Feel free to submit issues and pull requests to improve the system:
+## 📊 Advanced Features
+
+### Multiple Email Providers
+
+Update SMTP settings for different providers:
+
+```bash
+# Outlook
+SMTP_SERVER=smtp-mail.outlook.com
+SMTP_PORT=587
+
+# Yahoo
+SMTP_SERVER=smtp.mail.yahoo.com
+SMTP_PORT=587
+
+# Custom SMTP
+SMTP_SERVER=your-smtp-server.com
+SMTP_PORT=587
+```
+
+### Database Integration
+
+Replace CSV with database by modifying `load_employee_data()`:
+
+```python
+def load_employee_data(self) -> List[Employee]:
+    # Connect to your database
+    # Query employee data
+    # Return list of Employee objects
+```
+
+### Webhook Notifications
+
+Add webhook support in `process_birthdays()`:
+
+```python
+# Send summary to Slack, Teams, etc.
+webhook_url = os.getenv('WEBHOOK_URL')
+if webhook_url:
+    send_webhook_notification(results)
+```
+
+### Rich Email Templates
+
+Use HTML email frameworks:
+- MJML for responsive designs
+- Custom CSS for advanced styling
+- Dynamic content based on employee data
+
+## 🔒 Security Best Practices
+
+1. **Environment Variables**: Never commit `.env` to version control
+   ```bash
+   echo ".env" >> .gitignore
+   ```
+
+2. **App Passwords**: Use Gmail App Passwords, not account passwords
+
+3. **File Permissions**: Restrict access to configuration and log files
+   ```bash
+   chmod 600 .env
+   chmod 755 birthday_automation.py
+   ```
+
+4. **Data Protection**: Encrypt employee data at rest
+
+5. **Access Control**: Limit who can modify the automation system
+
+6. **Regular Updates**: Keep dependencies updated
+   ```bash
+   pip list --outdated
+   pip install --upgrade package-name
+   ```
+
+## 🔄 Maintenance
+
+### Regular Tasks
+
+1. **Update Employee Data**: Keep `employees.csv` current
+2. **Monitor Logs**: Check for errors and performance issues
+3. **Test Email Delivery**: Verify emails are being sent
+4. **Update Templates**: Refresh birthday images seasonally
+5. **Backup Configuration**: Store `.env` and employee data securely
+
+### Performance Monitoring
+
+Monitor these metrics:
+- Email delivery success rate
+- Image generation time
+- Memory usage during processing
+- Log file size growth
+
+### Scaling Considerations
+
+For organizations with 1000+ employees:
+- Implement database storage
+- Add email queuing system
+- Use distributed scheduling
+- Add load balancing
+- Implement caching strategies
+
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+3. Add tests for new functionality
+4. Ensure all tests pass
+5. Update documentation
+6. Submit a pull request
 
-## License
+### Development Setup
 
-This project is provided as-is for educational and internal company use.
+```bash
+# Install development dependencies
+pip install -r requirements.txt
+pip install pytest black flake8
 
-## Support
+# Run code formatting
+black birthday_automation.py
 
-For issues or questions:
-1. Check the troubleshooting section
-2. Review error messages in console output
-3. Verify all configuration settings
-4. Test with a small subset of data first
+# Run linting
+flake8 birthday_automation.py
+
+# Run tests
+python test_birthday_system.py
+```
+
+## 📜 License
+
+This project is provided as-is for educational and internal company use. Modify and distribute according to your organization's policies.
+
+## 🆘 Support
+
+### Getting Help
+
+1. **Check Logs**: Review `birthday_automation.log` for errors
+2. **Run Tests**: Execute `python test_birthday_system.py`
+3. **Verify Configuration**: Ensure `.env` is properly configured
+4. **Test Manually**: Try `python birthday_automation.py --run-once`
+
+### Common Solutions
+
+- **No emails sent**: Check email credentials and SMTP settings
+- **Images not generated**: Verify font availability and file permissions
+- **Birthday not detected**: Check date formats and CSV structure
+- **Scheduler not working**: Ensure process stays running in background
+
+### Reporting Issues
+
+When reporting issues, include:
+- Error messages from logs
+- Your configuration (without passwords)
+- Python version and OS
+- Sample employee data (anonymized)
 
 ---
 
-*Happy Birthday automation! 🎉*
+**Happy Birthday Automation! 🎉**
 
-
-
+*Making every birthday special with automated, personalized greetings.*
