@@ -7,11 +7,12 @@ import random
 import math
 import datetime
 from pathlib import Path
-from typing import Optional, Dict, Tuple
+from typing import Optional, Dict, Tuple, Union, Any
 from io import BytesIO
 import logging
 
 from PIL import Image, ImageDraw, ImageFont
+from PIL.ImageFont import FreeTypeFont
 
 
 class ImageService:
@@ -47,7 +48,7 @@ class ImageService:
         
         # Cache for base image and fonts
         self._base_image: Optional[Image.Image] = None
-        self._fonts: Dict[str, ImageFont.FreeTypeFont] = {}
+        self._fonts: Dict[str, Union[FreeTypeFont, ImageFont.ImageFont]] = {}
         self._fonts_loaded = False
         
         # Asset paths
@@ -138,7 +139,7 @@ class ImageService:
         except Exception as e:
             self.logger.warning(f"Could not load company logo: {e}")
     
-    def _add_static_text(self, draw: ImageDraw.Draw) -> None:
+    def _add_static_text(self, draw: ImageDraw.ImageDraw) -> None:
         """Add static text elements to the image."""
         # Header text
         header_text = "Wishing you a very"
@@ -180,7 +181,7 @@ class ImageService:
             self.logger.warning(f"Could not load cake image: {e}")
             return 400
     
-    def _add_birthday_message(self, draw: ImageDraw.Draw, start_y: int) -> None:
+    def _add_birthday_message(self, draw: ImageDraw.ImageDraw, start_y: int) -> None:
         """Add birthday message text."""
         message_lines = [
             "May your birthday be full of happy hours",
@@ -350,7 +351,7 @@ class ImageService:
         
         return image_data, file_path
     
-    def get_base_image_info(self) -> Dict[str, any]:
+    def get_base_image_info(self) -> Dict[str, Any]:
         """Get information about the base image."""
         base_img = self._create_base_image()
         return {
@@ -394,11 +395,11 @@ class CardGeneratorLegacy:
     
     def __init__(
         self,
-        width=600,
-        height=800,
-        output_dir="gen_img",
-        cake_path="assets/cake.png",
-        logo_path="assets/airtel_logo.png"
+        width: int = 600,
+        height: int = 800,
+        output_dir: str = "gen_img",
+        cake_path: str = "assets/cake.png",
+        logo_path: str = "assets/airtel_logo.png"
     ):
         """Initialize legacy card generator."""
         self.image_service = ImageService(
