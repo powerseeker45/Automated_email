@@ -23,20 +23,20 @@ class CardGenerator:
 
     def load_fonts(self):
         try:
-            # Bold font for headings and main text
+            # Regular & Bold fonts
             self.bold_font = ImageFont.truetype("arialbd.ttf", 60)
             self.title_font = ImageFont.truetype("arialbd.ttf", 56)
-            self.subtitle_font = ImageFont.truetype("arialbd.ttf", 40)
-            self.body_font = ImageFont.truetype("arialbd.ttf", 28)
+            self.regular_font = ImageFont.truetype("arial.ttf", 34)
+            self.small_font = ImageFont.truetype("arial.ttf", 26)
 
-            # Cursive + Bold for "Dear <Name>"
+            # Cursive font for "Dear <Name>"
             try:
-                self.cursive_font = ImageFont.truetype("comicbd.ttf", 54)  # Comic Sans Bold
+                self.cursive_font = ImageFont.truetype("lucon.ttf", 54)  # Lucida Console fallback
             except:
-                self.cursive_font = ImageFont.truetype("arialbd.ttf", 54)
+                self.cursive_font = ImageFont.truetype("ariali.ttf", 54)  # Arial Italic as fallback
         except:
-            print("System fonts not found. Using default fallback.")
-            self.bold_font = self.title_font = self.subtitle_font = self.body_font = self.cursive_font = ImageFont.load_default()
+            print("System fonts not found. Using defaults.")
+            self.bold_font = self.title_font = self.regular_font = self.small_font = self.cursive_font = ImageFont.load_default()
 
     def draw_centered_text(self, draw, y, text, font, color="white"):
         text_width = draw.textlength(text, font=font)
@@ -54,7 +54,7 @@ class CardGenerator:
         except:
             print("Logo not found.")
 
-        # Cake Image
+        # Cake
         try:
             cake = Image.open(self.cake_path).convert("RGBA").resize((250, 250))
             cake_x = (self.width - cake.width) // 2
@@ -71,18 +71,18 @@ class CardGenerator:
             opacity = int(255 * (1 - dist / max_dist))
             base_color = random.choice([(255, 255, 255), (255, 200, 0), (150, 150, 255), (255, 100, 100)])
             color = base_color + (opacity,)
-            confetti = Image.new('RGBA', (r*2, r*2), (0, 0, 0, 0))
-            ImageDraw.Draw(confetti).ellipse((0, 0, r*2, r*2), fill=color)
+            confetti = Image.new('RGBA', (r * 2, r * 2), (0, 0, 0, 0))
+            ImageDraw.Draw(confetti).ellipse((0, 0, r * 2, r * 2), fill=color)
             img.paste(confetti, (x, y), confetti)
 
-        # Draw Text
+        # Draw text
         draw.text((40, 100), f"Dear {first_name},", fill="white", font=self.cursive_font)
-        self.draw_centered_text(draw, 180, "Wishing you a very", self.subtitle_font)
+        self.draw_centered_text(draw, 180, "Wishing you a very", self.regular_font)
         self.draw_centered_text(draw, 470, "Happy", self.title_font)
         self.draw_centered_text(draw, 540, "Birthday!", self.title_font)
-        self.draw_centered_text(draw, 640, "May your birthday be full of happy hours", self.body_font)
-        self.draw_centered_text(draw, 680, "and special moments to remember for a", self.body_font)
-        self.draw_centered_text(draw, 720, "long long time!", self.body_font)
+        self.draw_centered_text(draw, 640, "May your birthday be full of happy hours", self.small_font)
+        self.draw_centered_text(draw, 680, "and special moments to remember for a", self.small_font)
+        self.draw_centered_text(draw, 720, "long long time!", self.small_font)
 
         # Save
         output_path = os.path.join(self.output_dir, output_name)
