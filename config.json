@@ -1,0 +1,23 @@
+{
+    "csv_file": "employees.csv",
+    "custom_base_image": null,
+    "output_dir": "output_img",
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "email_user": "your-email@company.com",
+    "email_password": "your-app-password",
+    "image_width": 800,
+    "image_height": 624,
+    "background_color": "#e40000",
+    "logo_path": "assets/airtel_logo.png",
+    "cake_path": "assets/cake.png",
+    "font_paths": {
+        "regular": "arial.ttf",
+        "bold": "arialbd.ttf",
+        "italic": "ariali.ttf"
+    },
+    "log_level": "INFO",
+    "log_file": null,
+    "email_subject_template": "\ud83c\udf89 Happy Birthday {first_name}! \ud83c\udf89",
+    "sender_signature": "CEO, Bharti Airtel"
+}
