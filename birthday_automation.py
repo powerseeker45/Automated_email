@@ -178,7 +178,7 @@ class BirthdayEmailAutomation:
                 self.logger.warning(f"Error loading custom base image: {e}. Using generated template.")
         
         # Generate base image
-        width, height = 800, 624
+        width, height = 800, 650
         img = Image.new('RGB', (width, height), color='#e40000')
         draw = ImageDraw.Draw(img)
 

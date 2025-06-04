@@ -148,7 +148,7 @@ class TestImageGeneration(TestBirthdayAutomation):
         base_image = self.automation.create_base_image()
         
         self.assertIsInstance(base_image, Image.Image, "Should return PIL Image object")
-        self.assertEqual(base_image.size, (800, 624), "Should have correct dimensions")
+        self.assertEqual(base_image.size, (800, 650), "Should have correct dimensions")
         self.assertEqual(base_image.mode, 'RGB', "Should be RGB mode")
         
         # Test caching
@@ -168,7 +168,7 @@ class TestImageGeneration(TestBirthdayAutomation):
         
         image = self.automation.create_personalized_image(employee)
         self.assertIsInstance(image, Image.Image, "Should return PIL Image object")
-        self.assertEqual(image.size, (800, 624), "Should maintain base image dimensions")
+        self.assertEqual(image.size, (800, 650), "Should maintain base image dimensions")
 
 class TestEmailFunctionality(TestBirthdayAutomation):
     """Test email functionality (without sending actual emails)"""
