@@ -1,5 +1,9 @@
 empid,first_name,second_name,email,dob,department
-EMP001,Alice,Johnson,shashwat.airtel@gmail.com,02-06-1990,Engineering
-EMP002,Bob,Smith,shashwat.airtel@gmail.com,15-12-1985,Marketing
-EMP003,Carol,Davis,shashwat.airtel@gmail.com,08-03-1992,HR
-EMP004,David,Wilson,shashwat.airtel@gmail.com,02-06-1988,Engineering
+EMP001,Alice,Johnson,alice.johnson@company.com,1990-06-04,Engineering
+EMP002,Bob,Smith,bob.smith@company.com,1985-06-05,Marketing
+EMP003,Carol,Davis,carol.davis@company.com,1992-06-04,HR
+EMP004,David,Wilson,david.wilson@company.com,1988-06-05,Engineering
+EMP005,Emma,Brown,emma.brown@company.com,1995-12-25,Finance
+EMP006,Frank,Miller,frank.miller@company.com,1987-01-15,Sales
+EMP007,Grace,Taylor,grace.taylor@company.com,1991-03-20,Marketing
+EMP008,Henry,Anderson,henry.anderson@company.com,1993-07-10,Engineering
