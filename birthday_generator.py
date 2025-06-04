@@ -10,12 +10,39 @@ from io import BytesIO
 import random
 
 class BirthdayImageGenerator:
-    def __init__(self, csv_file, smtp_server, smtp_port, email_user, email_password):
+    def __init__(self, csv_file, smtp_server, smtp_port, email_user, email_password, base_image_path=None):
         self.csv_file = csv_file
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
         self.email_user = email_user
         self.email_password = email_password
+        self.base_image_path = base_image_path
+        self.base_image = None
+        self.fonts_loaded = False
+        self.fonts = {}
+        
+    def load_fonts(self):
+        """Load fonts once and reuse them"""
+        if self.fonts_loaded:
+            return
+            
+        try:
+            self.fonts = {
+                'header': ImageFont.truetype("arialbd.ttf", 36),
+                'main': ImageFont.truetype("arialbd.ttf", 80),
+                'sub': ImageFont.truetype("arialbd.ttf", 28),
+                'name': ImageFont.truetype("arialbd.ttf", 32)
+            }
+        except:
+            default_font = ImageFont.load_default()
+            self.fonts = {
+                'header': default_font,
+                'main': default_font,
+                'sub': default_font,
+                'name': default_font
+            }
+        
+        self.fonts_loaded = True
 
     def load_employee_data(self):
         try:
@@ -43,22 +70,30 @@ class BirthdayImageGenerator:
 
         return birthday_employees
 
-    def create_birthday_image(self, name):
+    def create_base_image(self):
+        """Create the base birthday image template once"""
+        if self.base_image is not None:
+            return self.base_image
+            
+        # Load fonts
+        self.load_fonts()
+        
+        # If user provided a custom base image, use it
+        if self.base_image_path and os.path.exists(self.base_image_path):
+            try:
+                self.base_image = Image.open(self.base_image_path).convert('RGB')
+                print(f"Using custom base image: {self.base_image_path}")
+                return self.base_image
+            except Exception as e:
+                print(f"Error loading custom base image: {e}")
+                print("Falling back to generated base image...")
+        
+        # Generate base image
         width, height = 800, 624
         img = Image.new('RGB', (width, height), color='#e40000')
         draw = ImageDraw.Draw(img)
 
-        try:
-            header_font = ImageFont.truetype("arialbd.ttf", 36)
-            main_font = ImageFont.truetype("arialbd.ttf", 80)
-            sub_font = ImageFont.truetype("arialbd.ttf", 28)
-            name_font = ImageFont.truetype("arialbd.ttf", 32)
-        except:
-            header_font = ImageFont.load_default()
-            main_font = ImageFont.load_default()
-            sub_font = ImageFont.load_default()
-            name_font = ImageFont.load_default()
-
+        # Add Airtel logo
         try:
             logo = Image.open("airtel_logo.png").convert("RGBA")
             logo.thumbnail((150, 150))
@@ -66,21 +101,18 @@ class BirthdayImageGenerator:
         except Exception as e:
             print(f"Could not load Airtel logo: {e}")
 
-        dear_text = f"Dear {name},"
-        dear_bbox = draw.textbbox((0, 0), dear_text, font=name_font)
-        dear_w = dear_bbox[2] - dear_bbox[0]
-        draw.text(((width - dear_w) // 2, 50), dear_text, fill="white", font=name_font)
-
+        # Add static text elements
         header_text = "Wishing you a very"
-        header_bbox = draw.textbbox((0, 0), header_text, font=header_font)
+        header_bbox = draw.textbbox((0, 0), header_text, font=self.fonts['header'])
         header_w = header_bbox[2] - header_bbox[0]
-        draw.text(((width - header_w) // 2, 120), header_text, fill="white", font=header_font)
+        draw.text(((width - header_w) // 2, 120), header_text, fill="white", font=self.fonts['header'])
 
         main_text = "Happy Birthday!"
-        main_bbox = draw.textbbox((0, 0), main_text, font=main_font)
+        main_bbox = draw.textbbox((0, 0), main_text, font=self.fonts['main'])
         main_w = main_bbox[2] - main_bbox[0]
-        draw.text(((width - main_w) // 2, 180), main_text, fill="white", font=main_font)
+        draw.text(((width - main_w) // 2, 180), main_text, fill="white", font=self.fonts['main'])
 
+        # Add cake image
         try:
             cake = Image.open("cake.png").convert("RGBA")
             cake.thumbnail((200, 200))
@@ -92,17 +124,19 @@ class BirthdayImageGenerator:
             print(f"Could not load cake image: {e}")
             y = 330
 
+        # Add birthday message
         message = (
             "May your birthday be full of happy hours\n"
             "and special moments to remember for a\n"
             "long long time!"
         )
         for line in message.split('\n'):
-            line_bbox = draw.textbbox((0, 0), line, font=sub_font)
+            line_bbox = draw.textbbox((0, 0), line, font=self.fonts['sub'])
             line_w = line_bbox[2] - line_bbox[0]
-            draw.text(((width - line_w) // 2, y), line, fill="white", font=sub_font)
+            draw.text(((width - line_w) // 2, y), line, fill="white", font=self.fonts['sub'])
             y += 35
 
+        # Add confetti effect
         confetti_colors = ['#ffffff', '#ffd700', '#00ffcc', '#ff69b4', '#add8e6']
         confetti_img = Image.new('RGBA', img.size, (255, 0, 0, 0))
         confetti_draw = ImageDraw.Draw(confetti_img)
@@ -117,7 +151,36 @@ class BirthdayImageGenerator:
             confetti_draw.ellipse((x - r, y - r, x + r, y + r), fill=confetti_color)
 
         img = Image.alpha_composite(img.convert('RGBA'), confetti_img)
-        return img.convert('RGB')
+        self.base_image = img.convert('RGB')
+        print("Base birthday image created successfully")
+        return self.base_image
+
+    def add_name_to_image(self, name):
+        """Add a name to the base image and return the personalized version"""
+        # Get base image
+        base_img = self.create_base_image()
+        
+        # Create a copy to modify
+        img = base_img.copy()
+        draw = ImageDraw.Draw(img)
+        
+        # Ensure fonts are loaded
+        self.load_fonts()
+        
+        # Add personalized greeting
+        dear_text = f"Dear {name},"
+        dear_bbox = draw.textbbox((0, 0), dear_text, font=self.fonts['name'])
+        dear_w = dear_bbox[2] - dear_bbox[0]
+        
+        # Position the name text (adjust coordinates as needed for your layout)
+        name_y_position = 50
+        if self.base_image_path:
+            # For custom images, you might want to adjust this position
+            name_y_position = 50
+            
+        draw.text(((img.width - dear_w) // 2, name_y_position), dear_text, fill="white", font=self.fonts['name'])
+        
+        return img
 
     def send_birthday_email(self, employee_email, first_name, full_name, department, image_data):
         try:
@@ -173,6 +236,10 @@ class BirthdayImageGenerator:
             return
 
         print(f"Found {len(birthday_employees)} birthday(s) today!")
+        
+        # Create base image once
+        print("Creating base birthday image template...")
+        self.create_base_image()
 
         output_dir = "output_img"
         if save_images and not os.path.exists(output_dir):
@@ -187,7 +254,10 @@ class BirthdayImageGenerator:
 
             print(f"Processing birthday for {full_name} (ID: {empid}, Dept: {department})...")
 
-            birthday_img = self.create_birthday_image(first_name)
+            # Add name to base image (much faster than creating from scratch)
+            birthday_img = self.add_name_to_image(first_name)
+            
+            # Convert to bytes for email
             img_byte_arr = BytesIO()
             birthday_img.save(img_byte_arr, format='PNG')
             img_byte_arr = img_byte_arr.getvalue()
@@ -206,13 +276,18 @@ def main():
     SMTP_PORT = 587
     EMAIL_USER = "shashwat.airtel@gmail.com"
     EMAIL_PASSWORD = "rhar coyy iggw faia"
+    
+    # Optional: Use a custom base image instead of generating one
+    # Set to None to use the generated image, or provide path to your PNG file
+    CUSTOM_BASE_IMAGE ="visual_test_outputs/base_template.png"   # Example: "custom_birthday_template.png"
 
     birthday_gen = BirthdayImageGenerator(
         csv_file=CSV_FILE,
         smtp_server=SMTP_SERVER,
         smtp_port=SMTP_PORT,
         email_user=EMAIL_USER,
-        email_password=EMAIL_PASSWORD
+        email_password=EMAIL_PASSWORD,
+        base_image_path=CUSTOM_BASE_IMAGE
     )
 
     birthday_gen.process_birthdays(save_images=True)
