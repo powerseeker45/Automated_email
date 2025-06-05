@@ -535,3 +535,61 @@
 2025-06-05 11:55:27,271 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
 2025-06-05 11:55:31,376 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
 2025-06-05 11:55:31,377 - INFO - Birthday processing completed. Results: {'processed': 3, 'successful': 3, 'failed': 0}
+2025-06-05 12:19:36,267 - INFO - Configuration loaded successfully
+2025-06-05 12:19:36,268 - INFO - Starting birthday automation scheduler - will run daily at 09:00
+2025-06-05 12:19:36,268 - INFO - Running initial birthday check...
+2025-06-05 12:19:36,268 - INFO - Running daily birthday check...
+2025-06-05 12:19:36,268 - INFO - Starting birthday processing...
+2025-06-05 12:19:36,274 - INFO - Loaded 8 employee records
+2025-06-05 12:19:36,274 - INFO - Found 3 employees with birthdays on 2025-06-05
+2025-06-05 12:19:36,274 - INFO - Creating base birthday image template...
+2025-06-05 12:19:36,287 - INFO - Fonts loaded successfully
+2025-06-05 12:19:36,335 - INFO - Base birthday image created successfully
+2025-06-05 12:19:36,335 - INFO - Processing birthday for Bob Smith (ID: EMP002, Dept: Marketing)
+2025-06-05 12:19:36,369 - INFO - Image saved: output_img\birthday_EMP002_Bob_Smith_20250605.png
+2025-06-05 12:19:41,615 - INFO - Birthday email sent successfully to Bob Smith (bob.smith@company.com)
+2025-06-05 12:19:41,616 - INFO - Processing birthday for Carol Davis (ID: EMP003, Dept: HR)
+2025-06-05 12:19:41,645 - INFO - Image saved: output_img\birthday_EMP003_Carol_Davis_20250605.png
+2025-06-05 12:19:45,955 - INFO - Birthday email sent successfully to Carol Davis (carol.davis@company.com)
+2025-06-05 12:19:45,955 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 12:19:45,986 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 12:19:50,289 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
+2025-06-05 12:19:50,289 - INFO - Birthday processing completed. Results: {'processed': 3, 'successful': 3, 'failed': 0}
+2025-06-05 12:19:50,290 - INFO - Processed 3 birthdays - Successful: 3, Failed: 0
+2025-06-05 12:22:24,218 - INFO - Configuration loaded successfully
+2025-06-05 12:22:24,219 - INFO - Starting birthday automation scheduler - will run daily at 12:24
+2025-06-05 12:22:24,219 - INFO - Running initial birthday check...
+2025-06-05 12:22:24,219 - INFO - Running daily birthday check...
+2025-06-05 12:22:24,220 - INFO - Starting birthday processing...
+2025-06-05 12:22:24,224 - INFO - Loaded 8 employee records
+2025-06-05 12:22:24,225 - INFO - Found 3 employees with birthdays on 2025-06-05
+2025-06-05 12:22:24,225 - INFO - Creating base birthday image template...
+2025-06-05 12:22:24,238 - INFO - Fonts loaded successfully
+2025-06-05 12:22:24,271 - INFO - Base birthday image created successfully
+2025-06-05 12:22:24,272 - INFO - Processing birthday for Bob Smith (ID: EMP002, Dept: Marketing)
+2025-06-05 12:22:24,301 - INFO - Image saved: output_img\birthday_EMP002_Bob_Smith_20250605.png
+2025-06-05 12:22:28,692 - INFO - Birthday email sent successfully to Bob Smith (bob.smith@company.com)
+2025-06-05 12:22:28,692 - INFO - Processing birthday for Carol Davis (ID: EMP003, Dept: HR)
+2025-06-05 12:22:28,722 - INFO - Image saved: output_img\birthday_EMP003_Carol_Davis_20250605.png
+2025-06-05 12:22:33,172 - INFO - Birthday email sent successfully to Carol Davis (carol.davis@company.com)
+2025-06-05 12:22:33,173 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 12:22:33,204 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 12:22:38,003 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
+2025-06-05 12:22:38,003 - INFO - Birthday processing completed. Results: {'processed': 3, 'successful': 3, 'failed': 0}
+2025-06-05 12:22:38,004 - INFO - Processed 3 birthdays - Successful: 3, Failed: 0
+2025-06-05 12:24:38,020 - INFO - Running daily birthday check...
+2025-06-05 12:24:38,020 - INFO - Starting birthday processing...
+2025-06-05 12:24:38,026 - INFO - Loaded 8 employee records
+2025-06-05 12:24:38,027 - INFO - Found 3 employees with birthdays on 2025-06-05
+2025-06-05 12:24:38,027 - INFO - Creating base birthday image template...
+2025-06-05 12:24:38,028 - INFO - Processing birthday for Bob Smith (ID: EMP002, Dept: Marketing)
+2025-06-05 12:24:38,056 - INFO - Image saved: output_img\birthday_EMP002_Bob_Smith_20250605.png
+2025-06-05 12:24:43,367 - INFO - Birthday email sent successfully to Bob Smith (bob.smith@company.com)
+2025-06-05 12:24:43,367 - INFO - Processing birthday for Carol Davis (ID: EMP003, Dept: HR)
+2025-06-05 12:24:43,396 - INFO - Image saved: output_img\birthday_EMP003_Carol_Davis_20250605.png
+2025-06-05 12:24:48,517 - INFO - Birthday email sent successfully to Carol Davis (carol.davis@company.com)
+2025-06-05 12:24:48,518 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 12:24:48,544 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 12:24:53,601 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
+2025-06-05 12:24:53,602 - INFO - Birthday processing completed. Results: {'processed': 3, 'successful': 3, 'failed': 0}
+2025-06-05 12:24:53,603 - INFO - Processed 3 birthdays - Successful: 3, Failed: 0
