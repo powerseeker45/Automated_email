@@ -301,7 +301,7 @@ class BirthdayEmailAutomation:
                     <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
                         <p>Warm regards,<br>
                         <strong>{self.sender_title}</strong><br>
-                        Bharti Airtel</p>
+                        {self.company_name}</p>
                     </div>
                 </div>
             </body>

@@ -593,3 +593,55 @@
 2025-06-05 12:24:53,601 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
 2025-06-05 12:24:53,602 - INFO - Birthday processing completed. Results: {'processed': 3, 'successful': 3, 'failed': 0}
 2025-06-05 12:24:53,603 - INFO - Processed 3 birthdays - Successful: 3, Failed: 0
+2025-06-05 13:28:49,926 - INFO - Configuration loaded successfully
+2025-06-05 13:28:49,930 - INFO - Configuration loaded successfully
+2025-06-05 13:28:49,943 - ERROR - Error loading employee data: Missing required columns: ['empid', 'first_name', 'second_name', 'dob', 'department']
+2025-06-05 13:28:49,948 - INFO - Configuration loaded successfully
+2025-06-05 13:28:49,972 - INFO - Loaded 5 employee records
+2025-06-05 13:28:49,977 - INFO - Configuration loaded successfully
+2025-06-05 13:28:49,978 - INFO - Configuration loaded successfully
+2025-06-05 13:28:49,979 - ERROR - Error loading employee data: CSV file not found: nonexistent.csv
+2025-06-05 13:28:49,986 - INFO - Configuration loaded successfully
+2025-06-05 13:28:49,992 - INFO - Loaded 5 employee records
+2025-06-05 13:28:49,993 - INFO - Found 1 employees with birthdays on 2025-06-06
+2025-06-05 13:28:49,997 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,003 - INFO - Loaded 5 employee records
+2025-06-05 13:28:50,003 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 13:28:50,006 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,035 - INFO - Fonts loaded successfully
+2025-06-05 13:28:50,084 - INFO - Base birthday image created successfully
+2025-06-05 13:28:50,087 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,092 - INFO - Fonts loaded successfully
+2025-06-05 13:28:50,110 - INFO - Base birthday image created successfully
+2025-06-05 13:28:50,117 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,122 - INFO - Fonts loaded successfully
+2025-06-05 13:28:50,125 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,128 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,137 - INFO - Fonts loaded successfully
+2025-06-05 13:28:50,155 - INFO - Base birthday image created successfully
+2025-06-05 13:28:50,174 - INFO - Birthday email sent successfully to Alice Test (alice@test.com)
+2025-06-05 13:28:50,178 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,185 - INFO - Fonts loaded successfully
+2025-06-05 13:28:50,202 - INFO - Base birthday image created successfully
+2025-06-05 13:28:50,220 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmp31goe5vc\output\birthday_TEST001_Alice_Test_20250605.png
+2025-06-05 13:28:50,224 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,225 - INFO - Starting birthday processing...
+2025-06-05 13:28:50,230 - INFO - Loaded 5 employee records
+2025-06-05 13:28:50,231 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 13:28:50,231 - INFO - Creating base birthday image template...
+2025-06-05 13:28:50,237 - INFO - Fonts loaded successfully
+2025-06-05 13:28:50,255 - INFO - Base birthday image created successfully
+2025-06-05 13:28:50,255 - INFO - Processing birthday for Alice Johnson (ID: EMP001, Dept: Engineering)
+2025-06-05 13:28:50,287 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmpnd0q7v64\output\birthday_EMP001_Alice_Johnson_20250605.png
+2025-06-05 13:28:50,288 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 13:28:50,321 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmpnd0q7v64\output\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 13:28:50,321 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-05 13:28:50,325 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,327 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,327 - INFO - Starting birthday processing...
+2025-06-05 13:28:50,331 - INFO - Loaded 1 employee records
+2025-06-05 13:28:50,331 - INFO - Found 0 employees with birthdays on 2025-06-05
+2025-06-05 13:28:50,331 - INFO - No birthdays today!
+2025-06-05 13:28:50,337 - INFO - Configuration loaded successfully
+2025-06-05 13:28:50,341 - INFO - Fonts loaded successfully
+2025-06-05 13:28:50,360 - INFO - Base birthday image created successfully
