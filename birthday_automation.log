@@ -308,3 +308,230 @@
 2025-06-04 16:20:44,542 - INFO - Birthday email sent successfully to Carol Davis (carol.davis@company.com)
 2025-06-04 16:20:44,543 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
 2025-06-04 16:20:44,544 - INFO - Processed 2 birthdays - Successful: 2, Failed: 0
+2025-06-04 16:53:03,234 - INFO - Configuration loaded successfully
+2025-06-04 16:53:03,234 - INFO - Starting birthday automation scheduler - will run daily at 09:00
+2025-06-04 16:53:03,235 - INFO - Running initial birthday check...
+2025-06-04 16:53:03,235 - INFO - Running daily birthday check...
+2025-06-04 16:53:03,235 - INFO - Starting birthday processing...
+2025-06-04 16:53:03,240 - INFO - Loaded 8 employee records
+2025-06-04 16:53:03,240 - INFO - Found 2 employees with birthdays on 2025-06-04
+2025-06-04 16:53:03,241 - INFO - Creating base birthday image template...
+2025-06-04 16:53:03,249 - INFO - Fonts loaded successfully
+2025-06-04 16:53:03,290 - INFO - Base birthday image created successfully
+2025-06-04 16:53:03,290 - INFO - Processing birthday for Alice Johnson (ID: EMP001, Dept: Engineering)
+2025-06-04 16:53:03,318 - INFO - Image saved: output_img\birthday_EMP001_Alice_Johnson_20250604.png
+2025-06-04 16:53:09,582 - INFO - Birthday email sent successfully to Alice Johnson (alice.johnson@company.com)
+2025-06-04 16:53:09,583 - INFO - Processing birthday for Carol Davis (ID: EMP003, Dept: HR)
+2025-06-04 16:53:09,613 - INFO - Image saved: output_img\birthday_EMP003_Carol_Davis_20250604.png
+2025-06-04 16:53:14,565 - INFO - Birthday email sent successfully to Carol Davis (carol.davis@company.com)
+2025-06-04 16:53:14,566 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-04 16:53:14,567 - INFO - Processed 2 birthdays - Successful: 2, Failed: 0
+2025-06-05 11:07:59,131 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,135 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,149 - ERROR - Error loading employee data: Missing required columns: ['empid', 'first_name', 'second_name', 'dob', 'department']
+2025-06-05 11:07:59,159 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,193 - INFO - Loaded 5 employee records
+2025-06-05 11:07:59,201 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,201 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,202 - ERROR - Error loading employee data: CSV file not found: nonexistent.csv
+2025-06-05 11:07:59,206 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,212 - INFO - Loaded 5 employee records
+2025-06-05 11:07:59,213 - INFO - Found 1 employees with birthdays on 2025-06-06
+2025-06-05 11:07:59,218 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,222 - INFO - Loaded 5 employee records
+2025-06-05 11:07:59,222 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 11:07:59,229 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,251 - INFO - Fonts loaded successfully
+2025-06-05 11:07:59,316 - INFO - Base birthday image created successfully
+2025-06-05 11:07:59,322 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,330 - INFO - Fonts loaded successfully
+2025-06-05 11:07:59,351 - INFO - Base birthday image created successfully
+2025-06-05 11:07:59,360 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,367 - INFO - Fonts loaded successfully
+2025-06-05 11:07:59,374 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,380 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,387 - INFO - Fonts loaded successfully
+2025-06-05 11:07:59,406 - INFO - Base birthday image created successfully
+2025-06-05 11:07:59,434 - INFO - Birthday email sent successfully to Alice Test (alice@test.com)
+2025-06-05 11:07:59,438 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,445 - INFO - Fonts loaded successfully
+2025-06-05 11:07:59,474 - INFO - Base birthday image created successfully
+2025-06-05 11:07:59,513 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmpaledr9ge\output\birthday_TEST001_Alice_Test_20250605.png
+2025-06-05 11:07:59,519 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,520 - INFO - Starting birthday processing...
+2025-06-05 11:07:59,525 - INFO - Loaded 5 employee records
+2025-06-05 11:07:59,526 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 11:07:59,526 - INFO - Creating base birthday image template...
+2025-06-05 11:07:59,532 - INFO - Fonts loaded successfully
+2025-06-05 11:07:59,550 - INFO - Base birthday image created successfully
+2025-06-05 11:07:59,550 - INFO - Processing birthday for Alice Johnson (ID: EMP001, Dept: Engineering)
+2025-06-05 11:07:59,584 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmpjeyga89o\output\birthday_EMP001_Alice_Johnson_20250605.png
+2025-06-05 11:07:59,584 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 11:07:59,617 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmpjeyga89o\output\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 11:07:59,618 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-05 11:07:59,623 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,627 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,627 - INFO - Starting birthday processing...
+2025-06-05 11:07:59,651 - INFO - Loaded 1 employee records
+2025-06-05 11:07:59,651 - INFO - Found 0 employees with birthdays on 2025-06-05
+2025-06-05 11:07:59,652 - INFO - No birthdays today!
+2025-06-05 11:07:59,656 - INFO - Configuration loaded successfully
+2025-06-05 11:07:59,665 - INFO - Fonts loaded successfully
+2025-06-05 11:07:59,684 - INFO - Base birthday image created successfully
+2025-06-05 11:22:45,825 - INFO - Configuration loaded successfully
+2025-06-05 11:22:45,826 - INFO - Starting birthday automation scheduler - will run daily at 09:00
+2025-06-05 11:22:45,826 - INFO - Running initial birthday check...
+2025-06-05 11:22:45,826 - INFO - Running daily birthday check...
+2025-06-05 11:22:45,827 - INFO - Starting birthday processing...
+2025-06-05 11:22:45,856 - INFO - Loaded 8 employee records
+2025-06-05 11:22:45,857 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 11:22:45,857 - INFO - Creating base birthday image template...
+2025-06-05 11:22:45,874 - INFO - Fonts loaded successfully
+2025-06-05 11:22:45,950 - INFO - Base birthday image created successfully
+2025-06-05 11:22:45,950 - INFO - Processing birthday for Bob Smith (ID: EMP002, Dept: Marketing)
+2025-06-05 11:22:45,981 - INFO - Image saved: output_img\birthday_EMP002_Bob_Smith_20250605.png
+2025-06-05 11:22:51,187 - INFO - Birthday email sent successfully to Bob Smith (kmrunal987@gmail.com)
+2025-06-05 11:22:51,188 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 11:22:51,234 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 11:22:56,169 - INFO - Birthday email sent successfully to David Wilson (ishika20jan@gmail.com)
+2025-06-05 11:22:56,172 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-05 11:22:56,172 - INFO - Processed 2 birthdays - Successful: 2, Failed: 0
+2025-06-05 11:28:56,237 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,240 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,270 - ERROR - Error loading employee data: Missing required columns: ['empid', 'first_name', 'second_name', 'dob', 'department']
+2025-06-05 11:28:56,274 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,302 - INFO - Loaded 5 employee records
+2025-06-05 11:28:56,308 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,308 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,309 - ERROR - Error loading employee data: CSV file not found: nonexistent.csv
+2025-06-05 11:28:56,317 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,324 - INFO - Loaded 5 employee records
+2025-06-05 11:28:56,324 - INFO - Found 1 employees with birthdays on 2025-06-06
+2025-06-05 11:28:56,333 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,339 - INFO - Loaded 5 employee records
+2025-06-05 11:28:56,339 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 11:28:56,342 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,355 - INFO - Fonts loaded successfully
+2025-06-05 11:28:56,391 - INFO - Base birthday image created successfully
+2025-06-05 11:28:56,395 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,401 - INFO - Fonts loaded successfully
+2025-06-05 11:28:56,420 - INFO - Base birthday image created successfully
+2025-06-05 11:28:56,429 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,438 - INFO - Fonts loaded successfully
+2025-06-05 11:28:56,441 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,449 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,456 - INFO - Fonts loaded successfully
+2025-06-05 11:28:56,472 - INFO - Base birthday image created successfully
+2025-06-05 11:28:56,497 - INFO - Birthday email sent successfully to Alice Test (alice@test.com)
+2025-06-05 11:28:56,503 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,508 - INFO - Fonts loaded successfully
+2025-06-05 11:28:56,525 - INFO - Base birthday image created successfully
+2025-06-05 11:28:56,543 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmpyaca2k0v\output\birthday_TEST001_Alice_Test_20250605.png
+2025-06-05 11:28:56,552 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,553 - INFO - Starting birthday processing...
+2025-06-05 11:28:56,558 - INFO - Loaded 5 employee records
+2025-06-05 11:28:56,558 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 11:28:56,559 - INFO - Creating base birthday image template...
+2025-06-05 11:28:56,567 - INFO - Fonts loaded successfully
+2025-06-05 11:28:56,585 - INFO - Base birthday image created successfully
+2025-06-05 11:28:56,586 - INFO - Processing birthday for Alice Johnson (ID: EMP001, Dept: Engineering)
+2025-06-05 11:28:56,620 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmp9rfan28l\output\birthday_EMP001_Alice_Johnson_20250605.png
+2025-06-05 11:28:56,621 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 11:28:56,657 - INFO - Image saved: C:\Users\ADMINI~1\AppData\Local\Temp\tmp9rfan28l\output\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 11:28:56,658 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-05 11:28:56,666 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,669 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,670 - INFO - Starting birthday processing...
+2025-06-05 11:28:56,691 - INFO - Loaded 1 employee records
+2025-06-05 11:28:56,691 - INFO - Found 0 employees with birthdays on 2025-06-05
+2025-06-05 11:28:56,692 - INFO - No birthdays today!
+2025-06-05 11:28:56,702 - INFO - Configuration loaded successfully
+2025-06-05 11:28:56,707 - INFO - Fonts loaded successfully
+2025-06-05 11:28:56,731 - INFO - Base birthday image created successfully
+2025-06-05 11:29:21,270 - INFO - Configuration loaded successfully
+2025-06-05 11:29:21,270 - INFO - Starting birthday processing...
+2025-06-05 11:29:21,275 - INFO - Loaded 8 employee records
+2025-06-05 11:29:21,276 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 11:29:21,276 - INFO - Creating base birthday image template...
+2025-06-05 11:29:21,288 - INFO - Fonts loaded successfully
+2025-06-05 11:29:21,324 - INFO - Base birthday image created successfully
+2025-06-05 11:29:21,325 - INFO - Processing birthday for Bob Smith (ID: EMP002, Dept: Marketing)
+2025-06-05 11:29:21,357 - INFO - Image saved: output_img\birthday_EMP002_Bob_Smith_20250605.png
+2025-06-05 11:29:27,027 - INFO - Birthday email sent successfully to Bob Smith (bob.smith@company.com)
+2025-06-05 11:29:27,028 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 11:29:27,071 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 11:29:31,974 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
+2025-06-05 11:29:31,974 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-05 11:29:40,708 - INFO - Configuration loaded successfully
+2025-06-05 11:29:40,709 - INFO - Starting birthday automation scheduler - will run daily at 09:00
+2025-06-05 11:29:40,709 - INFO - Running initial birthday check...
+2025-06-05 11:29:40,710 - INFO - Running daily birthday check...
+2025-06-05 11:29:40,710 - INFO - Starting birthday processing...
+2025-06-05 11:29:40,714 - INFO - Loaded 8 employee records
+2025-06-05 11:29:40,715 - INFO - Found 2 employees with birthdays on 2025-06-05
+2025-06-05 11:29:40,715 - INFO - Creating base birthday image template...
+2025-06-05 11:29:40,723 - INFO - Fonts loaded successfully
+2025-06-05 11:29:40,767 - INFO - Base birthday image created successfully
+2025-06-05 11:29:40,768 - INFO - Processing birthday for Bob Smith (ID: EMP002, Dept: Marketing)
+2025-06-05 11:29:40,797 - INFO - Image saved: output_img\birthday_EMP002_Bob_Smith_20250605.png
+2025-06-05 11:29:46,104 - INFO - Birthday email sent successfully to Bob Smith (bob.smith@company.com)
+2025-06-05 11:29:46,105 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 11:29:46,143 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 11:29:51,297 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
+2025-06-05 11:29:51,298 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 2, 'failed': 0}
+2025-06-05 11:29:51,299 - INFO - Processed 2 birthdays - Successful: 2, Failed: 0
+2025-06-06 11:32:44,238 - INFO - Running daily birthday check...
+2025-06-06 11:32:44,239 - INFO - Starting birthday processing...
+2025-06-06 11:32:44,253 - INFO - Loaded 8 employee records
+2025-06-06 11:32:44,253 - INFO - Found 0 employees with birthdays on 2025-06-06
+2025-06-06 11:32:44,254 - INFO - No birthdays today!
+2025-06-06 11:32:44,255 - INFO - No birthdays today
+2025-06-06 11:32:49,116 - INFO - Running daily birthday check...
+2025-06-06 11:32:49,116 - INFO - Starting birthday processing...
+2025-06-06 11:32:49,124 - INFO - Loaded 8 employee records
+2025-06-06 11:32:49,124 - INFO - Found 0 employees with birthdays on 2025-06-06
+2025-06-06 11:32:49,124 - INFO - No birthdays today!
+2025-06-06 11:32:49,125 - INFO - No birthdays today
+2025-06-07 11:33:37,441 - INFO - Running daily birthday check...
+2025-06-07 11:33:37,442 - INFO - Starting birthday processing...
+2025-06-07 11:33:37,479 - INFO - Loaded 8 employee records
+2025-06-07 11:33:37,480 - INFO - Found 2 employees with birthdays on 2025-06-07
+2025-06-07 11:33:37,481 - INFO - Creating base birthday image template...
+2025-06-07 11:33:37,481 - INFO - Processing birthday for Frank Miller (ID: EMP006, Dept: Sales)
+2025-06-07 11:33:37,572 - INFO - Image saved: output_img\birthday_EMP006_Frank_Miller_20250607.png
+2025-06-07 11:33:37,580 - ERROR - Error sending email to Frank Miller: [Errno 11001] getaddrinfo failed
+2025-06-07 11:33:37,581 - INFO - Processing birthday for Grace Taylor (ID: EMP007, Dept: Marketing)
+2025-06-07 11:33:37,672 - INFO - Image saved: output_img\birthday_EMP007_Grace_Taylor_20250607.png
+2025-06-07 11:33:37,678 - ERROR - Error sending email to Grace Taylor: [Errno 11001] getaddrinfo failed
+2025-06-07 11:33:37,679 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 0, 'failed': 2}
+2025-06-07 11:33:37,680 - INFO - Processed 2 birthdays - Successful: 0, Failed: 2
+2025-06-07 11:33:42,313 - INFO - Running daily birthday check...
+2025-06-07 11:33:42,314 - INFO - Starting birthday processing...
+2025-06-07 11:33:42,316 - INFO - Loaded 8 employee records
+2025-06-07 11:33:42,316 - INFO - Found 2 employees with birthdays on 2025-06-07
+2025-06-07 11:33:42,317 - INFO - Creating base birthday image template...
+2025-06-07 11:33:42,317 - INFO - Processing birthday for Frank Miller (ID: EMP006, Dept: Sales)
+2025-06-07 11:33:42,342 - INFO - Image saved: output_img\birthday_EMP006_Frank_Miller_20250607.png
+2025-06-07 11:33:42,345 - ERROR - Error sending email to Frank Miller: [Errno 11001] getaddrinfo failed
+2025-06-07 11:33:42,345 - INFO - Processing birthday for Grace Taylor (ID: EMP007, Dept: Marketing)
+2025-06-07 11:33:42,375 - INFO - Image saved: output_img\birthday_EMP007_Grace_Taylor_20250607.png
+2025-06-07 11:33:42,378 - ERROR - Error sending email to Grace Taylor: [Errno 11001] getaddrinfo failed
+2025-06-07 11:33:42,378 - INFO - Birthday processing completed. Results: {'processed': 2, 'successful': 0, 'failed': 2}
+2025-06-07 11:33:42,378 - INFO - Processed 2 birthdays - Successful: 0, Failed: 2
+2025-06-05 11:55:17,918 - INFO - Configuration loaded successfully
+2025-06-05 11:55:17,919 - INFO - Starting birthday processing...
+2025-06-05 11:55:17,928 - INFO - Loaded 8 employee records
+2025-06-05 11:55:17,928 - INFO - Found 3 employees with birthdays on 2025-06-05
+2025-06-05 11:55:17,928 - INFO - Creating base birthday image template...
+2025-06-05 11:55:17,936 - INFO - Fonts loaded successfully
+2025-06-05 11:55:17,968 - INFO - Base birthday image created successfully
+2025-06-05 11:55:17,969 - INFO - Processing birthday for Bob Smith (ID: EMP002, Dept: Marketing)
+2025-06-05 11:55:17,994 - INFO - Image saved: output_img\birthday_EMP002_Bob_Smith_20250605.png
+2025-06-05 11:55:22,681 - INFO - Birthday email sent successfully to Bob Smith (bob.smith@company.com)
+2025-06-05 11:55:22,681 - INFO - Processing birthday for Carol Davis (ID: EMP003, Dept: HR)
+2025-06-05 11:55:22,711 - INFO - Image saved: output_img\birthday_EMP003_Carol_Davis_20250605.png
+2025-06-05 11:55:27,243 - INFO - Birthday email sent successfully to Carol Davis (carol.davis@company.com)
+2025-06-05 11:55:27,244 - INFO - Processing birthday for David Wilson (ID: EMP004, Dept: Engineering)
+2025-06-05 11:55:27,271 - INFO - Image saved: output_img\birthday_EMP004_David_Wilson_20250605.png
+2025-06-05 11:55:31,376 - INFO - Birthday email sent successfully to David Wilson (david.wilson@company.com)
+2025-06-05 11:55:31,377 - INFO - Birthday processing completed. Results: {'processed': 3, 'successful': 3, 'failed': 0}

@@ -138,11 +138,88 @@ crontab -e
 0 9 * * * cd /path/to/birthday-automation && python birthday_automation.py --run-once
 ```
 
-**Windows (Task Scheduler):**
-1. Open Task Scheduler
-2. Create Basic Task
-3. Set trigger: Daily at 9:00 AM
-4. Action: Start program `python` with arguments `birthday_automation.py --run-once`
+**Windows (Task Scheduler) - Detailed Steps:**
+
+#### Step 1: Open Task Scheduler
+- Press `Win + R`, type `taskschd.msc`, and press Enter
+- Or search "Task Scheduler" in Start menu
+
+#### Step 2: Create New Task
+1. Click **"Create Basic Task..."** in the Actions panel
+2. **Name:** `Birthday Email Automation`
+3. **Description:** `Daily automated birthday email system`
+4. Click **Next**
+
+#### Step 3: Set Trigger (When to Run)
+1. Select **"Daily"**
+2. Click **Next**
+3. **Daily Settings:**
+   - Start date: Select tomorrow's date
+   - Start time: `09:00:00` (9:00 AM)
+   - Recur every: `1` days
+4. Click **Next**
+
+#### Step 4: Set Action (What to Run)
+1. Select **"Start a program"**
+2. Click **Next**
+3. **Program/Script Configuration:**
+   - **Program/script:** `python` (or full path like `C:\Python39\python.exe`)
+   - **Add arguments:** `birthday_automation.py --run-once`
+   - **Start in:** Browse to your project directory (e.g., `C:\Users\YourUsername\birthday-automation`)
+4. Click **Next**
+
+#### Step 5: Review and Finish
+1. Review settings
+2. Check **"Open the Properties dialog for this task when I click Finish"**
+3. Click **Finish**
+
+#### Step 6: Configure Advanced Settings
+In the Properties dialog:
+
+**Security Tab:**
+- Select **"Run whether user is logged on or not"** (recommended)
+- Check **"Run with highest privileges"**
+- Configure for: **Windows 10** (or your version)
+
+**Triggers Tab:**
+- Edit your trigger
+- **Advanced settings:**
+  - ✅ **Enabled**
+  - Stop task if it runs longer than: `1 hour`
+
+**Conditions Tab:**
+- **Power:** Uncheck "Start only if computer is on AC power"
+- **Network:** Check "Start only if network connection is available"
+
+**Settings Tab:**
+- ✅ **Allow task to be run on demand**
+- ✅ **Run task as soon as possible after scheduled start is missed**
+- ✅ **If the task fails, restart every:** 15 minutes, **up to:** 3 times
+- Select **"Do not start a new instance"**
+
+#### Step 7: Test the Task
+1. In Task Scheduler Library, find your task
+2. Right-click → **"Run"**
+3. Check **Last Run Result** should show success (0x0)
+4. Verify `birthday_automation.log` is created/updated
+
+#### Common Windows Task Scheduler Issues:
+
+**"The system cannot find the file specified":**
+- Use full paths:
+  ```
+  Program: C:\Python39\python.exe
+  Arguments: C:\full\path\to\birthday-automation\birthday_automation.py --run-once
+  Start in: C:\full\path\to\birthday-automation
+  ```
+
+**Task runs but script fails:**
+- Check the log file for errors
+- Test manually first: `python birthday_automation.py --run-once`
+
+**Task doesn't run when computer is locked:**
+- Use "Run whether user is logged on or not"
+- Check "Run with highest privileges"
 
 ## ⚙️ Configuration Options
 
@@ -228,6 +305,19 @@ LOG_LEVEL=WARNING  # Warnings and errors only
 LOG_LEVEL=ERROR    # Errors only
 ```
 
+### Windows Log Monitoring
+
+```cmd
+# View recent log entries (Windows)
+type birthday_automation.log | more
+
+# Search for errors (Windows)
+findstr "ERROR" birthday_automation.log
+
+# Monitor Task Scheduler history
+# In Task Scheduler: Select your task → History tab
+```
+
 ## 🧪 Testing
 
 ### Run Test Suite
@@ -293,6 +383,23 @@ pip install python-dotenv
 # "Custom image not loading"
 # - Verify CUSTOM_BASE_IMAGE path is correct
 # - Ensure file is PNG format
+```
+
+**Windows-Specific Issues:**
+```cmd
+# Path issues in Task Scheduler
+# Use full paths for everything:
+# Program: C:\Python39\python.exe
+# Arguments: C:\full\path\to\birthday_automation.py --run-once
+# Start in: C:\full\path\to\project\
+
+# Permission issues
+# Run Task Scheduler as Administrator
+# Set task to "Run with highest privileges"
+
+# Script not found
+# Verify Python is in PATH or use full Python path
+# Test in Command Prompt first
 ```
 
 ### Debug Mode
@@ -377,8 +484,12 @@ Use HTML email frameworks:
 
 3. **File Permissions**: Restrict access to configuration and log files
    ```bash
+   # Linux/Mac
    chmod 600 .env
    chmod 755 birthday_automation.py
+   ```
+   ```cmd
+   # Windows - Set file permissions via Properties → Security
    ```
 
 4. **Data Protection**: Encrypt employee data at rest
@@ -408,6 +519,23 @@ Monitor these metrics:
 - Image generation time
 - Memory usage during processing
 - Log file size growth
+
+### Windows Maintenance Tasks
+
+**Weekly Checks:**
+1. Open Task Scheduler
+2. Check your task's "Last Run Time" and "Last Run Result"
+3. Review `birthday_automation.log` for any errors
+
+**Monthly Tasks:**
+1. Update employee data in `employees.csv`
+2. Verify email credentials are still valid
+3. Test run the automation manually
+
+**Task Scheduler Maintenance:**
+- Check task history for failed runs
+- Verify task is enabled and scheduled correctly
+- Test task manually monthly: Right-click task → Run
 
 ### Scaling Considerations
 
@@ -463,6 +591,7 @@ This project is provided as-is for educational and internal company use. Modify 
 - **Images not generated**: Verify font availability and file permissions
 - **Birthday not detected**: Check date formats and CSV structure
 - **Scheduler not working**: Ensure process stays running in background
+- **Windows Task Scheduler issues**: Use full paths and check permissions
 
 ### Reporting Issues
 
@@ -471,6 +600,7 @@ When reporting issues, include:
 - Your configuration (without passwords)
 - Python version and OS
 - Sample employee data (anonymized)
+- For Windows: Task Scheduler event history
 
 ---
 

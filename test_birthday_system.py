@@ -292,8 +292,9 @@ def run_visual_tests():
     try:
         automation = BirthdayEmailAutomation()
         
-        # Create test directory
-        visual_dir = Path("visual_test_outputs")
+        # Create test directory - Fix: Handle None case properly
+        visual_dir_str = os.environ.get('OUTPUT_DIR', 'visual_test_outputs')
+        visual_dir = Path(visual_dir_str)
         visual_dir.mkdir(exist_ok=True)
         
         print(f"Generating test images in '{visual_dir}' directory...")

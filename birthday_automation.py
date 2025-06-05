@@ -42,7 +42,7 @@ class BirthdayEmailAutomation:
         self.load_configuration(config_file)
         self.base_image: Optional[Image.Image] = None
         self.fonts_loaded = False
-        self.fonts: Dict[str, ImageFont.FreeTypeFont] = {}
+        self.fonts: Dict[str, Union[ImageFont.FreeTypeFont, ImageFont.ImageFont]] = {}
         
     def setup_logging(self) -> None:
         """Setup logging configuration"""
@@ -90,7 +90,7 @@ class BirthdayEmailAutomation:
             'arial_italic': ['ariali.ttf', 'Arial-Italic.ttf', 'arial-italic.ttf']
         }
         
-        def try_load_font(paths: List[str], size: int) -> ImageFont.FreeTypeFont:
+        def try_load_font(paths: List[str], size: int) -> Union[ImageFont.FreeTypeFont, ImageFont.ImageFont]:
             for path in paths:
                 try:
                     return ImageFont.truetype(path, size)
@@ -232,7 +232,7 @@ class BirthdayEmailAutomation:
         self.logger.info("Base birthday image created successfully")
         return self.base_image
 
-    def _add_centered_text(self, draw: ImageDraw.ImageDraw, width: int, y: int, text: str, font: ImageFont.FreeTypeFont, color: str) -> None:
+    def _add_centered_text(self, draw: ImageDraw.ImageDraw, width: int, y: int, text: str, font: Union[ImageFont.FreeTypeFont, ImageFont.ImageFont], color: str) -> None:
         """Add centered text to image"""
         bbox = draw.textbbox((0, 0), text, font=font)
         text_width = bbox[2] - bbox[0]
