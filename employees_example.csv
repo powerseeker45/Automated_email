@@ -1,0 +1,6 @@
+first_name,last_name,email,birthday,anniversary,department
+John,Doe,john.doe@example.com,2025-06-09,2025-06-09,HR
+Jane,Smith,jane.smith@example.com,2025-06-09,NA,Finance
+Michael,Brown,michael.brown@example.com,2025-06-09,2025-06-09,Engineering
+Emily,Davis,emily.davis@example.com,2025-06-09,NA,Marketing
+David,Wilson,david.wilson@example.com,2025-06-09,2025-06-09,Operations

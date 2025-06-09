@@ -1,0 +1,52 @@
+2025-06-09 12:47:21 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 12:47:21 - INFO - Output folder: output
+2025-06-09 12:47:21 - INFO - Logs folder: output\logs
+2025-06-09 12:47:21 - INFO - Loaded 5 employee records from employees.csv
+2025-06-09 12:47:21 - INFO - Checking for birthday emails...
+2025-06-09 12:47:21 - INFO - Found 5 employees with birthdays today
+2025-06-09 12:47:21 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:47:21 - INFO - Personalized image saved: output\birthday_John_Doe_20250609.jpg
+2025-06-09 12:47:26 - INFO - Email sent successfully to john.doe@example.com
+2025-06-09 12:47:26 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:47:26 - INFO - Personalized image saved: output\birthday_Jane_Smith_20250609.jpg
+2025-06-09 12:47:31 - INFO - Email sent successfully to jane.smith@example.com
+2025-06-09 12:47:31 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:47:31 - INFO - Personalized image saved: output\birthday_Michael_Brown_20250609.jpg
+2025-06-09 12:47:35 - INFO - Email sent successfully to michael.brown@example.com
+2025-06-09 12:47:35 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:47:35 - INFO - Personalized image saved: output\birthday_Emily_Davis_20250609.jpg
+2025-06-09 12:47:40 - INFO - Email sent successfully to emily.davis@example.com
+2025-06-09 12:47:40 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:47:40 - INFO - Personalized image saved: output\birthday_David_Wilson_20250609.jpg
+2025-06-09 12:47:44 - INFO - Email sent successfully to david.wilson@example.com
+2025-06-09 12:47:44 - INFO - Checking for marriage anniversary emails...
+2025-06-09 12:47:44 - WARNING - No marriage_anniversary column found in employee data
+2025-06-09 12:47:49 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 12:47:49 - INFO - Daily report sent successfully
+2025-06-09 12:47:49 - INFO - Daily email automation check completed
+2025-06-09 12:49:48 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 12:49:48 - INFO - Output folder: output
+2025-06-09 12:49:48 - INFO - Logs folder: output\logs
+2025-06-09 12:49:48 - INFO - Loaded 5 employee records from employees_test_today.csv
+2025-06-09 12:49:48 - INFO - Checking for birthday emails...
+2025-06-09 12:49:48 - INFO - Found 5 employees with birthdays today
+2025-06-09 12:49:48 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:49:48 - INFO - Personalized image saved: output\birthday_Alex_Johnson_20250609.jpg
+2025-06-09 12:49:53 - INFO - Email sent successfully to alex.johnson@example.com
+2025-06-09 12:49:53 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:49:53 - INFO - Personalized image saved: output\birthday_Sophie_Williams_20250609.jpg
+2025-06-09 12:49:58 - INFO - Email sent successfully to sophie.williams@example.com
+2025-06-09 12:49:58 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:49:58 - INFO - Personalized image saved: output\birthday_Mark_Taylor_20250609.jpg
+2025-06-09 12:50:03 - INFO - Email sent successfully to mark.taylor@example.com
+2025-06-09 12:50:03 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:50:03 - INFO - Personalized image saved: output\birthday_Lisa_Anderson_20250609.jpg
+2025-06-09 12:50:08 - INFO - Email sent successfully to lisa.anderson@example.com
+2025-06-09 12:50:08 - INFO - Using font: arial.ttf with size 40
+2025-06-09 12:50:08 - INFO - Personalized image saved: output\birthday_Ryan_Thomas_20250609.jpg
+2025-06-09 12:50:12 - INFO - Email sent successfully to ryan.thomas@example.com
+2025-06-09 12:50:12 - INFO - Checking for marriage anniversary emails...
+2025-06-09 12:50:12 - WARNING - No marriage_anniversary column found in employee data
+2025-06-09 12:50:17 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 12:50:17 - INFO - Daily report sent successfully
+2025-06-09 12:50:17 - INFO - Daily email automation check completed

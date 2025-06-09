@@ -13,27 +13,47 @@ import logging
 import traceback
 from typing import Optional, List, Dict
 import json
+from dotenv import load_dotenv
 
 class EmailAutomation:
-    def __init__(self, smtp_server: str, smtp_port: int, email: str, password: str, output_folder: str = "output"):
+    def __init__(self, smtp_server: Optional[str] = None, smtp_port: Optional[int] = None, 
+                 email: Optional[str] = None, password: Optional[str] = None, 
+                 output_folder: str = "output"):
         """
         Initialize email automation system
         
         Args:
-            smtp_server: SMTP server (e.g., 'smtp.gmail.com')
-            smtp_port: SMTP port (e.g., 587 for TLS)
-            email: Sender email address
-            password: Email password or app password
+            smtp_server: SMTP server (e.g., 'smtp.gmail.com') - will use env var if None
+            smtp_port: SMTP port (e.g., 587 for TLS) - will use env var if None
+            email: Sender email address - will use env var if None
+            password: Email password or app password - will use env var if None
             output_folder: Folder to save generated images and logs
         """
-        self.smtp_server = smtp_server
-        self.smtp_port = smtp_port
-        self.sender_email = email
-        self.password = password
+        # Load environment variables
+        load_dotenv()
+        
+        self.smtp_server = smtp_server or os.getenv('SMTP_SERVER')
+        self.smtp_port = smtp_port or int(os.getenv('SMTP_PORT', '587'))
+        self.sender_email = email or os.getenv('SENDER_EMAIL')
+        self.password = password or os.getenv('EMAIL_PASSWORD')
         self.output_folder = output_folder
         
-        # Create output folder if it doesn't exist
+        # Validate required configuration
+        if not all([self.smtp_server, self.sender_email, self.password]):
+            raise ValueError("Missing required email configuration. Please set environment variables or pass parameters.")
+        
+        # Type guard: Ensure we have valid string values after validation
+        if not isinstance(self.smtp_server, str):
+            raise ValueError("SMTP server must be a valid string")
+        if not isinstance(self.sender_email, str):
+            raise ValueError("Sender email must be a valid string")
+        if not isinstance(self.password, str):
+            raise ValueError("Email password must be a valid string")
+        
+        # Create output and logs folders if they don't exist
         os.makedirs(output_folder, exist_ok=True)
+        self.logs_folder = os.path.join(output_folder, "logs")
+        os.makedirs(self.logs_folder, exist_ok=True)
         
         # Setup logging
         self.setup_logging()
@@ -53,7 +73,7 @@ class EmailAutomation:
         
     def setup_logging(self):
         """Setup logging configuration"""
-        log_filename = os.path.join(self.output_folder, "email_automation.log")
+        log_filename = os.path.join(self.logs_folder, "email_automation.log")
         
         # Create formatter
         formatter = logging.Formatter(
@@ -125,10 +145,10 @@ class EmailAutomation:
             except Exception as e:
                 self.log_error("Error parsing birthday dates", e)
                 
-            if 'marriage_anniversary' in df.columns:
+            if 'anniversary' in df.columns:
                 try:
-                    df['marriage_anniversary'] = pd.to_datetime(df['marriage_anniversary'], errors='coerce')
-                    invalid_anniversaries = df[df['marriage_anniversary'].isna() & df['marriage_anniversary'].notna()]['email'].tolist()
+                    df['anniversary'] = pd.to_datetime(df['anniversary'], errors='coerce')
+                    invalid_anniversaries = df[df['anniversary'].isna() & df['anniversary'].notna()]['email'].tolist()
                     if invalid_anniversaries:
                         self.logger.warning(f"Invalid anniversary dates for employees: {invalid_anniversaries}")
                 except Exception as e:
@@ -148,8 +168,42 @@ class EmailAutomation:
         """
         Add personalized text to greeting card image and save to output folder
         
+        CUSTOMIZATION GUIDE:
+        ===================
+        
+        1. FONT SIZE:
+           - Change font_size parameter: font_size=60 (larger) or font_size=20 (smaller)
+           - Default is 40
+        
+        2. TEXT POSITION:
+           - Change position parameter: position=(x, y)
+           - (0, 0) = top-left corner
+           - (100, 50) = 100 pixels right, 50 pixels down
+           - For center text: calculate based on image size
+        
+        3. FONT COLOR:
+           - Change font_color parameter: font_color=(R, G, B)
+           - (0, 0, 0) = Black (default)
+           - (255, 255, 255) = White
+           - (255, 0, 0) = Red
+           - (0, 255, 0) = Green
+           - (0, 0, 255) = Blue
+        
+        4. CUSTOM FONTS:
+           - Add your font file to project folder
+           - Modify the font loading section below
+           - Example: font = ImageFont.truetype("your_font.ttf", font_size)
+        
+        Args:
+            image_path: Path to the greeting card image
+            text: Text to add (e.g., "Dear John")
+            position: (x, y) position for text placement
+            font_size: Size of the font
+            font_color: RGB color tuple for text
+            output_filename: Optional filename to save the image
+            
         Returns:
-            tuple: (image_bytes, saved_file_path)
+            tuple: (image_bytes, saved_file_path) or (None, None) on error
         """
         try:
             if not os.path.exists(image_path):
@@ -164,21 +218,129 @@ class EmailAutomation:
                 # Create drawing context
                 draw = ImageDraw.Draw(img)
                 
-                # Try to use a nice font, fallback to default if not available
-                try:
-                    font = ImageFont.truetype("arial.ttf", font_size)
-                except:
-                    try:
-                        font = ImageFont.truetype("/System/Library/Fonts/Arial.ttf", font_size)  # macOS
-                    except:
-                        try:
-                            font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", font_size)  # Linux
-                        except:
-                            font = ImageFont.load_default()
-                            self.logger.warning("Using default font - personalized text may not display optimally")
+                # ================================================================
+                # FONT CUSTOMIZATION SECTION
+                # ================================================================
+                # 
+                # To use a CUSTOM FONT:
+                # 1. Download a .ttf or .otf font file
+                # 2. Place it in your project folder
+                # 3. Uncomment and modify one of these lines:
+                #
+                # font = ImageFont.truetype("fonts/Arial_Bold.ttf", font_size)
+                # font = ImageFont.truetype("fonts/Times_New_Roman.ttf", font_size)
+                # font = ImageFont.truetype("fonts/Comic_Sans.ttf", font_size)
+                # font = ImageFont.truetype("fonts/Calibri.ttf", font_size)
+                #
+                # Popular font locations by OS:
+                # Windows: C:\Windows\Fonts\
+                # macOS: /System/Library/Fonts/ or /Library/Fonts/
+                # Linux: /usr/share/fonts/
+                #
+                # Examples with full paths:
+                # font = ImageFont.truetype("C:/Windows/Fonts/arial.ttf", font_size)  # Windows
+                # font = ImageFont.truetype("/System/Library/Fonts/Arial.ttf", font_size)  # macOS
+                # font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", font_size)  # Linux
+                #
+                # ================================================================
                 
-                # Add text to image
+                # Try to load fonts in order of preference
+                font = None
+                
+                # Option 1: Try custom font (uncomment to use)
+                # try:
+                #     font = ImageFont.truetype("fonts/your_custom_font.ttf", font_size)
+                #     self.logger.info(f"Using custom font with size {font_size}")
+                # except:
+                #     pass
+                
+                # Option 2: Try system fonts
+                if not font:
+                    font_paths = [
+                        # Windows fonts
+                        "arial.ttf",
+                        "calibri.ttf", 
+                        "times.ttf",
+                        "C:/Windows/Fonts/arial.ttf",
+                        "C:/Windows/Fonts/calibri.ttf",
+                        "C:/Windows/Fonts/times.ttf",
+                        
+                        # macOS fonts
+                        "/System/Library/Fonts/Arial.ttf",
+                        "/System/Library/Fonts/Times.ttc", 
+                        "/System/Library/Fonts/Helvetica.ttc",
+                        
+                        # Linux fonts
+                        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+                        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+                        "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf"
+                    ]
+                    
+                    for font_path in font_paths:
+                        try:
+                            font = ImageFont.truetype(font_path, font_size)
+                            self.logger.info(f"Using font: {font_path} with size {font_size}")
+                            break
+                        except:
+                            continue
+                
+                # Option 3: Fallback to default font
+                if not font:
+                    font = ImageFont.load_default()
+                    self.logger.warning(f"Using default font with size {font_size} - text may not display optimally")
+                
+                # ================================================================
+                # TEXT POSITIONING EXAMPLES
+                # ================================================================
+                #
+                # BASIC POSITIONING:
+                # position = (50, 50)    # 50 pixels from left, 50 pixels from top
+                # position = (100, 200)  # 100 pixels from left, 200 pixels from top
+                #
+                # ADVANCED POSITIONING (get image dimensions first):
+                img_width, img_height = img.size
+                #
+                # CENTER HORIZONTALLY:
+                # text_width = draw.textlength(text, font=font)
+                # center_x = (img_width - text_width) // 2
+                # position = (center_x, 100)  # Centered horizontally, 100px from top
+                #
+                # CENTER BOTH HORIZONTALLY AND VERTICALLY:
+                # text_width = draw.textlength(text, font=font)
+                # # Note: textsize is deprecated, use textbbox for height
+                # bbox = draw.textbbox((0, 0), text, font=font)
+                # text_height = bbox[3] - bbox[1]
+                # center_x = (img_width - text_width) // 2
+                # center_y = (img_height - text_height) // 2
+                # position = (center_x, center_y)
+                #
+                # BOTTOM RIGHT:
+                # text_width = draw.textlength(text, font=font)
+                # bbox = draw.textbbox((0, 0), text, font=font)
+                # text_height = bbox[3] - bbox[1]
+                # position = (img_width - text_width - 20, img_height - text_height - 20)
+                #
+                # ================================================================
+                
+                # Add text to image with the specified position, font, and color
                 draw.text(position, text, font=font, fill=font_color)
+                
+                # Optional: Add text shadow or outline for better visibility
+                # Uncomment these lines to add a shadow effect:
+                #
+                # shadow_offset = 2
+                # shadow_color = (128, 128, 128)  # Gray shadow
+                # draw.text((position[0] + shadow_offset, position[1] + shadow_offset), 
+                #          text, font=font, fill=shadow_color)
+                # draw.text(position, text, font=font, fill=font_color)
+                #
+                # Or add an outline:
+                # outline_color = (255, 255, 255)  # White outline
+                # outline_width = 2
+                # for adj in range(-outline_width, outline_width+1):
+                #     for adj2 in range(-outline_width, outline_width+1):
+                #         draw.text((position[0]+adj, position[1]+adj2), text, font=font, fill=outline_color)
+                # draw.text(position, text, font=font, fill=font_color)
                 
                 # Save to bytes
                 img_bytes = io.BytesIO()
@@ -199,11 +361,16 @@ class EmailAutomation:
             return None, None
     
     def create_email_message(self, recipient_email: str, recipient_name: str, 
-                           subject: str, body: str, image_bytes: bytes) -> Optional[MIMEMultipart]:
+                           subject: str, body: str, image_bytes: Optional[bytes]) -> Optional[MIMEMultipart]:
         """
         Create email message with personalized greeting card
         """
         try:
+            # Type safety: Ensure sender_email is a string
+            if not isinstance(self.sender_email, str):
+                self.log_error("Invalid sender email configuration")
+                return None
+                
             msg = MIMEMultipart('related')
             msg['From'] = self.sender_email
             msg['To'] = recipient_email
@@ -244,6 +411,11 @@ class EmailAutomation:
             return False
             
         try:
+            # Type safety: Ensure required attributes are strings
+            if not isinstance(self.smtp_server, str) or not isinstance(self.sender_email, str) or not isinstance(self.password, str):
+                self.log_error("Invalid email configuration - missing required string values")
+                return False
+                
             server = smtplib.SMTP(self.smtp_server, self.smtp_port)
             server.starttls()
             server.login(self.sender_email, self.password)
@@ -268,9 +440,17 @@ class EmailAutomation:
     
     def check_and_send_birthday_emails(self, df: pd.DataFrame, 
                                      birthday_card_path: str,
-                                     text_position: tuple = (50, 50)):
+                                     text_position: tuple = (50, 50),
+                                     font_size: int = 40,
+                                     font_color: tuple = (0, 0, 0)):
         """
         Check for today's birthdays and send emails
+        
+        CUSTOMIZATION PARAMETERS:
+        ========================
+        text_position: (x, y) tuple for text placement
+        font_size: Size of the font (default: 40)
+        font_color: (R, G, B) tuple for text color (default: black)
         """
         try:
             today = datetime.date.today()
@@ -302,11 +482,13 @@ class EmailAutomation:
                     # Generate unique filename for this image
                     output_filename = f"birthday_{first_name}_{last_name}_{today.strftime('%Y%m%d')}.jpg"
                     
-                    # Add text to birthday card
+                    # Add text to birthday card with custom styling
                     personalized_image, saved_path = self.add_text_to_image(
                         birthday_card_path, 
                         greeting_text, 
                         text_position,
+                        font_size,
+                        font_color,
                         output_filename=output_filename
                     )
                     
@@ -337,9 +519,17 @@ class EmailAutomation:
     
     def check_and_send_marriage_anniversary_emails(self, df: pd.DataFrame, 
                                                  anniversary_card_path: str,
-                                                 text_position: tuple = (50, 50)):
+                                                 text_position: tuple = (50, 50),
+                                                 font_size: int = 40,
+                                                 font_color: tuple = (0, 0, 0)):
         """
         Check for today's marriage anniversaries and send emails
+        
+        CUSTOMIZATION PARAMETERS:
+        ========================
+        text_position: (x, y) tuple for text placement
+        font_size: Size of the font (default: 40)
+        font_color: (R, G, B) tuple for text color (default: black)
         """
         try:
             today = datetime.date.today()
@@ -380,11 +570,13 @@ class EmailAutomation:
                     # Generate unique filename for this image
                     output_filename = f"anniversary_{first_name}_{last_name}_{today.strftime('%Y%m%d')}.jpg"
                     
-                    # Add text to anniversary card
+                    # Add text to anniversary card with custom styling
                     personalized_image, saved_path = self.add_text_to_image(
                         anniversary_card_path, 
                         greeting_text, 
                         text_position,
+                        font_size,
+                        font_color,
                         output_filename=output_filename
                     )
                     
@@ -468,6 +660,11 @@ class EmailAutomation:
     def send_daily_report(self):
         """Send daily report to self"""
         try:
+            # Type safety: Ensure sender_email is a string
+            if not isinstance(self.sender_email, str):
+                self.log_error("Invalid sender email configuration for daily report")
+                return
+                
             report = self.create_summary_report()
             
             # Save report to file
@@ -524,13 +721,27 @@ class EmailAutomation:
     def run_daily_check(self, csv_file: str, birthday_card_path: str, 
                        anniversary_card_path: str, 
                        birthday_text_pos: tuple = (50, 50),
-                       anniversary_text_pos: tuple = (50, 50)):
+                       anniversary_text_pos: tuple = (50, 50),
+                       birthday_font_size: int = 40,
+                       anniversary_font_size: int = 40,
+                       birthday_font_color: tuple = (0, 0, 0),
+                       anniversary_font_color: tuple = (0, 0, 0)):
         """
         Run daily check for birthdays and marriage anniversaries
+        
+        CUSTOMIZATION PARAMETERS:
+        ========================
+        birthday_text_pos: (x, y) position for birthday text
+        anniversary_text_pos: (x, y) position for anniversary text
+        birthday_font_size: Font size for birthday cards
+        anniversary_font_size: Font size for anniversary cards
+        birthday_font_color: (R, G, B) color for birthday text
+        anniversary_font_color: (R, G, B) color for anniversary text
         """
         try:
             self.logger.info(f"Starting daily email automation check for {datetime.date.today()}")
             self.logger.info(f"Output folder: {self.output_folder}")
+            self.logger.info(f"Logs folder: {self.logs_folder}")
             
             # Load employee data
             df = self.load_employee_data(csv_file)
@@ -539,15 +750,27 @@ class EmailAutomation:
                 self.log_error("No employee data found or failed to load CSV file")
                 return
             
-            # Check and send birthday emails
+            # Check and send birthday emails with custom styling
             if os.path.exists(birthday_card_path):
-                self.check_and_send_birthday_emails(df, birthday_card_path, birthday_text_pos)
+                self.check_and_send_birthday_emails(
+                    df, 
+                    birthday_card_path, 
+                    birthday_text_pos,
+                    birthday_font_size,
+                    birthday_font_color
+                )
             else:
                 self.log_error(f"Birthday card image not found: {birthday_card_path}")
             
-            # Check and send marriage anniversary emails
+            # Check and send marriage anniversary emails with custom styling
             if os.path.exists(anniversary_card_path):
-                self.check_and_send_marriage_anniversary_emails(df, anniversary_card_path, anniversary_text_pos)
+                self.check_and_send_marriage_anniversary_emails(
+                    df, 
+                    anniversary_card_path, 
+                    anniversary_text_pos,
+                    anniversary_font_size,
+                    anniversary_font_color
+                )
             else:
                 self.log_error(f"Anniversary card image not found: {anniversary_card_path}")
             
@@ -568,40 +791,227 @@ class EmailAutomation:
 # Example usage and configuration
 def main():
     try:
-        # Email configuration
-        SMTP_SERVER = "smtp.gmail.com"  # Change based on your email provider
-        SMTP_PORT = 587
-        SENDER_EMAIL = "shashwat.airtel@gmail.com"  # Replace with your email
-        EMAIL_PASSWORD = "glws titd eisr lslz"  # Replace with your app password
+        # Load environment variables from .env file
+        load_dotenv()
         
-        # Folder and file paths
-        OUTPUT_FOLDER = "output"  # Folder for saved images and logs
-        CSV_FILE = "employees.csv"
-        BIRTHDAY_CARD = "birthday_card.png"
-        ANNIVERSARY_CARD = "anniversary_card.png"
+        # Email configuration from environment variables
+        # If environment variables are not set, use defaults (not recommended for production)
+        SMTP_SERVER = os.getenv('SMTP_SERVER', 'smtp.gmail.com')
+        SMTP_PORT = int(os.getenv('SMTP_PORT', '587'))
+        SENDER_EMAIL = os.getenv('SENDER_EMAIL')
+        EMAIL_PASSWORD = os.getenv('EMAIL_PASSWORD')
         
-        # Text positioning on cards (adjust based on your card design)
-        BIRTHDAY_TEXT_POSITION = (100, 80)
-        ANNIVERSARY_TEXT_POSITION = (100, 80)
+        # File and folder configuration from environment variables
+        OUTPUT_FOLDER = os.getenv('OUTPUT_FOLDER', 'output')
+        CSV_FILE = os.getenv('CSV_FILE', 'employees.csv')
+        BIRTHDAY_CARD = os.getenv('BIRTHDAY_CARD', 'birthday_card.png')
+        ANNIVERSARY_CARD = os.getenv('ANNIVERSARY_CARD', 'anniversary_card.png')
+        
+        # Text positioning (can be set via environment variables)
+        # 
+        # HOW TO CUSTOMIZE TEXT POSITION:
+        # ===============================
+        # The position is (X, Y) coordinates where:
+        # - X = pixels from LEFT edge (0 = far left)
+        # - Y = pixels from TOP edge (0 = very top)
+        #
+        # Examples:
+        # (50, 50)   = Near top-left
+        # (200, 100) = More to the right and down
+        # (0, 0)     = Exact top-left corner
+        #
+        # For environment variables, set:
+        # BIRTHDAY_TEXT_X=150     # 150 pixels from left
+        # BIRTHDAY_TEXT_Y=120     # 120 pixels from top
+        #
+        BIRTHDAY_TEXT_X = int(os.getenv('BIRTHDAY_TEXT_X', '100'))
+        BIRTHDAY_TEXT_Y = int(os.getenv('BIRTHDAY_TEXT_Y', '80'))
+        ANNIVERSARY_TEXT_X = int(os.getenv('ANNIVERSARY_TEXT_X', '100'))
+        ANNIVERSARY_TEXT_Y = int(os.getenv('ANNIVERSARY_TEXT_Y', '80'))
+        
+        BIRTHDAY_TEXT_POSITION = (BIRTHDAY_TEXT_X, BIRTHDAY_TEXT_Y)
+        ANNIVERSARY_TEXT_POSITION = (ANNIVERSARY_TEXT_X, ANNIVERSARY_TEXT_Y)
+        
+        # FONT SIZE CUSTOMIZATION:
+        # ========================
+        # Add these to your .env file to customize font sizes:
+        # BIRTHDAY_FONT_SIZE=50    # Larger font for birthdays
+        # ANNIVERSARY_FONT_SIZE=45 # Slightly smaller for anniversaries
+        #
+        # Default font size is 40 if not specified
+        BIRTHDAY_FONT_SIZE = int(os.getenv('BIRTHDAY_FONT_SIZE', '40'))
+        ANNIVERSARY_FONT_SIZE = int(os.getenv('ANNIVERSARY_FONT_SIZE', '40'))
+        
+        # FONT COLOR CUSTOMIZATION:
+        # =========================
+        # Add these to your .env file for custom colors:
+        # BIRTHDAY_FONT_COLOR_R=255    # Red component (0-255)
+        # BIRTHDAY_FONT_COLOR_G=0      # Green component (0-255)  
+        # BIRTHDAY_FONT_COLOR_B=0      # Blue component (0-255)
+        # Result: (255, 0, 0) = Red text
+        #
+        # Common colors:
+        # Black: (0, 0, 0)
+        # White: (255, 255, 255)
+        # Red: (255, 0, 0)
+        # Blue: (0, 0, 255)
+        # Green: (0, 255, 0)
+        # Purple: (128, 0, 128)
+        # Orange: (255, 165, 0)
+        #
+        BIRTHDAY_FONT_R = int(os.getenv('BIRTHDAY_FONT_COLOR_R', '0'))    # Default: Black
+        BIRTHDAY_FONT_G = int(os.getenv('BIRTHDAY_FONT_COLOR_G', '0'))
+        BIRTHDAY_FONT_B = int(os.getenv('BIRTHDAY_FONT_COLOR_B', '0'))
+        BIRTHDAY_FONT_COLOR = (BIRTHDAY_FONT_R, BIRTHDAY_FONT_G, BIRTHDAY_FONT_B)
+        
+        ANNIVERSARY_FONT_R = int(os.getenv('ANNIVERSARY_FONT_COLOR_R', '0'))  # Default: Black
+        ANNIVERSARY_FONT_G = int(os.getenv('ANNIVERSARY_FONT_COLOR_G', '0'))
+        ANNIVERSARY_FONT_B = int(os.getenv('ANNIVERSARY_FONT_COLOR_B', '0'))
+        ANNIVERSARY_FONT_COLOR = (ANNIVERSARY_FONT_R, ANNIVERSARY_FONT_G, ANNIVERSARY_FONT_B)
+        
+        # Validate required environment variables
+        if not SENDER_EMAIL or not EMAIL_PASSWORD:
+            print("❌ Error: SENDER_EMAIL and EMAIL_PASSWORD environment variables are required!")
+            print("Please create a .env file with your email configuration.")
+            return
+        
+        print("🚀 Starting Email Automation System")
+        print(f"📧 Sender Email: {SENDER_EMAIL}")
+        print(f"🏢 SMTP Server: {SMTP_SERVER}:{SMTP_PORT}")
+        print(f"📁 Output Folder: {OUTPUT_FOLDER}")
+        print(f"📊 CSV File: {CSV_FILE}")
         
         # Initialize email automation
-        email_system = EmailAutomation(SMTP_SERVER, SMTP_PORT, SENDER_EMAIL, EMAIL_PASSWORD, OUTPUT_FOLDER)
-        
-        # Run daily check
-        email_system.run_daily_check(
-            CSV_FILE, 
-            BIRTHDAY_CARD, 
-            ANNIVERSARY_CARD,
-            BIRTHDAY_TEXT_POSITION,
-            ANNIVERSARY_TEXT_POSITION
+        email_system = EmailAutomation(
+            smtp_server=SMTP_SERVER,
+            smtp_port=SMTP_PORT,
+            email=SENDER_EMAIL,
+            password=EMAIL_PASSWORD,
+            output_folder=OUTPUT_FOLDER
         )
         
+        # Run daily check with all customization options
+        email_system.run_daily_check(
+            csv_file=CSV_FILE, 
+            birthday_card_path=BIRTHDAY_CARD, 
+            anniversary_card_path=ANNIVERSARY_CARD,
+            birthday_text_pos=BIRTHDAY_TEXT_POSITION,
+            anniversary_text_pos=ANNIVERSARY_TEXT_POSITION,
+            birthday_font_size=BIRTHDAY_FONT_SIZE,
+            anniversary_font_size=ANNIVERSARY_FONT_SIZE,
+            birthday_font_color=BIRTHDAY_FONT_COLOR,
+            anniversary_font_color=ANNIVERSARY_FONT_COLOR
+        )
+        
+        print("✅ Email automation completed successfully!")
+        
     except Exception as e:
-        print(f"Critical error in main execution: {e}")
+        print(f"❌ Critical error in main execution: {e}")
         import traceback
         traceback.print_exc()
 
+def create_env_template():
+    """Create a template .env file for configuration"""
+    env_template = """# Email Automation Configuration
+# Copy this file to .env and update with your settings
+
+# SMTP Configuration
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+
+# Email Credentials (REQUIRED)
+SENDER_EMAIL=your.email@gmail.com
+EMAIL_PASSWORD=your_app_password_here
+
+# File Paths
+OUTPUT_FOLDER=output
+CSV_FILE=employees.csv
+BIRTHDAY_CARD=birthday_card.png
+ANNIVERSARY_CARD=anniversary_card.png
+
+# BIRTHDAY CARD CUSTOMIZATION
+# ============================
+# Text Position (pixels from top-left corner)
+BIRTHDAY_TEXT_X=100
+BIRTHDAY_TEXT_Y=80
+
+# Font Size (larger number = bigger text)
+BIRTHDAY_FONT_SIZE=40
+
+# Font Color (RGB values 0-255)
+# Examples:
+# Black: R=0, G=0, B=0
+# White: R=255, G=255, B=255  
+# Red: R=255, G=0, B=0
+# Blue: R=0, G=0, B=255
+# Gold: R=255, G=215, B=0
+BIRTHDAY_FONT_COLOR_R=0
+BIRTHDAY_FONT_COLOR_G=0
+BIRTHDAY_FONT_COLOR_B=0
+
+# ANNIVERSARY CARD CUSTOMIZATION
+# ==============================
+# Text Position (pixels from top-left corner)
+ANNIVERSARY_TEXT_X=100
+ANNIVERSARY_TEXT_Y=80
+
+# Font Size (larger number = bigger text)
+ANNIVERSARY_FONT_SIZE=40
+
+# Font Color (RGB values 0-255)
+ANNIVERSARY_FONT_COLOR_R=0
+ANNIVERSARY_FONT_COLOR_G=0
+ANNIVERSARY_FONT_COLOR_B=0
+
+# Optional: Company-specific settings
+# COMPANY_NAME=Your Company Name
+# HR_SIGNATURE=HR Team
+
+# QUICK CUSTOMIZATION EXAMPLES:
+# =============================
+# For larger birthday text in red color at bottom-right:
+# BIRTHDAY_TEXT_X=400
+# BIRTHDAY_TEXT_Y=300
+# BIRTHDAY_FONT_SIZE=60
+# BIRTHDAY_FONT_COLOR_R=255
+# BIRTHDAY_FONT_COLOR_G=0
+# BIRTHDAY_FONT_COLOR_B=0
+#
+# For smaller anniversary text in blue at top-center:
+# ANNIVERSARY_TEXT_X=200
+# ANNIVERSARY_TEXT_Y=50
+# ANNIVERSARY_FONT_SIZE=30
+# ANNIVERSARY_FONT_COLOR_R=0
+# ANNIVERSARY_FONT_COLOR_G=0
+# ANNIVERSARY_FONT_COLOR_B=255
+"""
+    
+    with open('.env.template', 'w') as f:
+        f.write(env_template)
+    
+    print("📋 Created .env.template file")
+    print("📝 Copy this to .env and update with your settings")
+    print("\n🎨 FONT & POSITION CUSTOMIZATION GUIDE:")
+    print("======================================")
+    print("1. TEXT POSITION: (X, Y) coordinates")
+    print("   - X = pixels from LEFT (0 = far left)")
+    print("   - Y = pixels from TOP (0 = very top)")
+    print("   - Example: X=200, Y=100 = 200px right, 100px down")
+    print("\n2. FONT SIZE: Number (bigger = larger text)")
+    print("   - Small: 20-30")
+    print("   - Medium: 40-50") 
+    print("   - Large: 60-80")
+    print("\n3. FONT COLOR: RGB values (0-255 each)")
+    print("   - Black: R=0, G=0, B=0")
+    print("   - White: R=255, G=255, B=255")
+    print("   - Red: R=255, G=0, B=0")
+    print("   - Gold: R=255, G=215, B=0")
+    print("\n4. CUSTOM FONTS: Edit the add_text_to_image() method")
+
 if __name__ == "__main__":
+    # Uncomment the line below to create a .env template file
+    #create_env_template()
+    
     main()
 
 
