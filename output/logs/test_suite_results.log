@@ -1,0 +1,96 @@
+2025-06-09 13:28:13 - INFO - 🚀 STARTING EMAIL AUTOMATION TEST SUITE
+2025-06-09 13:28:13 - INFO - ================================================================================
+2025-06-09 13:28:14 - INFO - ================================================================================
+2025-06-09 13:28:14 - INFO - TEST SUITE SUMMARY
+2025-06-09 13:28:14 - INFO - ================================================================================
+2025-06-09 13:28:14 - INFO - Tests Run: 42
+2025-06-09 13:28:14 - INFO - Failures: 4
+2025-06-09 13:28:14 - INFO - Errors: 0
+2025-06-09 13:28:14 - INFO - Skipped: 0
+2025-06-09 13:28:14 - INFO - Success Rate: 90.5%
+2025-06-09 13:28:14 - INFO - Execution Time: 0:00:01.235853
+2025-06-09 13:28:14 - ERROR - FAILURES:
+2025-06-09 13:28:14 - ERROR - ❌ test_check_and_send_anniversary_emails_success (__main__.TestEmailAutomation.test_check_and_send_anniversary_emails_success): Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1426, in patched
+    return func(*newargs, **newkeywargs)
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 650, in test_check_and_send_anniversary_emails_success
+    self.assertEqual(email_system.stats['anniversary_emails_sent'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+Stderr:
+2025-06-09 13:28:13 - INFO - Checking for marriage anniversary emails...
+2025-06-09 13:28:13 - ERROR - Error in anniversary email processing: Can only use .dt accessor with datetimelike values
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 545, in check_and_send_anniversary_emails
+    (df['anniversary'].dt.month == today.month) &
+     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values. Did you mean: 'at'?
+
+
+2025-06-09 13:28:14 - ERROR - ❌ test_check_and_send_birthday_emails_image_error (__main__.TestEmailAutomation.test_check_and_send_birthday_emails_image_error): Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1426, in patched
+    return func(*newargs, **newkeywargs)
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 598, in test_check_and_send_birthday_emails_image_error
+    self.assertEqual(email_system.stats['birthday_emails_failed'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+Stderr:
+2025-06-09 13:28:13 - INFO - Checking for birthday emails...
+2025-06-09 13:28:13 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 461, in check_and_send_birthday_emails
+    (df['birthday'].dt.month == today.month) &
+     ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values. Did you mean: 'at'?
+
+
+2025-06-09 13:28:14 - ERROR - ❌ test_check_and_send_birthday_emails_success (__main__.TestEmailAutomation.test_check_and_send_birthday_emails_success): Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1426, in patched
+    return func(*newargs, **newkeywargs)
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 538, in test_check_and_send_birthday_emails_success
+    self.assertEqual(email_system.stats['birthday_emails_sent'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+Stderr:
+2025-06-09 13:28:13 - INFO - Checking for birthday emails...
+2025-06-09 13:28:13 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 461, in check_and_send_birthday_emails
+    (df['birthday'].dt.month == today.month) &
+     ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values. Did you mean: 'at'?
+
+
+2025-06-09 13:28:14 - ERROR - ❌ test_initialization_missing_required_config (__main__.TestEmailAutomation.test_initialization_missing_required_config): Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 164, in test_initialization_missing_required_config
+    with self.assertRaises(ValueError) as context:
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+2025-06-09 13:28:14 - INFO - 📊 Detailed HTML report saved to: output\test_report.html
+2025-06-09 13:28:14 - INFO - 📝 Test logs saved to: output\logs
+2025-06-09 13:28:14 - WARNING - ⚠️  SOME TESTS FAILED - Check logs for details

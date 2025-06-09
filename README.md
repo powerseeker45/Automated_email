@@ -1,609 +1,347 @@
-# 🎂 Birthday Email Automation System
+# 🎉 Email Automation System - Setup Guide
 
-An automated system that generates personalized birthday images and sends them via email to employees on their special day. Features environment-based configuration, automatic scheduling, and comprehensive error handling.
+An automated system that sends personalized birthday and marriage anniversary greeting cards to employees via email.
+
+## 📋 Table of Contents
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [File Setup](#file-setup)
+- [Customization](#customization)
+- [Running the System](#running-the-system)
+- [Troubleshooting](#troubleshooting)
+- [Company Email Setup](#company-email-setup)
+- [Scheduling](#scheduling)
 
 ## ✨ Features
 
-- 🎂 **Automated Birthday Detection**: Identifies employees with birthdays today
-- 🖼️ **Personalized Images**: Creates custom birthday images with employee names
-- 📧 **Professional Email Templates**: Sends beautiful HTML emails with embedded images
-- 🔒 **Secure Configuration**: Uses environment variables for sensitive data
-- ⏰ **Automated Scheduling**: Runs daily automatically with built-in scheduler
-- 🎨 **Custom Templates**: Support for custom PNG templates
-- 📊 **Comprehensive Logging**: Detailed logs for monitoring and debugging
-- 🛡️ **Error Handling**: Graceful error recovery and detailed error reporting
-- 🧪 **Testing Suite**: Comprehensive tests with visual validation
+- 🎂 **Automatic Birthday Emails** - Sends personalized birthday cards
+- 💕 **Marriage Anniversary Emails** - Sends anniversary greetings
+- 🎨 **Customizable Cards** - Add employee names to greeting card images
+- 📊 **Comprehensive Logging** - Detailed logs and daily reports
+- 🔐 **Secure Configuration** - Environment variables for sensitive data
+- 📧 **Daily Reports** - Email summaries sent to administrator
+- 🏢 **Company Email Support** - Works with Office 365, Gmail, Exchange
+- 🎯 **Font Customization** - Custom fonts, sizes, colors, and positioning
 
-## 🚀 Quick Start
+## 🛠️ Prerequisites
 
-### 1. Installation
+- Python 3.7 or higher
+- Email account with SMTP access
+- App password (for Gmail/Office 365)
+- Greeting card image templates (PNG/JPG)
 
+## 📦 Installation
+
+### 1. Clone/Download the Project
 ```bash
-# Clone or download the project
-git clone <your-repo-url>
-cd birthday-automation
-
-# Run setup script (recommended)
-python setup.py
-
-# Or install manually
-pip install -r requirements.txt
+git clone <repository-url>
+cd email-automation
 ```
 
-### 2. Configuration
-
+### 2. Install Required Packages
 ```bash
-# Create environment file
-cp .env.template .env
-
-# Edit with your settings
-nano .env
+pip install pandas pillow python-dotenv
 ```
 
-Required configuration in `.env`:
-```bash
-EMAIL_USER=your-email@company.com
-EMAIL_PASSWORD=your-gmail-app-password
+### 3. Create Project Structure
+```
+email-automation/
+├── automation_email.py          # Main script
+├── generate_csv.py              # CSV generator (optional)
+├── .env                         # Your configuration (create this)
+├── employees.csv                # Employee data
+├── assets
+|   |── birthday_card.png            # Birthday card template
+|   └── anniversary_card.png         # Anniversary card template
+└── output/                      # Auto-created for logs and images
+    └── logs/
+        └── email_automation.log
+```
+
+## ⚙️ Configuration
+
+### 1. Create Environment File
+
+**Option A: Generate Template (Recommended)**
+```python
+# Uncomment this line in automation_email.py and run once
+create_env_template()
+```
+
+**Option B: Create .env File Manually**
+```env
+# Email Automation Configuration
+
+# SMTP Configuration
 SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
+
+# Email Credentials (REQUIRED)
+SENDER_EMAIL=your.email@gmail.com
+EMAIL_PASSWORD=your_app_password_here
+
+# File Paths
+OUTPUT_FOLDER=output
+CSV_FILE=employees.csv
+BIRTHDAY_CARD=birthday_card.png
+ANNIVERSARY_CARD=anniversary_card.png
+
+# Text Positioning
+BIRTHDAY_TEXT_X=100
+BIRTHDAY_TEXT_Y=80
+ANNIVERSARY_TEXT_X=100
+ANNIVERSARY_TEXT_Y=80
+
+# Font Customization
+BIRTHDAY_FONT_SIZE=40
+ANNIVERSARY_FONT_SIZE=40
+BIRTHDAY_FONT_COLOR_R=0
+BIRTHDAY_FONT_COLOR_G=0
+BIRTHDAY_FONT_COLOR_B=0
 ```
 
-### 3. Prepare Employee Data
+### 2. Get Email App Password
 
-Update `employees.csv` with your employee information:
+**For Gmail:**
+1. Enable 2-Factor Authentication
+2. Go to Google Account Settings → Security
+3. Generate App Password for "Mail"
+4. Use this password in .env file
+
+**For Office 365:**
+1. Go to Microsoft Account Security
+2. Enable 2FA and generate App Password
+3. Use generated password in .env file
+
+## 📁 File Setup
+
+### 1. Create Employee CSV File
 ```csv
-empid,first_name,second_name,email,dob,department
-EMP001,John,Doe,john.doe@company.com,1990-06-15,Engineering
-EMP002,Jane,Smith,jane.smith@company.com,1985-06-04,Marketing
+first_name,last_name,email,birthday,marriage_anniversary,department
+John,Doe,john.doe@company.com,1990-06-09,2018-05-20,HR
+Jane,Smith,jane.smith@company.com,1985-12-25,NA,Finance
+Michael,Brown,michael.brown@company.com,1992-06-09,2020-10-12,Engineering
 ```
 
-### 4. Test the System
+**CSV Generator (Optional):**
+```python
+python generate_csv.py
+```
 
+### 2. Prepare Greeting Card Images
+
+- **Birthday Card**: `assets/birthday_card.png` (recommended size: 800x600px)
+- **Anniversary Card**: `assets/anniversary_card.png` (recommended size: 800x600px)
+- **Format**: PNG or JPG
+- **Text Area**: Leave space where names will be added
+
+## 🎨 Customization
+
+### Text Position
+```env
+# Position from top-left corner (pixels)
+BIRTHDAY_TEXT_X=150      # 150px from left
+BIRTHDAY_TEXT_Y=100      # 100px from top
+```
+
+### Font Size
+```env
+BIRTHDAY_FONT_SIZE=50    # Larger text
+ANNIVERSARY_FONT_SIZE=30 # Smaller text
+```
+
+### Font Color (RGB Values 0-255)
+```env
+# Red text
+BIRTHDAY_FONT_COLOR_R=255
+BIRTHDAY_FONT_COLOR_G=0
+BIRTHDAY_FONT_COLOR_B=0
+
+# Blue text  
+ANNIVERSARY_FONT_COLOR_R=0
+ANNIVERSARY_FONT_COLOR_G=0
+ANNIVERSARY_FONT_COLOR_B=255
+```
+
+### Common Colors
+- **Black**: R=0, G=0, B=0
+- **White**: R=255, G=255, B=255
+- **Red**: R=255, G=0, B=0
+- **Gold**: R=255, G=215, B=0
+- **Blue**: R=0, G=0, B=255
+
+### Custom Fonts
+Edit the `add_text_to_image()` method in `automation_email.py`:
+```python
+# Add your custom font
+font = ImageFont.truetype("fonts/your_font.ttf", font_size)
+```
+
+## 🚀 Running the System
+
+### 1. Test Run
 ```bash
-# Run tests
-python test_birthday_system.py
-
-# Test with today's birthdays
-python birthday_automation.py --run-once
+python automation_email.py
 ```
 
-### 5. Start Automation
+### 2. Check Output
+- View logs: `output/logs/email_automation.log`
+- Check images: `output/birthday_*.jpg`, `output/anniversary_*.jpg`
+- Daily report: `output/daily_report_YYYYMMDD.txt`
 
-```bash
-# Start automated daily scheduler (runs at 9:00 AM daily)
-python birthday_automation.py
+### 3. Verify Emails
+- Check your email for daily report
+- Verify employee emails were sent successfully
 
-# Or specify custom time
-python birthday_automation.py --schedule-time 08:30
+## 🏢 Company Email Setup
+
+### Microsoft 365/Office 365
+```env
+SMTP_SERVER=smtp.office365.com
+SMTP_PORT=587
+SENDER_EMAIL=hr@yourcompany.com
+EMAIL_PASSWORD=your_app_password
 ```
 
-## 📧 Gmail Setup
-
-1. **Enable 2-Factor Authentication** on your Gmail account
-2. **Generate App Password**:
-   - Google Account Settings → Security → 2-Step Verification
-   - Click "App passwords" → Generate password for "Mail"
-   - Use this password in your `.env` file (not your regular password)
-
-## 📁 Project Structure
-
-```
-birthday-automation/
-├── birthday_automation.py      # Main automation script
-├── setup.py                   # Setup and installation script
-├── test_birthday_system.py    # Comprehensive test suite
-├── requirements.txt           # Python dependencies
-├── .env.template             # Configuration template
-├── .env                      # Your configuration (create from template)
-├── employees.csv             # Employee data
-├── README.md                 # This file
-├── output_img/              # Generated birthday images
-├── assets/                  # Optional company assets
-│   ├── logo.png
-│   └── cake.png
-└── logs/                   # Application logs
+### Google Workspace
+```env
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SENDER_EMAIL=hr@yourcompany.com
+EMAIL_PASSWORD=your_app_password
 ```
 
-## 🛠️ Usage Options
-
-### Manual Execution
-```bash
-# Run for today's birthdays
-python birthday_automation.py --run-once
-
-# Run for specific date
-python birthday_automation.py --run-once --date 2024-12-25
-
-# Run without saving images to disk
-python birthday_automation.py --run-once --no-save-images
+### On-Premise Exchange
+```env
+SMTP_SERVER=mail.yourcompany.com
+SMTP_PORT=587
+SENDER_EMAIL=hr@yourcompany.com
+EMAIL_PASSWORD=your_domain_password
 ```
 
-### Automated Scheduling
-```bash
-# Start scheduler (default: 9:00 AM daily)
-python birthday_automation.py
+## ⏰ Scheduling
 
-# Custom schedule time
-python birthday_automation.py --schedule-time 07:30
-```
+### Windows Task Scheduler
+1. Open Task Scheduler
+2. Create Basic Task
+3. Set Daily trigger at 9:00 AM
+4. Action: Start Program
+5. Program: `python`
+6. Arguments: `C:\path\to\automation_email.py`
+7. Start in: `C:\path\to\project\folder`
 
-### System-Level Automation
-
-**Linux/Mac (Cron):**
+### Linux/Mac Cron Job
 ```bash
 # Edit crontab
 crontab -e
 
-# Add this line for daily 9:00 AM execution
-0 9 * * * cd /path/to/birthday-automation && python birthday_automation.py --run-once
+# Add line for daily 9 AM execution
+0 9 * * * cd /path/to/project && python3 automation_email.py
 ```
 
-**Windows (Task Scheduler) - Detailed Steps:**
+### Docker (Advanced)
+```dockerfile
+FROM python:3.9-slim
 
-#### Step 1: Open Task Scheduler
-- Press `Win + R`, type `taskschd.msc`, and press Enter
-- Or search "Task Scheduler" in Start menu
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-#### Step 2: Create New Task
-1. Click **"Create Basic Task..."** in the Actions panel
-2. **Name:** `Birthday Email Automation`
-3. **Description:** `Daily automated birthday email system`
-4. Click **Next**
+COPY . .
 
-#### Step 3: Set Trigger (When to Run)
-1. Select **"Daily"**
-2. Click **Next**
-3. **Daily Settings:**
-   - Start date: Select tomorrow's date
-   - Start time: `09:00:00` (9:00 AM)
-   - Recur every: `1` days
-4. Click **Next**
-
-#### Step 4: Set Action (What to Run)
-1. Select **"Start a program"**
-2. Click **Next**
-3. **Program/Script Configuration:**
-   - **Program/script:** `python` (or full path like `C:\Python39\python.exe`)
-   - **Add arguments:** `birthday_automation.py --run-once`
-   - **Start in:** Browse to your project directory (e.g., `C:\Users\YourUsername\birthday-automation`)
-4. Click **Next**
-
-#### Step 5: Review and Finish
-1. Review settings
-2. Check **"Open the Properties dialog for this task when I click Finish"**
-3. Click **Finish**
-
-#### Step 6: Configure Advanced Settings
-In the Properties dialog:
-
-**Security Tab:**
-- Select **"Run whether user is logged on or not"** (recommended)
-- Check **"Run with highest privileges"**
-- Configure for: **Windows 10** (or your version)
-
-**Triggers Tab:**
-- Edit your trigger
-- **Advanced settings:**
-  - ✅ **Enabled**
-  - Stop task if it runs longer than: `1 hour`
-
-**Conditions Tab:**
-- **Power:** Uncheck "Start only if computer is on AC power"
-- **Network:** Check "Start only if network connection is available"
-
-**Settings Tab:**
-- ✅ **Allow task to be run on demand**
-- ✅ **Run task as soon as possible after scheduled start is missed**
-- ✅ **If the task fails, restart every:** 15 minutes, **up to:** 3 times
-- Select **"Do not start a new instance"**
-
-#### Step 7: Test the Task
-1. In Task Scheduler Library, find your task
-2. Right-click → **"Run"**
-3. Check **Last Run Result** should show success (0x0)
-4. Verify `birthday_automation.log` is created/updated
-
-#### Common Windows Task Scheduler Issues:
-
-**"The system cannot find the file specified":**
-- Use full paths:
-  ```
-  Program: C:\Python39\python.exe
-  Arguments: C:\full\path\to\birthday-automation\birthday_automation.py --run-once
-  Start in: C:\full\path\to\birthday-automation
-  ```
-
-**Task runs but script fails:**
-- Check the log file for errors
-- Test manually first: `python birthday_automation.py --run-once`
-
-**Task doesn't run when computer is locked:**
-- Use "Run whether user is logged on or not"
-- Check "Run with highest privileges"
-
-## ⚙️ Configuration Options
-
-### Environment Variables (.env file)
-
-| Variable | Required | Default | Description |
-|----------|----------|---------|-------------|
-| `EMAIL_USER` | ✅ | - | Sender email address |
-| `EMAIL_PASSWORD` | ✅ | - | Email app password |
-| `SMTP_SERVER` | ❌ | smtp.gmail.com | SMTP server |
-| `SMTP_PORT` | ❌ | 587 | SMTP port |
-| `EMPLOYEE_CSV_FILE` | ❌ | employees.csv | Employee data file |
-| `CUSTOM_BASE_IMAGE` | ❌ | - | Custom template PNG |
-| `OUTPUT_DIR` | ❌ | output_img | Image save directory |
-| `COMPANY_NAME` | ❌ | Your Company | Company name in emails |
-| `SENDER_TITLE` | ❌ | CEO | Sender title in emails |
-
-### CSV Format
-
-Required columns in your employee CSV:
-- `empid`: Unique employee identifier
-- `first_name`: Employee's first name
-- `second_name`: Employee's last name
-- `email`: Email address
-- `dob`: Date of birth (YYYY-MM-DD, DD/MM/YYYY, etc.)
-- `department`: Department name
-
-## 🎨 Customization
-
-### Custom Birthday Templates
-
-1. Create your birthday template as a PNG file
-2. Set the path in `.env`:
-   ```bash
-   CUSTOM_BASE_IMAGE=path/to/your/template.png
-   ```
-3. Employee names will be added at the top center
-
-### Company Branding
-
-Place these files in your project directory or `assets/` folder:
-- `logo.png` or `airtel_logo.png`: Company logo
-- `cake.png`: Birthday cake image
-
-### Email Templates
-
-Modify the `create_email_content()` method in `birthday_automation.py` to customize:
-- Email styling and layout
-- Message content and tone
-- Company branding elements
-
-## 🔍 Monitoring & Logging
-
-### Log Files
-
-The system creates detailed logs in `birthday_automation.log`:
-- Employee data loading status
-- Birthday detection results
-- Image generation progress
-- Email sending status
-- Error details and stack traces
-
-### Monitoring Commands
-
-```bash
-# Watch logs in real-time
-tail -f birthday_automation.log
-
-# Check for errors
-grep ERROR birthday_automation.log
-
-# View recent activity
-tail -n 50 birthday_automation.log
+CMD ["python", "automation_email.py"]
 ```
-
-### Log Levels
-
-Set log level in `.env`:
-```bash
-LOG_LEVEL=DEBUG    # Verbose logging
-LOG_LEVEL=INFO     # Standard logging (default)
-LOG_LEVEL=WARNING  # Warnings and errors only
-LOG_LEVEL=ERROR    # Errors only
-```
-
-### Windows Log Monitoring
-
-```cmd
-# View recent log entries (Windows)
-type birthday_automation.log | more
-
-# Search for errors (Windows)
-findstr "ERROR" birthday_automation.log
-
-# Monitor Task Scheduler history
-# In Task Scheduler: Select your task → History tab
-```
-
-## 🧪 Testing
-
-### Run Test Suite
-```bash
-# Complete test suite with system check
-python test_birthday_system.py
-
-# Unit tests only
-python -m unittest test_birthday_system -v
-```
-
-### Test Categories
-
-1. **System Compatibility**: Python version, modules, permissions
-2. **Employee Data Loading**: CSV parsing, validation, error handling
-3. **Birthday Detection**: Date matching, edge cases
-4. **Image Generation**: Template creation, personalization
-5. **Email Functionality**: Content generation, SMTP handling
-6. **Integration Tests**: Complete workflow validation
-7. **Visual Tests**: Generate sample images for manual inspection
-
-### Test Outputs
-
-- Unit test results in terminal
-- Visual test images in `visual_test_outputs/`
-- Test logs and debugging information
 
 ## 🔧 Troubleshooting
 
 ### Common Issues
 
-**Environment Setup:**
+**1. "Missing required email configuration"**
+- Check `.env` file exists
+- Verify `SENDER_EMAIL` and `EMAIL_PASSWORD` are set
+- Remove extra spaces in .env file
+
+**2. "SMTP Authentication failed"**
+- Verify app password is correct
+- Check 2FA is enabled
+- Confirm SMTP server settings
+
+**3. "Module not found" errors**
 ```bash
-# "No module named 'dotenv'"
-pip install python-dotenv
-
-# "EMAIL_USER and EMAIL_PASSWORD required"
-# Edit .env file with your credentials
+pip install pandas pillow python-dotenv
 ```
 
-**Email Issues:**
-```bash
-# "Authentication failed"
-# - Use Gmail App Password, not regular password
-# - Ensure 2FA is enabled
-# - Check EMAIL_USER and EMAIL_PASSWORD in .env
-```
+**4. "Image file not found"**
+- Check image files exist in project folder
+- Verify file names match .env configuration
+- Ensure correct file extensions (png/jpg)
 
-**CSV Issues:**
-```bash
-# "No birthdays found"
-# - Check date formats in CSV (use YYYY-MM-DD)
-# - Verify employee data loads correctly
-# - Check system date and timezone
-```
-
-**Image Issues:**
-```bash
-# "Font loading failed"
-# - System fonts not found (uses defaults automatically)
-# - Check file permissions
-
-# "Custom image not loading"
-# - Verify CUSTOM_BASE_IMAGE path is correct
-# - Ensure file is PNG format
-```
-
-**Windows-Specific Issues:**
-```cmd
-# Path issues in Task Scheduler
-# Use full paths for everything:
-# Program: C:\Python39\python.exe
-# Arguments: C:\full\path\to\birthday_automation.py --run-once
-# Start in: C:\full\path\to\project\
-
-# Permission issues
-# Run Task Scheduler as Administrator
-# Set task to "Run with highest privileges"
-
-# Script not found
-# Verify Python is in PATH or use full Python path
-# Test in Command Prompt first
-```
+**5. Text not showing on cards**
+- Adjust text position in .env file
+- Try different font colors
+- Check image format (use RGB images)
 
 ### Debug Mode
-
-Enable verbose logging in `.env`:
-```bash
-LOG_LEVEL=DEBUG
-```
-
-This provides detailed information about:
-- Configuration loading
-- Font discovery
-- Image processing steps
-- Email construction
-- SMTP communication
-
-### Performance Issues
-
-For large employee databases:
-- Consider batch processing
-- Implement email rate limiting
-- Use database instead of CSV
-- Add progress indicators
-
-## 📊 Advanced Features
-
-### Multiple Email Providers
-
-Update SMTP settings for different providers:
-
-```bash
-# Outlook
-SMTP_SERVER=smtp-mail.outlook.com
-SMTP_PORT=587
-
-# Yahoo
-SMTP_SERVER=smtp.mail.yahoo.com
-SMTP_PORT=587
-
-# Custom SMTP
-SMTP_SERVER=your-smtp-server.com
-SMTP_PORT=587
-```
-
-### Database Integration
-
-Replace CSV with database by modifying `load_employee_data()`:
-
+Add this to see detailed information:
 ```python
-def load_employee_data(self) -> List[Employee]:
-    # Connect to your database
-    # Query employee data
-    # Return list of Employee objects
+import logging
+logging.basicConfig(level=logging.DEBUG)
 ```
 
-### Webhook Notifications
+## 📊 Monitoring
 
-Add webhook support in `process_birthdays()`:
+### Daily Reports
+- Emailed to sender address automatically
+- Contains success/failure statistics
+- Lists all birthdays and anniversaries
+- Includes error details
 
-```python
-# Send summary to Slack, Teams, etc.
-webhook_url = os.getenv('WEBHOOK_URL')
-if webhook_url:
-    send_webhook_notification(results)
-```
+### Log Files
+- Location: `output/logs/email_automation.log`
+- Contains detailed execution information
+- Useful for troubleshooting
 
-### Rich Email Templates
+### Generated Images
+- Saved in: `output/` folder
+- Named: `birthday_FirstName_LastName_YYYYMMDD.jpg`
+- Check these to verify text positioning
 
-Use HTML email frameworks:
-- MJML for responsive designs
-- Custom CSS for advanced styling
-- Dynamic content based on employee data
+## 🔐 Security Best Practices
 
-## 🔒 Security Best Practices
+1. **Never commit .env files** to version control
+2. **Use app passwords** instead of account passwords
+3. **Restrict file permissions** on .env file
+4. **Regular password rotation** for service accounts
+5. **Monitor logs** for unauthorized access attempts
 
-1. **Environment Variables**: Never commit `.env` to version control
-   ```bash
-   echo ".env" >> .gitignore
-   ```
+## 📞 Support
 
-2. **App Passwords**: Use Gmail App Passwords, not account passwords
-
-3. **File Permissions**: Restrict access to configuration and log files
-   ```bash
-   # Linux/Mac
-   chmod 600 .env
-   chmod 755 birthday_automation.py
-   ```
-   ```cmd
-   # Windows - Set file permissions via Properties → Security
-   ```
-
-4. **Data Protection**: Encrypt employee data at rest
-
-5. **Access Control**: Limit who can modify the automation system
-
-6. **Regular Updates**: Keep dependencies updated
-   ```bash
-   pip list --outdated
-   pip install --upgrade package-name
-   ```
-
-## 🔄 Maintenance
-
-### Regular Tasks
-
-1. **Update Employee Data**: Keep `employees.csv` current
-2. **Monitor Logs**: Check for errors and performance issues
-3. **Test Email Delivery**: Verify emails are being sent
-4. **Update Templates**: Refresh birthday images seasonally
-5. **Backup Configuration**: Store `.env` and employee data securely
-
-### Performance Monitoring
-
-Monitor these metrics:
-- Email delivery success rate
-- Image generation time
-- Memory usage during processing
-- Log file size growth
-
-### Windows Maintenance Tasks
-
-**Weekly Checks:**
-1. Open Task Scheduler
-2. Check your task's "Last Run Time" and "Last Run Result"
-3. Review `birthday_automation.log` for any errors
-
-**Monthly Tasks:**
-1. Update employee data in `employees.csv`
-2. Verify email credentials are still valid
-3. Test run the automation manually
-
-**Task Scheduler Maintenance:**
-- Check task history for failed runs
-- Verify task is enabled and scheduled correctly
-- Test task manually monthly: Right-click task → Run
-
-### Scaling Considerations
-
-For organizations with 1000+ employees:
-- Implement database storage
-- Add email queuing system
-- Use distributed scheduling
-- Add load balancing
-- Implement caching strategies
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Ensure all tests pass
-5. Update documentation
-6. Submit a pull request
-
-### Development Setup
-
-```bash
-# Install development dependencies
-pip install -r requirements.txt
-pip install pytest black flake8
-
-# Run code formatting
-black birthday_automation.py
-
-# Run linting
-flake8 birthday_automation.py
-
-# Run tests
-python test_birthday_system.py
-```
-
-## 📜 License
-
-This project is provided as-is for educational and internal company use. Modify and distribute according to your organization's policies.
-
-## 🆘 Support
+### Quick Setup Checklist
+- [ ] Python 3.7+ installed
+- [ ] Required packages installed
+- [ ] .env file created with credentials
+- [ ] Employee CSV file prepared
+- [ ] Greeting card images ready
+- [ ] Test run completed successfully
+- [ ] Daily scheduling configured
 
 ### Getting Help
-
-1. **Check Logs**: Review `birthday_automation.log` for errors
-2. **Run Tests**: Execute `python test_birthday_system.py`
-3. **Verify Configuration**: Ensure `.env` is properly configured
-4. **Test Manually**: Try `python birthday_automation.py --run-once`
-
-### Common Solutions
-
-- **No emails sent**: Check email credentials and SMTP settings
-- **Images not generated**: Verify font availability and file permissions
-- **Birthday not detected**: Check date formats and CSV structure
-- **Scheduler not working**: Ensure process stays running in background
-- **Windows Task Scheduler issues**: Use full paths and check permissions
-
-### Reporting Issues
-
-When reporting issues, include:
-- Error messages from logs
-- Your configuration (without passwords)
-- Python version and OS
-- Sample employee data (anonymized)
-- For Windows: Task Scheduler event history
+1. Check logs in `output/logs/email_automation.log`
+2. Verify all file paths in .env are correct
+3. Test email settings with a simple SMTP test
+4. Check firewall/network restrictions
 
 ---
 
-**Happy Birthday Automation! 🎉**
+## 🎯 Quick Start Summary
 
-*Making every birthday special with automated, personalized greetings.*
+1. **Install**: `pip install pandas pillow python-dotenv`
+2. **Configure**: Create `.env` with email settings
+3. **Prepare**: Add employee CSV and greeting card images
+4. **Test**: Run `python automation_email.py`
+5. **Schedule**: Set up daily automation
+6. **Monitor**: Check logs and daily reports
+
+Happy automating! 🚀

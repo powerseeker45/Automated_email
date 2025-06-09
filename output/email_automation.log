@@ -1,0 +1,27 @@
+2025-06-09 12:08:40 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 12:08:40 - INFO - Output folder: output
+2025-06-09 12:08:40 - INFO - Loaded 5 employee records from employees.csv
+2025-06-09 12:08:40 - ERROR - Birthday card image not found: birthday_card.png
+2025-06-09 12:08:40 - ERROR - Anniversary card image not found: marriage_anniversary_card.png
+2025-06-09 12:08:45 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 12:08:45 - INFO - Daily report sent successfully
+2025-06-09 12:08:45 - INFO - Daily email automation check completed
+2025-06-09 12:09:42 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 12:09:42 - INFO - Output folder: output
+2025-06-09 12:09:42 - INFO - Loaded 5 employee records from employees.csv
+2025-06-09 12:09:42 - INFO - Checking for birthday emails...
+2025-06-09 12:09:42 - INFO - Found 5 employees with birthdays today
+2025-06-09 12:09:43 - INFO - Personalized image saved: output\birthday_John_Doe_20250609.jpg
+2025-06-09 12:09:47 - INFO - Email sent successfully to john.doe@example.com
+2025-06-09 12:09:47 - INFO - Personalized image saved: output\birthday_Jane_Smith_20250609.jpg
+2025-06-09 12:09:51 - INFO - Email sent successfully to jane.smith@example.com
+2025-06-09 12:09:51 - INFO - Personalized image saved: output\birthday_Michael_Brown_20250609.jpg
+2025-06-09 12:09:55 - INFO - Email sent successfully to michael.brown@example.com
+2025-06-09 12:09:55 - INFO - Personalized image saved: output\birthday_Emily_Davis_20250609.jpg
+2025-06-09 12:09:59 - INFO - Email sent successfully to emily.davis@example.com
+2025-06-09 12:09:59 - INFO - Personalized image saved: output\birthday_David_Wilson_20250609.jpg
+2025-06-09 12:10:03 - INFO - Email sent successfully to david.wilson@example.com
+2025-06-09 12:10:03 - ERROR - Anniversary card image not found: anniversary_card.png
+2025-06-09 12:10:08 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 12:10:08 - INFO - Daily report sent successfully
+2025-06-09 12:10:08 - INFO - Daily email automation check completed
