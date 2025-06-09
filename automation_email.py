@@ -120,6 +120,38 @@ class EmailAutomation:
             'exception': str(exception) if exception else None,
             'traceback': traceback.format_exc() if exception else None
         })
+    
+    def hex_to_rgb(self, hex_color: str) -> tuple:
+        """
+        Convert hex color to RGB tuple
+        
+        Args:
+            hex_color: Hex color string (e.g., '#FF0000' or 'FF0000')
+            
+        Returns:
+            tuple: (R, G, B) values
+        """
+        try:
+            # Remove # if present
+            hex_color = hex_color.lstrip('#')
+            
+            # Ensure we have a 6-character hex code
+            if len(hex_color) == 3:
+                # Convert short form (e.g., 'F0A') to long form ('FF00AA')
+                hex_color = ''.join([c*2 for c in hex_color])
+            elif len(hex_color) != 6:
+                raise ValueError(f"Invalid hex color length: {hex_color}")
+            
+            # Convert to RGB
+            r = int(hex_color[0:2], 16)
+            g = int(hex_color[2:4], 16)
+            b = int(hex_color[4:6], 16)
+            
+            return (r, g, b)
+            
+        except Exception as e:
+            self.logger.warning(f"Invalid hex color '{hex_color}', using black as default: {e}")
+            return (0, 0, 0)  # Default to black
         
     def load_employee_data(self, csv_file: str) -> pd.DataFrame:
         """
@@ -165,8 +197,11 @@ class EmailAutomation:
     def add_text_to_image(self, image_path: str, text: str, 
                          position: tuple = (50, 50), 
                          font_size: int = 40,
-                         font_color: tuple = (0, 0, 0),
-                         output_filename: Optional[str] = None) -> tuple:
+                         font_color: str = "#000000",
+                         custom_font_path: Optional[str] = None,
+                         output_filename: Optional[str] = None,
+                         center_align: bool = False,
+                         multiline: bool = False) -> tuple:
         """
         Add personalized text to greeting card image and save to output folder
         
@@ -181,28 +216,40 @@ class EmailAutomation:
            - Change position parameter: position=(x, y)
            - (0, 0) = top-left corner
            - (100, 50) = 100 pixels right, 50 pixels down
-           - For center text: calculate based on image size
+           - For center text: set center_align=True
         
-        3. FONT COLOR:
-           - Change font_color parameter: font_color=(R, G, B)
-           - (0, 0, 0) = Black (default)
-           - (255, 255, 255) = White
-           - (255, 0, 0) = Red
-           - (0, 255, 0) = Green
-           - (0, 0, 255) = Blue
+        3. FONT COLOR (HEX):
+           - Change font_color parameter: font_color="#FF0000" (red)
+           - "#000000" = Black (default)
+           - "#FFFFFF" = White
+           - "#FF0000" = Red
+           - "#00FF00" = Green
+           - "#0000FF" = Blue
+           - "#FFD700" = Gold
+           - "#800080" = Purple
         
         4. CUSTOM FONTS:
-           - Add your font file to project folder
-           - Modify the font loading section below
-           - Example: font = ImageFont.truetype("your_font.ttf", font_size)
+           - Set custom_font_path parameter to your font file
+           - Example: custom_font_path="fonts/Arial.ttf"
+        
+        5. CENTER ALIGNMENT:
+           - Set center_align=True to center text horizontally
+           - position parameter becomes the Y-coordinate for vertical placement
+        
+        6. MULTILINE TEXT:
+           - Set multiline=True for text with line breaks
+           - Useful for "Happy Anniversary\nJohn" format
         
         Args:
             image_path: Path to the greeting card image
-            text: Text to add (e.g., "Dear John")
-            position: (x, y) position for text placement
+            text: Text to add (e.g., "Happy Birthday John" or "Happy Anniversary\nJohn")
+            position: (x, y) position for text placement, or (ignored, y) if center_align=True
             font_size: Size of the font
-            font_color: RGB color tuple for text
+            font_color: Hex color string for text (e.g., "#FF0000")
+            custom_font_path: Path to custom font file
             output_filename: Optional filename to save the image
+            center_align: If True, center text horizontally (position[0] ignored)
+            multiline: If True, handle text with line breaks properly
             
         Returns:
             tuple: (image_bytes, saved_file_path) or (None, None) on error
@@ -220,43 +267,26 @@ class EmailAutomation:
                 # Create drawing context
                 draw = ImageDraw.Draw(img)
                 
-                # ================================================================
-                # FONT CUSTOMIZATION SECTION
-                # ================================================================
-                # 
-                # To use a CUSTOM FONT:
-                # 1. Download a .ttf or .otf font file
-                # 2. Place it in your project folder
-                # 3. Uncomment and modify one of these lines:
-                #
-                # font = ImageFont.truetype("fonts/Arial_Bold.ttf", font_size)
-                # font = ImageFont.truetype("fonts/Times_New_Roman.ttf", font_size)
-                # font = ImageFont.truetype("fonts/Comic_Sans.ttf", font_size)
-                # font = ImageFont.truetype("fonts/Calibri.ttf", font_size)
-                #
-                # Popular font locations by OS:
-                # Windows: C:\Windows\Fonts\
-                # macOS: /System/Library/Fonts/ or /Library/Fonts/
-                # Linux: /usr/share/fonts/
-                #
-                # Examples with full paths:
-                # font = ImageFont.truetype("C:/Windows/Fonts/arial.ttf", font_size)  # Windows
-                # font = ImageFont.truetype("/System/Library/Fonts/Arial.ttf", font_size)  # macOS
-                # font = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", font_size)  # Linux
-                #
-                # ================================================================
+                # Convert hex color to RGB
+                rgb_color = self.hex_to_rgb(font_color)
                 
-                # Try to load fonts in order of preference
+                # ================================================================
+                # FONT LOADING SECTION
+                # ================================================================
                 font = None
                 
-                # Option 1: Try custom font (uncomment to use)
-                try:
-                    font = ImageFont.truetype("fonts/Edwardian Script ITC/edwardianscriptitc.ttf", font_size)
-                    self.logger.info(f"Using custom font with size {font_size}")
-                except:
-                    pass
+                # Option 1: Try custom font if provided
+                if custom_font_path:
+                    try:
+                        if os.path.exists(custom_font_path):
+                            font = ImageFont.truetype(custom_font_path, font_size)
+                            self.logger.info(f"Using custom font: {custom_font_path} with size {font_size}")
+                        else:
+                            self.logger.warning(f"Custom font not found: {custom_font_path}")
+                    except Exception as e:
+                        self.logger.warning(f"Failed to load custom font {custom_font_path}: {e}")
                 
-                # Option 2: Try system fonts
+                # Option 2: Try system fonts if custom font failed
                 if not font:
                     font_paths = [
                         # Windows fonts
@@ -281,7 +311,7 @@ class EmailAutomation:
                     for font_path in font_paths:
                         try:
                             font = ImageFont.truetype(font_path, font_size)
-                            self.logger.info(f"Using font: {font_path} with size {font_size}")
+                            self.logger.info(f"Using system font: {font_path} with size {font_size}")
                             break
                         except:
                             continue
@@ -291,58 +321,35 @@ class EmailAutomation:
                     font = ImageFont.load_default()
                     self.logger.warning(f"Using default font with size {font_size} - text may not display optimally")
                 
-                # ================================================================
-                # TEXT POSITIONING EXAMPLES
-                # ================================================================
-                #
-                # BASIC POSITIONING:
-                # position = (50, 50)    # 50 pixels from left, 50 pixels from top
-                # position = (100, 200)  # 100 pixels from left, 200 pixels from top
-                #
-                # ADVANCED POSITIONING (get image dimensions first):
+                # Get image dimensions (1280x720 for your cards)
                 img_width, img_height = img.size
-                #
-                # CENTER HORIZONTALLY:
-                # text_width = draw.textlength(text, font=font)
-                # center_x = (img_width - text_width) // 2
-                # position = (center_x, 100)  # Centered horizontally, 100px from top
-                #
-                # CENTER BOTH HORIZONTALLY AND VERTICALLY:
-                # text_width = draw.textlength(text, font=font)
-                # # Note: textsize is deprecated, use textbbox for height
-                # bbox = draw.textbbox((0, 0), text, font=font)
-                # text_height = bbox[3] - bbox[1]
-                # center_x = (img_width - text_width) // 2
-                # center_y = (img_height - text_height) // 2
-                # position = (center_x, center_y)
-                #
-                # BOTTOM RIGHT:
-                # text_width = draw.textlength(text, font=font)
-                # bbox = draw.textbbox((0, 0), text, font=font)
-                # text_height = bbox[3] - bbox[1]
-                # position = (img_width - text_width - 20, img_height - text_height - 20)
-                #
-                # ================================================================
                 
-                # Add text to image with the specified position, font, and color
-                draw.text(position, text, font=font, fill=font_color)
-                
-                # Optional: Add text shadow or outline for better visibility
-                # Uncomment these lines to add a shadow effect:
-                #
-                # shadow_offset = 2
-                # shadow_color = (128, 128, 128)  # Gray shadow
-                # draw.text((position[0] + shadow_offset, position[1] + shadow_offset), 
-                #          text, font=font, fill=shadow_color)
-                # draw.text(position, text, font=font, fill=font_color)
-                #
-                # Or add an outline:
-                # outline_color = (255, 255, 255)  # White outline
-                # outline_width = 2
-                # for adj in range(-outline_width, outline_width+1):
-                #     for adj2 in range(-outline_width, outline_width+1):
-                #         draw.text((position[0]+adj, position[1]+adj2), text, font=font, fill=outline_color)
-                # draw.text(position, text, font=font, fill=font_color)
+                # Calculate text positioning
+                if center_align:
+                    if multiline:
+                        # Handle multiline text (for anniversary cards)
+                        lines = text.split('\n')
+                        line_height = font_size + 10  # Add some spacing between lines
+                        total_text_height = len(lines) * line_height
+                        
+                        # Start Y position (use position[1] or center vertically)
+                        start_y = position[1] if position[1] > 0 else (img_height - total_text_height) // 2
+                        
+                        # Draw each line centered
+                        for i, line in enumerate(lines):
+                            line_width = draw.textlength(line, font=font)
+                            line_x = (img_width - line_width) // 2
+                            line_y = start_y + (i * line_height)
+                            draw.text((line_x, line_y), line, font=font, fill=rgb_color)
+                    else:
+                        # Single line text (for birthday cards)
+                        text_width = draw.textlength(text, font=font)
+                        text_x = (img_width - text_width) // 2
+                        text_y = position[1]  # Use provided Y position
+                        draw.text((text_x, text_y), text, font=font, fill=rgb_color)
+                else:
+                    # Use exact position provided (legacy behavior)
+                    draw.text(position, text, font=font, fill=rgb_color)
                 
                 # Save to bytes
                 img_bytes = io.BytesIO()
@@ -382,8 +389,6 @@ class EmailAutomation:
             html_body = f"""
             <html>
                 <body>
-                    <p>{body}</p>
-                    <br>
                     <img src="cid:greeting_card" style="max-width: 600px; height: auto;">
                     <br><br>
                     <p>Best wishes,<br>HR Team</p>
@@ -444,15 +449,19 @@ class EmailAutomation:
                                      birthday_card_path: str,
                                      text_position: tuple = (50, 50),
                                      font_size: int = 40,
-                                     font_color: tuple = (0, 0, 0)):
+                                     font_color: str = "#000000",
+                                     custom_font_path: Optional[str] = None,
+                                     center_align: bool = False):
         """
         Check for today's birthdays and send emails
         
         CUSTOMIZATION PARAMETERS:
         ========================
-        text_position: (x, y) tuple for text placement
+        text_position: (x, y) tuple for text placement (or (ignored, y) if center_align=True)
         font_size: Size of the font (default: 40)
-        font_color: (R, G, B) tuple for text color (default: black)
+        font_color: Hex color string for text (e.g., "#FF0000")
+        custom_font_path: Path to custom font file
+        center_align: If True, center text horizontally
         """
         try:
             today = datetime.date.today()
@@ -479,7 +488,7 @@ class EmailAutomation:
                     })
                     
                     # Create personalized greeting
-                    greeting_text = f"Dear {first_name}"
+                    greeting_text = f"Happy Birthday {first_name}"
                     
                     # Generate unique filename for this image
                     output_filename = f"birthday_{first_name}_{last_name}_{today.strftime('%Y%m%d')}.jpg"
@@ -491,13 +500,16 @@ class EmailAutomation:
                         text_position,
                         font_size,
                         font_color,
-                        output_filename=output_filename
+                        custom_font_path,
+                        output_filename=output_filename,
+                        center_align=center_align,
+                        multiline=False  # Birthday cards are single line
                     )
                     
                     if personalized_image:
                         # Create email
                         subject = f"Happy Birthday, {first_name}! 🎉"
-                        body = f"Dear {first_name},<br><br>Wishing you a very happy birthday! May this special day bring you joy, happiness, and wonderful memories."
+                        body = ""  # No body text
                         
                         msg = self.create_email_message(
                             email, first_name, subject, body, personalized_image
@@ -520,18 +532,22 @@ class EmailAutomation:
             self.log_error("Error in birthday email processing", e)
     
     def check_and_send_anniversary_emails(self, df: pd.DataFrame, 
-                                                 anniversary_card_path: str,
-                                                 text_position: tuple = (50, 50),
-                                                 font_size: int = 40,
-                                                 font_color: tuple = (0, 0, 0)):
+                                         anniversary_card_path: str,
+                                         text_position: tuple = (50, 50),
+                                         font_size: int = 40,
+                                         font_color: str = "#000000",
+                                         custom_font_path: Optional[str] = None,
+                                         center_align: bool = True):
         """
         Check for today's marriage anniversaries and send emails
         
         CUSTOMIZATION PARAMETERS:
         ========================
-        text_position: (x, y) tuple for text placement
+        text_position: (x, y) tuple for text placement (or (ignored, y) if center_align=True)
         font_size: Size of the font (default: 40)
-        font_color: (R, G, B) tuple for text color (default: black)
+        font_color: Hex color string for text (e.g., "#FF0000")
+        custom_font_path: Path to custom font file
+        center_align: If True, center text horizontally (default: True for anniversaries)
         """
         try:
             today = datetime.date.today()
@@ -566,8 +582,8 @@ class EmailAutomation:
                         'years': years
                     })
                     
-                    # Create personalized greeting
-                    greeting_text = f"Dear {first_name}"
+                    # Create personalized greeting with name on next line
+                    greeting_text = f"Happy Anniversary\n{first_name}"
                     
                     # Generate unique filename for this image
                     output_filename = f"anniversary_{first_name}_{last_name}_{today.strftime('%Y%m%d')}.jpg"
@@ -579,17 +595,16 @@ class EmailAutomation:
                         text_position,
                         font_size,
                         font_color,
-                        output_filename=output_filename
+                        custom_font_path,
+                        output_filename=output_filename,
+                        center_align=center_align,
+                        multiline=True  # Anniversary cards have name on next line
                     )
                     
                     if personalized_image:
                         # Create email with appropriate marriage anniversary message
                         subject = f"Happy Anniversary, {first_name}! 💕"
-                        
-                        if years == 1:
-                            body = f"Dear {first_name},<br><br>Congratulations on your first wedding anniversary! Wishing you both a lifetime of love, happiness, and beautiful memories together."
-                        else:
-                            body = f"Dear {first_name},<br><br>Congratulations on {years} wonderful years of marriage! May your love continue to grow stronger with each passing year. Wishing you both happiness and joy on this special day."
+                        body = ""  # No body text
                         
                         msg = self.create_email_message(
                             email, first_name, subject, body, personalized_image
@@ -723,22 +738,30 @@ class EmailAutomation:
     def run_daily_check(self, csv_file: str, birthday_card_path: str, 
                        anniversary_card_path: str, 
                        birthday_text_pos: tuple = (50, 50),
-                       anniversary_text_pos: tuple = (50, 50),
+                       anniversary_text_pos: tuple = (0, 300),  # Y=300 for 1280x720 center
                        birthday_font_size: int = 40,
                        anniversary_font_size: int = 40,
-                       birthday_font_color: tuple = (0, 0, 0),
-                       anniversary_font_color: tuple = (0, 0, 0)):
+                       birthday_font_color: str = "#000000",
+                       anniversary_font_color: str = "#000000",
+                       birthday_font_path: Optional[str] = None,
+                       anniversary_font_path: Optional[str] = None,
+                       birthday_center_align: bool = False,
+                       anniversary_center_align: bool = True):
         """
         Run daily check for birthdays and marriage anniversaries
         
         CUSTOMIZATION PARAMETERS:
         ========================
         birthday_text_pos: (x, y) position for birthday text
-        anniversary_text_pos: (x, y) position for anniversary text
+        anniversary_text_pos: (ignored, y) position for anniversary text (x ignored due to center alignment)
         birthday_font_size: Font size for birthday cards
         anniversary_font_size: Font size for anniversary cards
-        birthday_font_color: (R, G, B) color for birthday text
-        anniversary_font_color: (R, G, B) color for anniversary text
+        birthday_font_color: Hex color for birthday text (e.g., "#FF0000")
+        anniversary_font_color: Hex color for anniversary text (e.g., "#0000FF")
+        birthday_font_path: Path to custom font for birthday cards
+        anniversary_font_path: Path to custom font for anniversary cards
+        birthday_center_align: Center align birthday text (default: False)
+        anniversary_center_align: Center align anniversary text (default: True)
         """
         try:
             self.logger.info(f"Starting daily email automation check for {datetime.date.today()}")
@@ -759,7 +782,9 @@ class EmailAutomation:
                     birthday_card_path, 
                     birthday_text_pos,
                     birthday_font_size,
-                    birthday_font_color
+                    birthday_font_color,
+                    birthday_font_path,
+                    birthday_center_align
                 )
             else:
                 self.log_error(f"Birthday card image not found: {birthday_card_path}")
@@ -771,7 +796,9 @@ class EmailAutomation:
                     anniversary_card_path, 
                     anniversary_text_pos,
                     anniversary_font_size,
-                    anniversary_font_color
+                    anniversary_font_color,
+                    anniversary_font_path,
+                    anniversary_center_align
                 )
             else:
                 self.log_error(f"Anniversary card image not found: {anniversary_card_path}")
@@ -809,30 +836,19 @@ def main():
         BIRTHDAY_CARD = os.getenv('BIRTHDAY_CARD', 'birthday_card.png')
         ANNIVERSARY_CARD = os.getenv('ANNIVERSARY_CARD', 'anniversary_card.png')
         
-        # Text positioning (can be set via environment variables)
-        # 
-        # HOW TO CUSTOMIZE TEXT POSITION:
-        # ===============================
-        # The position is (X, Y) coordinates where:
-        # - X = pixels from LEFT edge (0 = far left)
-        # - Y = pixels from TOP edge (0 = very top)
-        #
-        # Examples:
-        # (50, 50)   = Near top-left
-        # (200, 100) = More to the right and down
-        # (0, 0)     = Exact top-left corner
-        #
-        # For environment variables, set:
-        # BIRTHDAY_TEXT_X=150     # 150 pixels from left
-        # BIRTHDAY_TEXT_Y=120     # 120 pixels from top
-        #
+        # Text positioning for 1280x720 images
+        # For center positioning on anniversary cards
         BIRTHDAY_TEXT_X = int(os.getenv('BIRTHDAY_TEXT_X', '100'))
         BIRTHDAY_TEXT_Y = int(os.getenv('BIRTHDAY_TEXT_Y', '80'))
-        ANNIVERSARY_TEXT_X = int(os.getenv('ANNIVERSARY_TEXT_X', '100'))
-        ANNIVERSARY_TEXT_Y = int(os.getenv('ANNIVERSARY_TEXT_Y', '80'))
+        ANNIVERSARY_TEXT_X = int(os.getenv('ANNIVERSARY_TEXT_X', '0'))    # Ignored due to center alignment
+        ANNIVERSARY_TEXT_Y = int(os.getenv('ANNIVERSARY_TEXT_Y', '300'))  # Center vertically for 1280x720
         
         BIRTHDAY_TEXT_POSITION = (BIRTHDAY_TEXT_X, BIRTHDAY_TEXT_Y)
         ANNIVERSARY_TEXT_POSITION = (ANNIVERSARY_TEXT_X, ANNIVERSARY_TEXT_Y)
+        
+        # Text alignment settings
+        BIRTHDAY_CENTER_ALIGN = os.getenv('BIRTHDAY_CENTER_ALIGN', 'False').lower() == 'true'
+        ANNIVERSARY_CENTER_ALIGN = os.getenv('ANNIVERSARY_CENTER_ALIGN', 'True').lower() == 'true'
         
         # FONT SIZE CUSTOMIZATION:
         # ========================
@@ -844,32 +860,43 @@ def main():
         BIRTHDAY_FONT_SIZE = int(os.getenv('BIRTHDAY_FONT_SIZE', '40'))
         ANNIVERSARY_FONT_SIZE = int(os.getenv('ANNIVERSARY_FONT_SIZE', '40'))
         
-        # FONT COLOR CUSTOMIZATION:
-        # =========================
+        # FONT COLOR CUSTOMIZATION (HEX):
+        # ===============================
         # Add these to your .env file for custom colors:
-        # BIRTHDAY_FONT_COLOR_R=255    # Red component (0-255)
-        # BIRTHDAY_FONT_COLOR_G=0      # Green component (0-255)  
-        # BIRTHDAY_FONT_COLOR_B=0      # Blue component (0-255)
-        # Result: (255, 0, 0) = Red text
+        # BIRTHDAY_FONT_COLOR=#FF0000     # Red text for birthdays
+        # ANNIVERSARY_FONT_COLOR=#0000FF  # Blue text for anniversaries
         #
-        # Common colors:
-        # Black: (0, 0, 0)
-        # White: (255, 255, 255)
-        # Red: (255, 0, 0)
-        # Blue: (0, 0, 255)
-        # Green: (0, 255, 0)
-        # Purple: (128, 0, 128)
-        # Orange: (255, 165, 0)
+        # Common hex colors:
+        # Black: #000000
+        # White: #FFFFFF
+        # Red: #FF0000
+        # Blue: #0000FF
+        # Green: #00FF00
+        # Purple: #800080
+        # Orange: #FFA500
+        # Gold: #FFD700
+        # Pink: #FF69B4
+        # Navy: #000080
         #
-        BIRTHDAY_FONT_R = int(os.getenv('BIRTHDAY_FONT_COLOR_R', '0'))    # Default: Black
-        BIRTHDAY_FONT_G = int(os.getenv('BIRTHDAY_FONT_COLOR_G', '0'))
-        BIRTHDAY_FONT_B = int(os.getenv('BIRTHDAY_FONT_COLOR_B', '0'))
-        BIRTHDAY_FONT_COLOR = (BIRTHDAY_FONT_R, BIRTHDAY_FONT_G, BIRTHDAY_FONT_B)
+        BIRTHDAY_FONT_COLOR = os.getenv('BIRTHDAY_FONT_COLOR', '#000000')    # Default: Black
+        ANNIVERSARY_FONT_COLOR = os.getenv('ANNIVERSARY_FONT_COLOR', '#000000')  # Default: Black
         
-        ANNIVERSARY_FONT_R = int(os.getenv('ANNIVERSARY_FONT_COLOR_R', '0'))  # Default: Black
-        ANNIVERSARY_FONT_G = int(os.getenv('ANNIVERSARY_FONT_COLOR_G', '0'))
-        ANNIVERSARY_FONT_B = int(os.getenv('ANNIVERSARY_FONT_COLOR_B', '0'))
-        ANNIVERSARY_FONT_COLOR = (ANNIVERSARY_FONT_R, ANNIVERSARY_FONT_G, ANNIVERSARY_FONT_B)
+        # CUSTOM FONT PATHS:
+        # ==================
+        # Add these to your .env file for custom fonts:
+        # BIRTHDAY_FONT_PATH=fonts/birthday_font.ttf
+        # ANNIVERSARY_FONT_PATH=fonts/anniversary_font.ttf
+        #
+        # You can use different fonts for birthday and anniversary cards
+        # Popular font examples:
+        # - fonts/Arial-Bold.ttf
+        # - fonts/Times-New-Roman.ttf
+        # - fonts/Comic-Sans-MS.ttf
+        # - fonts/Edwardian-Script.ttf (elegant script)
+        # - fonts/Brush-Script.ttf (casual handwriting)
+        #
+        BIRTHDAY_FONT_PATH = os.getenv('BIRTHDAY_FONT_PATH')  # None if not set
+        ANNIVERSARY_FONT_PATH = os.getenv('ANNIVERSARY_FONT_PATH')  # None if not set
         
         # Validate required environment variables
         if not SENDER_EMAIL or not EMAIL_PASSWORD:
@@ -882,6 +909,11 @@ def main():
         print(f"🏢 SMTP Server: {SMTP_SERVER}:{SMTP_PORT}")
         print(f"📁 Output Folder: {OUTPUT_FOLDER}")
         print(f"📊 CSV File: {CSV_FILE}")
+        print(f"🎂 Birthday Font: {BIRTHDAY_FONT_PATH or 'System Default'}")
+        print(f"💕 Anniversary Font: {ANNIVERSARY_FONT_PATH or 'System Default'}")
+        print(f"🎨 Birthday Color: {BIRTHDAY_FONT_COLOR} {'(Center Aligned)' if BIRTHDAY_CENTER_ALIGN else ''}")
+        print(f"🎨 Anniversary Color: {ANNIVERSARY_FONT_COLOR} {'(Center Aligned)' if ANNIVERSARY_CENTER_ALIGN else ''}")
+        print(f"📏 Anniversary Layout: Multiline with name on next line")
         
         # Initialize email automation
         email_system = EmailAutomation(
@@ -902,7 +934,11 @@ def main():
             birthday_font_size=BIRTHDAY_FONT_SIZE,
             anniversary_font_size=ANNIVERSARY_FONT_SIZE,
             birthday_font_color=BIRTHDAY_FONT_COLOR,
-            anniversary_font_color=ANNIVERSARY_FONT_COLOR
+            anniversary_font_color=ANNIVERSARY_FONT_COLOR,
+            birthday_font_path=BIRTHDAY_FONT_PATH,
+            anniversary_font_path=ANNIVERSARY_FONT_PATH,
+            birthday_center_align=BIRTHDAY_CENTER_ALIGN,
+            anniversary_center_align=ANNIVERSARY_CENTER_ALIGN
         )
         
         print("✅ Email automation completed successfully!")
@@ -931,61 +967,160 @@ CSV_FILE=employees.csv
 BIRTHDAY_CARD=birthday_card.png
 ANNIVERSARY_CARD=anniversary_card.png
 
-# BIRTHDAY CARD CUSTOMIZATION
-# ============================
+# IMAGE SPECIFICATIONS
+# ===================
+# This configuration is optimized for 1280x720 greeting card images
+# Birthday cards: Display "Happy Birthday {Name}" 
+# Anniversary cards: Display "Happy Anniversary" with name on next line, center-aligned
+
+# BIRTHDAY CARD CUSTOMIZATION (1280x720)
+# =======================================
 # Text Position (pixels from top-left corner)
 BIRTHDAY_TEXT_X=100
-BIRTHDAY_TEXT_Y=80
+BIRTHDAY_TEXT_Y=300
 
 # Font Size (larger number = bigger text)
-BIRTHDAY_FONT_SIZE=40
+BIRTHDAY_FONT_SIZE=48
 
-# Font Color (RGB values 0-255)
-# Examples:
-# Black: R=0, G=0, B=0
-# White: R=255, G=255, B=255  
-# Red: R=255, G=0, B=0
-# Blue: R=0, G=0, B=255
-# Gold: R=255, G=215, B=0
-BIRTHDAY_FONT_COLOR_R=0
-BIRTHDAY_FONT_COLOR_G=0
-BIRTHDAY_FONT_COLOR_B=0
+# Font Color (hex format)
+# Popular choices for birthdays:
+# Bright Gold: #FFD700
+# Party Pink: #FF69B4  
+# Vibrant Blue: #1E90FF
+# Classic Black: #000000
+BIRTHDAY_FONT_COLOR=#FFD700
 
-# ANNIVERSARY CARD CUSTOMIZATION
-# ==============================
-# Text Position (pixels from top-left corner)
-ANNIVERSARY_TEXT_X=100
-ANNIVERSARY_TEXT_Y=80
+# Custom Font Path (optional)
+# High Tower Text example:
+# BIRTHDAY_FONT_PATH=C:/Windows/Fonts/HTOWERT.TTF
+# Other examples:
+# BIRTHDAY_FONT_PATH=fonts/Arial-Bold.ttf
+# BIRTHDAY_FONT_PATH=fonts/Comic-Sans-MS.ttf
+# BIRTHDAY_FONT_PATH=fonts/Edwardian-Script.ttf
+BIRTHDAY_FONT_PATH=C:/Windows/Fonts/HTOWERT.TTF
+
+# Text Alignment (center birthday text horizontally if desired)
+BIRTHDAY_CENTER_ALIGN=false
+
+# ANNIVERSARY CARD CUSTOMIZATION (1280x720)
+# ==========================================
+# Text Position - X is ignored due to center alignment, Y controls vertical position
+ANNIVERSARY_TEXT_X=0
+ANNIVERSARY_TEXT_Y=300
 
 # Font Size (larger number = bigger text)
-ANNIVERSARY_FONT_SIZE=40
+ANNIVERSARY_FONT_SIZE=45
 
-# Font Color (RGB values 0-255)
-ANNIVERSARY_FONT_COLOR_R=0
-ANNIVERSARY_FONT_COLOR_G=0
-ANNIVERSARY_FONT_COLOR_B=0
+# Font Color (hex format)
+# Popular choices for anniversaries:
+# Romantic Purple: #800080
+# Deep Red: #8B0000
+# Elegant Navy: #000080
+# Classic Black: #000000
+# Rose Gold: #E8B4B8
+ANNIVERSARY_FONT_COLOR=#800080
+
+# Custom Font Path (optional) - Can be different from birthday font
+# High Tower Text example:
+# ANNIVERSARY_FONT_PATH=C:/Windows/Fonts/HTOWERT.TTF
+# Other elegant options:
+# ANNIVERSARY_FONT_PATH=fonts/Times-New-Roman.ttf
+# ANNIVERSARY_FONT_PATH=fonts/Brush-Script.ttf
+# ANNIVERSARY_FONT_PATH=fonts/Calligraphy.ttf
+ANNIVERSARY_FONT_PATH=C:/Windows/Fonts/HTOWERT.TTF
+
+# Text Alignment (anniversary cards are center-aligned by default)
+ANNIVERSARY_CENTER_ALIGN=true
+
+# LAYOUT EXPLANATION:
+# ==================
+# Birthday Layout:    "Happy Birthday John"     (single line)
+# Anniversary Layout: "Happy Anniversary"       (first line, centered)
+#                     "      John      "        (second line, centered)
+
+# WINDOWS FONT PATHS REFERENCE:
+# =============================
+# High Tower Text: C:/Windows/Fonts/HTOWERT.TTF
+# Arial Bold: C:/Windows/Fonts/ARIALBD.TTF
+# Times New Roman: C:/Windows/Fonts/times.ttf
+# Georgia: C:/Windows/Fonts/georgia.ttf
+# Calibri: C:/Windows/Fonts/calibri.ttf
+# Book Antiqua: C:/Windows/Fonts/BKANT.TTF
+# Garamond: C:/Windows/Fonts/GARA.TTF
+# Palatino Linotype: C:/Windows/Fonts/pala.ttf
+
+# HEX COLOR REFERENCE:
+# ===================
+# Classic Colors:
+# Black: #000000        White: #FFFFFF
+# Red: #FF0000          Green: #00FF00
+# Blue: #0000FF         Yellow: #FFFF00
+
+# Professional Colors:
+# Navy: #000080         Maroon: #800000
+# Dark Green: #006400   Dark Blue: #000080
+# Charcoal: #36454F     Steel Blue: #4682B4
+
+# Elegant Colors:
+# Gold: #FFD700         Rose Gold: #E8B4B8
+# Purple: #800080       Indigo: #4B0082
+# Burgundy: #800020     Forest Green: #355E3B
+
+# Fun & Vibrant Colors:
+# Hot Pink: #FF69B4     Orange: #FFA500
+# Lime: #00FF00         Cyan: #00FFFF
+# Magenta: #FF00FF      Coral: #FF7F50
+
+# PRESET COMBINATIONS FOR 1280x720 CARDS:
+# =======================================
+
+# ELEGANT PROFESSIONAL SETUP:
+# BIRTHDAY_FONT_PATH=C:/Windows/Fonts/HTOWERT.TTF
+# BIRTHDAY_FONT_COLOR=#FFD700
+# BIRTHDAY_FONT_SIZE=48
+# BIRTHDAY_TEXT_Y=320
+# 
+# ANNIVERSARY_FONT_PATH=C:/Windows/Fonts/HTOWERT.TTF
+# ANNIVERSARY_FONT_COLOR=#800080
+# ANNIVERSARY_FONT_SIZE=45
+# ANNIVERSARY_TEXT_Y=300
+
+# MODERN CASUAL SETUP:
+# BIRTHDAY_FONT_PATH=C:/Windows/Fonts/ARIALBD.TTF
+# BIRTHDAY_FONT_COLOR=#FF69B4
+# BIRTHDAY_FONT_SIZE=52
+# BIRTHDAY_CENTER_ALIGN=true
+# BIRTHDAY_TEXT_Y=340
+#
+# ANNIVERSARY_FONT_PATH=C:/Windows/Fonts/ARIALBD.TTF  
+# ANNIVERSARY_FONT_COLOR=#4B0082
+# ANNIVERSARY_FONT_SIZE=48
+# ANNIVERSARY_TEXT_Y=320
+
+# CLASSIC FORMAL SETUP:
+# BIRTHDAY_FONT_PATH=C:/Windows/Fonts/times.ttf
+# BIRTHDAY_FONT_COLOR=#000080
+# BIRTHDAY_FONT_SIZE=46
+# BIRTHDAY_TEXT_Y=330
+#
+# ANNIVERSARY_FONT_PATH=C:/Windows/Fonts/times.ttf
+# ANNIVERSARY_FONT_COLOR=#8B0000
+# ANNIVERSARY_FONT_SIZE=44
+# ANNIVERSARY_TEXT_Y=310
 
 # Optional: Company-specific settings
 # COMPANY_NAME=Your Company Name
 # HR_SIGNATURE=HR Team
 
-# QUICK CUSTOMIZATION EXAMPLES:
-# =============================
-# For larger birthday text in red color at bottom-right:
-# BIRTHDAY_TEXT_X=400
-# BIRTHDAY_TEXT_Y=300
-# BIRTHDAY_FONT_SIZE=60
-# BIRTHDAY_FONT_COLOR_R=255
-# BIRTHDAY_FONT_COLOR_G=0
-# BIRTHDAY_FONT_COLOR_B=0
-#
-# For smaller anniversary text in blue at top-center:
-# ANNIVERSARY_TEXT_X=200
-# ANNIVERSARY_TEXT_Y=50
-# ANNIVERSARY_FONT_SIZE=30
-# ANNIVERSARY_FONT_COLOR_R=0
-# ANNIVERSARY_FONT_COLOR_G=0
-# ANNIVERSARY_FONT_COLOR_B=255
+# POSITIONING TIPS FOR 1280x720 IMAGES:
+# =====================================
+# Y=200-250: Upper third (good for backgrounds with lower design elements)
+# Y=300-350: Center area (most balanced, recommended)
+# Y=400-450: Lower third (good for backgrounds with upper design elements)
+# Y=500+: Bottom area (use carefully, may look too low)
+
+# For birthday cards: Experiment with Y positions between 280-360
+# For anniversary cards: Y=300 typically works well for center positioning
 """
     
     with open('.env.template', 'w') as f:
@@ -993,22 +1128,29 @@ ANNIVERSARY_FONT_COLOR_B=0
     
     print("📋 Created .env.template file")
     print("📝 Copy this to .env and update with your settings")
-    print("\n🎨 FONT & POSITION CUSTOMIZATION GUIDE:")
-    print("======================================")
-    print("1. TEXT POSITION: (X, Y) coordinates")
-    print("   - X = pixels from LEFT (0 = far left)")
-    print("   - Y = pixels from TOP (0 = very top)")
-    print("   - Example: X=200, Y=100 = 200px right, 100px down")
-    print("\n2. FONT SIZE: Number (bigger = larger text)")
-    print("   - Small: 20-30")
-    print("   - Medium: 40-50") 
-    print("   - Large: 60-80")
-    print("\n3. FONT COLOR: RGB values (0-255 each)")
-    print("   - Black: R=0, G=0, B=0")
-    print("   - White: R=255, G=255, B=255")
-    print("   - Red: R=255, G=0, B=0")
-    print("   - Gold: R=255, G=215, B=0")
-    print("\n4. CUSTOM FONTS: Edit the add_text_to_image() method")
+    print("\n🎨 OPTIMIZED FOR 1280x720 GREETING CARDS:")
+    print("==========================================")
+    print("📐 Image Dimensions: 1280 x 720 pixels")
+    print("🎂 Birthday Layout: 'Happy Birthday {Name}' (single line)")
+    print("💕 Anniversary Layout: 'Happy Anniversary' + '{Name}' (two lines, center-aligned)")
+    print("\n📍 POSITIONING GUIDE:")
+    print("===================")
+    print("Y=300: Center position (recommended for most designs)")
+    print("Y=250: Upper-center (good for cards with bottom graphics)")
+    print("Y=350: Lower-center (good for cards with top graphics)")
+    print("\n🎨 FONT & COLOR GUIDE:")
+    print("=====================")
+    print("1. HIGH TOWER TEXT: C:/Windows/Fonts/HTOWERT.TTF (elegant serif)")
+    print("2. FONT COLORS: Use hex format (#FFD700 for gold, #800080 for purple)")
+    print("3. FONT SIZES: 45-50 recommended for 1280x720 images")
+    print("4. CENTER ALIGNMENT: Anniversary cards auto-center, birthday optional")
+    print("\n🔧 QUICK SETUP:")
+    print("==============")
+    print("1. Copy .env.template to .env")
+    print("2. Set your email credentials")
+    print("3. Adjust Y positions (try Y=300 first)")
+    print("4. Choose colors and fonts from the extensive reference")
+    print("5. Test with sample employee data")
 
 if __name__ == "__main__":
     # Uncomment the line below to create a .env template file
