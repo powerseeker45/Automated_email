@@ -52,8 +52,9 @@ email-automation/
 ├── generate_csv.py              # CSV generator (optional)
 ├── .env                         # Your configuration (create this)
 ├── employees.csv                # Employee data
-├── birthday_card.png            # Birthday card template
-├── anniversary_card.png         # Anniversary card template
+├── assets
+|   |── birthday_card.png            # Birthday card template
+|   └── anniversary_card.png         # Anniversary card template
 └── output/                      # Auto-created for logs and images
     └── logs/
         └── email_automation.log
@@ -131,8 +132,8 @@ python generate_csv.py
 
 ### 2. Prepare Greeting Card Images
 
-- **Birthday Card**: `birthday_card.png` (recommended size: 800x600px)
-- **Anniversary Card**: `anniversary_card.png` (recommended size: 800x600px)
+- **Birthday Card**: `assets/birthday_card.png` (recommended size: 800x600px)
+- **Anniversary Card**: `assets/anniversary_card.png` (recommended size: 800x600px)
 - **Format**: PNG or JPG
 - **Text Area**: Leave space where names will be added
 

@@ -96,8 +96,8 @@ Traceback (most recent call last):
 AssertionError: 0 != 1
 
 Stderr:
-2025-06-09 13:16:14 - INFO - Checking for marriage anniversary emails...
-2025-06-09 13:16:14 - ERROR - Error in anniversary email processing: Can only use .dt accessor with datetimelike values
+2025-06-09 13:28:13 - INFO - Checking for marriage anniversary emails...
+2025-06-09 13:28:13 - ERROR - Error in anniversary email processing: Can only use .dt accessor with datetimelike values
 Traceback (most recent call last):
   File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 545, in check_and_send_anniversary_emails
     (df['anniversary'].dt.month == today.month) &
@@ -125,8 +125,8 @@ Traceback (most recent call last):
 AssertionError: 0 != 1
 
 Stderr:
-2025-06-09 13:16:15 - INFO - Checking for birthday emails...
-2025-06-09 13:16:15 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
+2025-06-09 13:28:13 - INFO - Checking for birthday emails...
+2025-06-09 13:28:13 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
 Traceback (most recent call last):
   File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 461, in check_and_send_birthday_emails
     (df['birthday'].dt.month == today.month) &
@@ -154,8 +154,8 @@ Traceback (most recent call last):
 AssertionError: 0 != 1
 
 Stderr:
-2025-06-09 13:16:15 - INFO - Checking for birthday emails...
-2025-06-09 13:16:15 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
+2025-06-09 13:28:13 - INFO - Checking for birthday emails...
+2025-06-09 13:28:13 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
 Traceback (most recent call last):
   File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 461, in check_and_send_birthday_emails
     (df['birthday'].dt.month == today.month) &
@@ -181,6 +181,6 @@ Traceback (most recent call last):
 AssertionError: ValueError not raised
 
 ----------------------------------------------------------------------
-Ran 42 tests in 1.457s
+Ran 42 tests in 1.236s
 
 FAILED (failures=4)
