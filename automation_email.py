@@ -14,6 +14,8 @@ import traceback
 from typing import Optional, List, Dict
 import json
 from dotenv import load_dotenv
+from birthday_card_generator import create_birthday_card
+from anniversary_card_generator import create_anniversary_card
 
 class EmailAutomation:
     def __init__(self, smtp_server: Optional[str] = None, smtp_port: Optional[int] = None, 
@@ -1010,9 +1012,17 @@ ANNIVERSARY_FONT_COLOR_B=0
 
 if __name__ == "__main__":
     # Uncomment the line below to create a .env template file
+    #copy the .env.template to .env and fill necessary details
     #create_env_template()
+
+    #Uncomment the line below to create an assets/birthday_card.png 
+    #create_birthday_card()
+
+    #Uncomment the line below to create an assets/anniversary_card.png 
+    #create_anniversary_card()
+
     
-    main()
+    main()  
 
 
 # Example CSV structure (save as employees.csv)

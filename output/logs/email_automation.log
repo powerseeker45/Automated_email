@@ -231,3 +231,55 @@
 2025-06-09 13:55:23 - INFO - Email sent successfully to shashwat.airtel@gmail.com
 2025-06-09 13:55:23 - INFO - Daily report sent successfully
 2025-06-09 13:55:23 - INFO - Daily email automation check completed
+2025-06-09 14:12:16 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 14:12:16 - INFO - Output folder: output
+2025-06-09 14:12:16 - INFO - Logs folder: output\logs
+2025-06-09 14:12:16 - INFO - Loaded 100 employee records from employees_random.csv
+2025-06-09 14:12:16 - INFO - Checking for birthday emails...
+2025-06-09 14:12:16 - INFO - Found 0 employees with birthdays today
+2025-06-09 14:12:16 - INFO - Checking for marriage anniversary emails...
+2025-06-09 14:12:16 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-09 14:12:20 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 14:12:20 - INFO - Daily report sent successfully
+2025-06-09 14:12:20 - INFO - Daily email automation check completed
+2025-06-09 14:13:24 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 14:13:24 - INFO - Output folder: output
+2025-06-09 14:13:24 - INFO - Logs folder: output\logs
+2025-06-09 14:13:24 - INFO - Loaded 100 employee records from employees_random.csv
+2025-06-09 14:13:24 - INFO - Checking for birthday emails...
+2025-06-09 14:13:24 - INFO - Found 0 employees with birthdays today
+2025-06-09 14:13:24 - INFO - Checking for marriage anniversary emails...
+2025-06-09 14:13:24 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-09 14:13:28 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 14:13:28 - INFO - Daily report sent successfully
+2025-06-09 14:13:28 - INFO - Daily email automation check completed
+2025-06-09 14:13:38 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 14:13:38 - INFO - Output folder: output
+2025-06-09 14:13:38 - INFO - Logs folder: output\logs
+2025-06-09 14:13:38 - INFO - Loaded 5 employee records from employees_test_today.csv
+2025-06-09 14:13:38 - WARNING - Invalid birthday dates for employees: ['mark.taylor@example.com']
+2025-06-09 14:13:38 - INFO - Checking for birthday emails...
+2025-06-09 14:13:38 - INFO - Found 4 employees with birthdays today
+2025-06-09 14:13:38 - INFO - Using custom font with size 100
+2025-06-09 14:13:39 - INFO - Personalized image saved: output\birthday_Alex_Johnson_20250609.jpg
+2025-06-09 14:13:44 - INFO - Email sent successfully to alex.johnson@example.com
+2025-06-09 14:13:44 - INFO - Using custom font with size 100
+2025-06-09 14:13:44 - INFO - Personalized image saved: output\birthday_Sophie_Williams_20250609.jpg
+2025-06-09 14:13:48 - INFO - Email sent successfully to sophie.williams@example.com
+2025-06-09 14:13:48 - INFO - Using custom font with size 100
+2025-06-09 14:13:48 - INFO - Personalized image saved: output\birthday_Lisa_Anderson_20250609.jpg
+2025-06-09 14:13:53 - INFO - Email sent successfully to lisa.anderson@example.com
+2025-06-09 14:13:53 - INFO - Using custom font with size 100
+2025-06-09 14:13:53 - INFO - Personalized image saved: output\birthday_Ryan_Thomas_20250609.jpg
+2025-06-09 14:13:58 - INFO - Email sent successfully to ryan.thomas@example.com
+2025-06-09 14:13:58 - INFO - Checking for marriage anniversary emails...
+2025-06-09 14:13:58 - INFO - Found 2 employees with marriage anniversaries today
+2025-06-09 14:13:58 - INFO - Using custom font with size 40
+2025-06-09 14:13:58 - INFO - Personalized image saved: output\anniversary_Alex_Johnson_20250609.jpg
+2025-06-09 14:14:01 - INFO - Email sent successfully to alex.johnson@example.com
+2025-06-09 14:14:01 - INFO - Using custom font with size 40
+2025-06-09 14:14:01 - INFO - Personalized image saved: output\anniversary_Mark_Taylor_20250609.jpg
+2025-06-09 14:14:05 - INFO - Email sent successfully to mark.taylor@example.com
+2025-06-09 14:14:09 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 14:14:09 - INFO - Daily report sent successfully
+2025-06-09 14:14:09 - INFO - Daily email automation check completed
