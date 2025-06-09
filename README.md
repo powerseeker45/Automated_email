@@ -1,4 +1,4 @@
-# 🎉 Email Automation System - Setup Guide
+# 🎉 Email Automation System
 
 An automated system that sends personalized birthday and marriage anniversary greeting cards to employees via email.
 
