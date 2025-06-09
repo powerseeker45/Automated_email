@@ -50,3 +50,58 @@
 2025-06-09 12:50:17 - INFO - Email sent successfully to shashwat.airtel@gmail.com
 2025-06-09 12:50:17 - INFO - Daily report sent successfully
 2025-06-09 12:50:17 - INFO - Daily email automation check completed
+2025-06-09 12:57:56 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 12:57:56 - INFO - Output folder: output
+2025-06-09 12:57:56 - INFO - Logs folder: output\logs
+2025-06-09 12:57:56 - INFO - Loaded 5 employee records from employees_test_today.csv
+2025-06-09 12:57:56 - INFO - Checking for birthday emails...
+2025-06-09 12:57:56 - INFO - Found 5 employees with birthdays today
+2025-06-09 12:57:56 - INFO - Using custom font with size 40
+2025-06-09 12:57:56 - INFO - Personalized image saved: output\birthday_Alex_Johnson_20250609.jpg
+2025-06-09 12:58:01 - INFO - Email sent successfully to alex.johnson@example.com
+2025-06-09 12:58:01 - INFO - Using custom font with size 40
+2025-06-09 12:58:01 - INFO - Personalized image saved: output\birthday_Sophie_Williams_20250609.jpg
+2025-06-09 12:58:06 - INFO - Email sent successfully to sophie.williams@example.com
+2025-06-09 12:58:06 - INFO - Using custom font with size 40
+2025-06-09 12:58:06 - INFO - Personalized image saved: output\birthday_Mark_Taylor_20250609.jpg
+2025-06-09 12:58:11 - INFO - Email sent successfully to mark.taylor@example.com
+2025-06-09 12:58:11 - INFO - Using custom font with size 40
+2025-06-09 12:58:11 - INFO - Personalized image saved: output\birthday_Lisa_Anderson_20250609.jpg
+2025-06-09 12:58:15 - INFO - Email sent successfully to lisa.anderson@example.com
+2025-06-09 12:58:15 - INFO - Using custom font with size 40
+2025-06-09 12:58:15 - INFO - Personalized image saved: output\birthday_Ryan_Thomas_20250609.jpg
+2025-06-09 12:58:20 - INFO - Email sent successfully to ryan.thomas@example.com
+2025-06-09 12:58:20 - INFO - Checking for marriage anniversary emails...
+2025-06-09 12:58:20 - WARNING - No marriage_anniversary column found in employee data
+2025-06-09 12:58:25 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 12:58:25 - INFO - Daily report sent successfully
+2025-06-09 12:58:25 - INFO - Daily email automation check completed
+2025-06-09 13:00:39 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 13:00:39 - INFO - Output folder: output
+2025-06-09 13:00:39 - INFO - Logs folder: output\logs
+2025-06-09 13:00:39 - INFO - Loaded 5 employee records from employees_test_today.csv
+2025-06-09 13:00:39 - INFO - Checking for birthday emails...
+2025-06-09 13:00:39 - INFO - Found 5 employees with birthdays today
+2025-06-09 13:00:39 - INFO - Using custom font with size 40
+2025-06-09 13:00:39 - INFO - Personalized image saved: output\birthday_Alex_Johnson_20250609.jpg
+2025-06-09 13:00:44 - INFO - Email sent successfully to alex.johnson@example.com
+2025-06-09 13:00:44 - INFO - Using custom font with size 40
+2025-06-09 13:00:44 - INFO - Personalized image saved: output\birthday_Sophie_Williams_20250609.jpg
+2025-06-09 13:00:48 - INFO - Email sent successfully to sophie.williams@example.com
+2025-06-09 13:00:48 - INFO - Using custom font with size 40
+2025-06-09 13:00:48 - INFO - Personalized image saved: output\birthday_Mark_Taylor_20250609.jpg
+2025-06-09 13:00:55 - INFO - Email sent successfully to mark.taylor@example.com
+2025-06-09 13:00:55 - INFO - Using custom font with size 40
+2025-06-09 13:00:55 - INFO - Personalized image saved: output\birthday_Lisa_Anderson_20250609.jpg
+2025-06-09 13:01:00 - INFO - Email sent successfully to lisa.anderson@example.com
+2025-06-09 13:01:00 - INFO - Using custom font with size 40
+2025-06-09 13:01:00 - INFO - Personalized image saved: output\birthday_Ryan_Thomas_20250609.jpg
+2025-06-09 13:01:05 - INFO - Email sent successfully to ryan.thomas@example.com
+2025-06-09 13:01:05 - INFO - Checking for marriage anniversary emails...
+2025-06-09 13:01:05 - INFO - Found 1 employees with marriage anniversaries today
+2025-06-09 13:01:05 - INFO - Using custom font with size 40
+2025-06-09 13:01:05 - INFO - Personalized image saved: output\anniversary_Mark_Taylor_20250609.jpg
+2025-06-09 13:01:10 - INFO - Email sent successfully to mark.taylor@example.com
+2025-06-09 13:01:17 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 13:01:17 - INFO - Daily report sent successfully
+2025-06-09 13:01:17 - INFO - Daily email automation check completed

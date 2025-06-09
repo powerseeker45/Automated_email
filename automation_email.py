@@ -248,11 +248,11 @@ class EmailAutomation:
                 font = None
                 
                 # Option 1: Try custom font (uncomment to use)
-                # try:
-                #     font = ImageFont.truetype("fonts/your_custom_font.ttf", font_size)
-                #     self.logger.info(f"Using custom font with size {font_size}")
-                # except:
-                #     pass
+                try:
+                    font = ImageFont.truetype("fonts/Edwardian Script ITC/edwardianscriptitc.ttf", font_size)
+                    self.logger.info(f"Using custom font with size {font_size}")
+                except:
+                    pass
                 
                 # Option 2: Try system fonts
                 if not font:
@@ -517,7 +517,7 @@ class EmailAutomation:
         except Exception as e:
             self.log_error("Error in birthday email processing", e)
     
-    def check_and_send_marriage_anniversary_emails(self, df: pd.DataFrame, 
+    def check_and_send_anniversary_emails(self, df: pd.DataFrame, 
                                                  anniversary_card_path: str,
                                                  text_position: tuple = (50, 50),
                                                  font_size: int = 40,
@@ -535,16 +535,16 @@ class EmailAutomation:
             today = datetime.date.today()
             self.logger.info("Checking for marriage anniversary emails...")
             
-            # Check if marriage_anniversary column exists
-            if 'marriage_anniversary' not in df.columns:
-                self.logger.warning("No marriage_anniversary column found in employee data")
+            # Check if anniversary column exists
+            if 'anniversary' not in df.columns:
+                self.logger.warning("No anniversary column found in employee data")
                 return
             
             # Filter employees with marriage anniversaries today
             anniversary_employees = df[
-                (df['marriage_anniversary'].dt.month == today.month) & 
-                (df['marriage_anniversary'].dt.day == today.day) &
-                (df['marriage_anniversary'].notna())
+                (df['anniversary'].dt.month == today.month) & 
+                (df['anniversary'].dt.day == today.day) &
+                (df['anniversary'].notna())
             ]
             
             self.logger.info(f"Found {len(anniversary_employees)} employees with marriage anniversaries today")
@@ -556,7 +556,7 @@ class EmailAutomation:
                     email = employee['email']
                     
                     # Calculate years of marriage
-                    years = today.year - employee['marriage_anniversary'].year
+                    years = today.year - employee['anniversary'].year
                     
                     self.stats['anniversaries_today'].append({
                         'name': f"{first_name} {last_name}",
@@ -764,7 +764,7 @@ class EmailAutomation:
             
             # Check and send marriage anniversary emails with custom styling
             if os.path.exists(anniversary_card_path):
-                self.check_and_send_marriage_anniversary_emails(
+                self.check_and_send_anniversary_emails(
                     df, 
                     anniversary_card_path, 
                     anniversary_text_pos,
@@ -1017,7 +1017,7 @@ if __name__ == "__main__":
 
 # Example CSV structure (save as employees.csv)
 """
-first_name,last_name,email,birthday,marriage_anniversary
+first_name,last_name,email,birthday,anniversary
 John,Doe,john.doe@company.com,1990-06-09,2018-05-20
 Jane,Smith,jane.smith@company.com,1985-12-25,2015-08-15
 Bob,Johnson,bob.johnson@company.com,1992-06-09,2020-10-12

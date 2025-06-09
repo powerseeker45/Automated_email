@@ -1,0 +1,186 @@
+test_add_text_to_image_different_colors (__main__.TestEmailAutomation.test_add_text_to_image_different_colors)
+Test text addition with different colors ... ok
+test_add_text_to_image_different_positions (__main__.TestEmailAutomation.test_add_text_to_image_different_positions)
+Test text addition at different positions ... ok
+test_add_text_to_image_file_not_found (__main__.TestEmailAutomation.test_add_text_to_image_file_not_found)
+Test text addition to non-existent image ... ok
+test_add_text_to_image_success (__main__.TestEmailAutomation.test_add_text_to_image_success)
+Test successful text addition to image ... ok
+test_check_and_send_anniversary_emails_no_column (__main__.TestEmailAutomation.test_check_and_send_anniversary_emails_no_column)
+Test anniversary email processing without anniversary column ... ok
+test_check_and_send_anniversary_emails_success (__main__.TestEmailAutomation.test_check_and_send_anniversary_emails_success)
+Test anniversary email processing ... FAIL
+test_check_and_send_birthday_emails_image_error (__main__.TestEmailAutomation.test_check_and_send_birthday_emails_image_error)
+Test birthday email processing with image creation error ... FAIL
+test_check_and_send_birthday_emails_no_birthdays (__main__.TestEmailAutomation.test_check_and_send_birthday_emails_no_birthdays)
+Test birthday email processing with no birthdays today ... ok
+test_check_and_send_birthday_emails_success (__main__.TestEmailAutomation.test_check_and_send_birthday_emails_success)
+Test birthday email processing ... FAIL
+test_create_email_message_invalid_sender (__main__.TestEmailAutomation.test_create_email_message_invalid_sender)
+Test email message creation with invalid sender ... ok
+test_create_email_message_success (__main__.TestEmailAutomation.test_create_email_message_success)
+Test successful email message creation ... ok
+test_create_email_message_without_image (__main__.TestEmailAutomation.test_create_email_message_without_image)
+Test email message creation without image ... ok
+test_create_summary_report (__main__.TestEmailAutomation.test_create_summary_report)
+Test summary report creation ... ok
+test_different_font_sizes (__main__.TestEmailAutomation.test_different_font_sizes)
+Test different font size configurations ... ok
+test_different_text_positions (__main__.TestEmailAutomation.test_different_text_positions)
+Test different text position configurations ... ok
+test_empty_csv_file (__main__.TestEmailAutomation.test_empty_csv_file)
+Test handling of empty CSV file ... ok
+test_initialization_invalid_types (__main__.TestEmailAutomation.test_initialization_invalid_types)
+Test EmailAutomation initialization with invalid types ... ok
+test_initialization_missing_required_config (__main__.TestEmailAutomation.test_initialization_missing_required_config)
+Test EmailAutomation initialization with missing configuration ... FAIL
+test_initialization_with_environment_variables (__main__.TestEmailAutomation.test_initialization_with_environment_variables)
+Test EmailAutomation initialization with environment variables ... ok
+test_initialization_with_parameters (__main__.TestEmailAutomation.test_initialization_with_parameters)
+Test EmailAutomation initialization with direct parameters ... ok
+test_large_dataset_processing (__main__.TestEmailAutomation.test_large_dataset_processing)
+Test processing of large employee dataset ... ok
+test_leap_year_birthday (__main__.TestEmailAutomation.test_leap_year_birthday)
+Test handling of leap year birthdays ... ok
+test_load_employee_data_file_not_found (__main__.TestEmailAutomation.test_load_employee_data_file_not_found)
+Test loading employee data when file doesn't exist ... ok
+test_load_employee_data_invalid_dates (__main__.TestEmailAutomation.test_load_employee_data_invalid_dates)
+Test loading employee data with invalid date formats ... ok
+test_load_employee_data_missing_columns (__main__.TestEmailAutomation.test_load_employee_data_missing_columns)
+Test loading employee data with missing required columns ... ok
+test_load_employee_data_success (__main__.TestEmailAutomation.test_load_employee_data_success)
+Test successful loading of employee data ... ok
+test_log_error_functionality (__main__.TestEmailAutomation.test_log_error_functionality)
+Test error logging functionality ... ok
+test_log_file_creation (__main__.TestEmailAutomation.test_log_file_creation)
+Test that log files are created properly ... ok
+test_multiple_image_formats (__main__.TestEmailAutomation.test_multiple_image_formats)
+Test handling of different image formats ... ok
+test_output_folder_structure (__main__.TestEmailAutomation.test_output_folder_structure)
+Test that output folder structure is created correctly ... ok
+test_run_daily_check_missing_files (__main__.TestEmailAutomation.test_run_daily_check_missing_files)
+Test daily check with missing files ... ok
+test_run_daily_check_success (__main__.TestEmailAutomation.test_run_daily_check_success)
+Test complete daily check process ... ok
+test_send_daily_report_invalid_sender (__main__.TestEmailAutomation.test_send_daily_report_invalid_sender)
+Test daily report sending with invalid sender ... ok
+test_send_daily_report_success (__main__.TestEmailAutomation.test_send_daily_report_success)
+Test daily report sending ... ok
+test_send_email_authentication_error (__main__.TestEmailAutomation.test_send_email_authentication_error)
+Test email sending with authentication error ... ok
+test_send_email_invalid_config (__main__.TestEmailAutomation.test_send_email_invalid_config)
+Test sending email with invalid configuration ... ok
+test_send_email_none_message (__main__.TestEmailAutomation.test_send_email_none_message)
+Test sending None message ... ok
+test_send_email_success (__main__.TestEmailAutomation.test_send_email_success)
+Test successful email sending ... ok
+test_special_characters_in_names (__main__.TestEmailAutomation.test_special_characters_in_names)
+Test handling of special characters in names ... ok
+test_stats_tracking (__main__.TestEmailAutomation.test_stats_tracking)
+Test statistics tracking ... ok
+test_very_long_name (__main__.TestEmailAutomation.test_very_long_name)
+Test handling of very long names ... ok
+test_end_to_end_workflow (__main__.TestEmailAutomationIntegration.test_end_to_end_workflow)
+Test complete end-to-end workflow ... ok
+
+======================================================================
+FAIL: test_check_and_send_anniversary_emails_success (__main__.TestEmailAutomation.test_check_and_send_anniversary_emails_success)
+Test anniversary email processing
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1426, in patched
+    return func(*newargs, **newkeywargs)
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 650, in test_check_and_send_anniversary_emails_success
+    self.assertEqual(email_system.stats['anniversary_emails_sent'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+Stderr:
+2025-06-09 13:16:14 - INFO - Checking for marriage anniversary emails...
+2025-06-09 13:16:14 - ERROR - Error in anniversary email processing: Can only use .dt accessor with datetimelike values
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 545, in check_and_send_anniversary_emails
+    (df['anniversary'].dt.month == today.month) &
+     ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values. Did you mean: 'at'?
+
+
+======================================================================
+FAIL: test_check_and_send_birthday_emails_image_error (__main__.TestEmailAutomation.test_check_and_send_birthday_emails_image_error)
+Test birthday email processing with image creation error
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1426, in patched
+    return func(*newargs, **newkeywargs)
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 598, in test_check_and_send_birthday_emails_image_error
+    self.assertEqual(email_system.stats['birthday_emails_failed'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+Stderr:
+2025-06-09 13:16:15 - INFO - Checking for birthday emails...
+2025-06-09 13:16:15 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 461, in check_and_send_birthday_emails
+    (df['birthday'].dt.month == today.month) &
+     ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values. Did you mean: 'at'?
+
+
+======================================================================
+FAIL: test_check_and_send_birthday_emails_success (__main__.TestEmailAutomation.test_check_and_send_birthday_emails_success)
+Test birthday email processing
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\unittest\mock.py", line 1426, in patched
+    return func(*newargs, **newkeywargs)
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 538, in test_check_and_send_birthday_emails_success
+    self.assertEqual(email_system.stats['birthday_emails_sent'], 1)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 1
+
+Stderr:
+2025-06-09 13:16:15 - INFO - Checking for birthday emails...
+2025-06-09 13:16:15 - ERROR - Error in birthday email processing: Can only use .dt accessor with datetimelike values
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\automation_email.py", line 461, in check_and_send_birthday_emails
+    (df['birthday'].dt.month == today.month) &
+     ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values. Did you mean: 'at'?
+
+
+======================================================================
+FAIL: test_initialization_missing_required_config (__main__.TestEmailAutomation.test_initialization_missing_required_config)
+Test EmailAutomation initialization with missing configuration
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\greetings email\test_email_automation.py", line 164, in test_initialization_missing_required_config
+    with self.assertRaises(ValueError) as context:
+         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 42 tests in 1.457s
+
+FAILED (failures=4)
