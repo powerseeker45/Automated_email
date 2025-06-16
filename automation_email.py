@@ -390,8 +390,6 @@ class EmailAutomation:
             <html>
                 <body>
                     <img src="cid:greeting_card" style="max-width: 600px; height: auto;">
-                    <br><br>
-                    <p>Best wishes,<br>HR Team</p>
                 </body>
             </html>
             """

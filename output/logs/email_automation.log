@@ -447,3 +447,82 @@
 2025-06-09 16:27:33 - INFO - Email sent successfully to shashwat.airtel@gmail.com
 2025-06-09 16:27:33 - INFO - Daily report sent successfully
 2025-06-09 16:27:33 - INFO - Daily email automation check completed
+2025-06-09 16:34:46 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 16:34:46 - INFO - Output folder: output
+2025-06-09 16:34:46 - INFO - Logs folder: output\logs
+2025-06-09 16:34:46 - INFO - Loaded 5 employee records from employees_test_today.csv
+2025-06-09 16:34:46 - WARNING - Invalid birthday dates for employees: ['mark.taylor@example.com']
+2025-06-09 16:34:46 - INFO - Checking for birthday emails...
+2025-06-09 16:34:46 - INFO - Found 4 employees with birthdays today
+2025-06-09 16:34:46 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-09 16:34:46 - INFO - Personalized image saved: output\birthday_Alex_Johnson_20250609.jpg
+2025-06-09 16:34:52 - INFO - Email sent successfully to alex.johnson@example.com
+2025-06-09 16:34:52 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-09 16:34:52 - INFO - Personalized image saved: output\birthday_Sophie_Williams_20250609.jpg
+2025-06-09 16:34:57 - INFO - Email sent successfully to sophie.williams@example.com
+2025-06-09 16:34:57 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-09 16:34:57 - INFO - Personalized image saved: output\birthday_Lisa_Anderson_20250609.jpg
+2025-06-09 16:35:03 - INFO - Email sent successfully to lisa.anderson@example.com
+2025-06-09 16:35:03 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-09 16:35:03 - INFO - Personalized image saved: output\birthday_Ryan_Thomas_20250609.jpg
+2025-06-09 16:35:09 - INFO - Email sent successfully to ryan.thomas@example.com
+2025-06-09 16:35:09 - INFO - Checking for marriage anniversary emails...
+2025-06-09 16:35:09 - INFO - Found 2 employees with marriage anniversaries today
+2025-06-09 16:35:09 - INFO - Using custom font: C:/Windows/Fonts/HTOWERT.TTF with size 72
+2025-06-09 16:35:09 - INFO - Personalized image saved: output\anniversary_Alex_Johnson_20250609.jpg
+2025-06-09 16:35:15 - INFO - Email sent successfully to alex.johnson@example.com
+2025-06-09 16:35:15 - INFO - Using custom font: C:/Windows/Fonts/HTOWERT.TTF with size 72
+2025-06-09 16:35:15 - INFO - Personalized image saved: output\anniversary_Mark_Taylor_20250609.jpg
+2025-06-09 16:35:20 - INFO - Email sent successfully to mark.taylor@example.com
+2025-06-09 16:35:25 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-09 16:35:25 - INFO - Daily report sent successfully
+2025-06-09 16:35:25 - INFO - Daily email automation check completed
+2025-06-09 16:39:04 - INFO - Starting daily email automation check for 2025-06-09
+2025-06-09 16:39:04 - INFO - Output folder: output
+2025-06-09 16:39:04 - INFO - Logs folder: output\logs
+2025-06-09 16:39:04 - INFO - Loaded 5 employee records from employees_test_today.csv
+2025-06-09 16:39:04 - WARNING - Invalid birthday dates for employees: ['mark.taylor@example.com']
+2025-06-09 16:39:04 - INFO - Checking for birthday emails...
+2025-06-09 16:39:04 - INFO - Found 4 employees with birthdays today
+2025-06-09 16:39:04 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-09 16:39:04 - INFO - Personalized image saved: output\birthday_Alex_Johnson_20250609.jpg
+2025-06-09 16:39:52 - ERROR - SMTP server disconnected when sending to alex.johnson@example.com: Connection unexpectedly closed: [WinError 10054] An existing connection was forcibly closed by the remote host
+Traceback (most recent call last):
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\smtplib.py", line 398, in getreply
+    line = self.file.readline(_MAXLINE + 1)
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1304, in recv_into
+    return self.read(nbytes, buffer)
+           ~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\ssl.py", line 1138, in read
+    return self._sslobj.read(len, buffer)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\automation_email.py", line 428, in send_email
+    server.login(self.sender_email, self.password)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\smtplib.py", line 714, in login
+    self.ehlo_or_helo_if_needed()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\smtplib.py", line 611, in ehlo_or_helo_if_needed
+    if not (200 <= self.ehlo()[0] <= 299):
+                   ~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\smtplib.py", line 452, in ehlo
+    (code, msg) = self.getreply()
+                  ~~~~~~~~~~~~~^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\smtplib.py", line 401, in getreply
+    raise SMTPServerDisconnected("Connection unexpectedly closed: "
+                                 + str(e))
+smtplib.SMTPServerDisconnected: Connection unexpectedly closed: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+2025-06-09 16:39:52 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-09 16:39:52 - INFO - Personalized image saved: output\birthday_Sophie_Williams_20250609.jpg
+2025-06-09 16:39:57 - INFO - Email sent successfully to sophie.williams@example.com
+2025-06-09 16:39:57 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-09 16:39:57 - INFO - Personalized image saved: output\birthday_Lisa_Anderson_20250609.jpg

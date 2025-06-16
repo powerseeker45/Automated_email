@@ -3,26 +3,30 @@
         ================================================================
         
         EXECUTION SUMMARY:
-        - Start Time: 16:27:13
-        - End Time: 16:27:29
-        - Duration: 0:00:15.926918
+        - Start Time: 16:34:46
+        - End Time: 16:35:20
+        - Duration: 0:00:34.231004
         
         BIRTHDAY EMAILS:
-        - Sent Successfully: 1
+        - Sent Successfully: 4
         - Failed: 0
-        - Birthdays Today: 1
+        - Birthdays Today: 4
         
         ANNIVERSARY EMAILS:
-        - Sent Successfully: 1
+        - Sent Successfully: 2
         - Failed: 0
-        - Anniversaries Today: 1
+        - Anniversaries Today: 2
         
-        TOTAL EMAILS SENT: 2
+        TOTAL EMAILS SENT: 6
         TOTAL ERRORS: 0
         
         
 BIRTHDAYS TODAY:
 - Alex Johnson (alex.johnson@example.com)
+- Sophie Williams (sophie.williams@example.com)
+- Lisa Anderson (lisa.anderson@example.com)
+- Ryan Thomas (ryan.thomas@example.com)
 
 ANNIVERSARIES TODAY:
 - Alex Johnson (alex.johnson@example.com) - 5 years
+- Mark Taylor (mark.taylor@example.com) - 0 years
