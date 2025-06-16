@@ -1,0 +1,155 @@
+2025-06-16 14:34:05 - INFO - 🚀 Starting Outlook Web email automation check for 2025-06-16
+2025-06-16 14:34:05 - INFO - 📁 Output folder: output
+2025-06-16 14:34:05 - INFO - 📝 Logs folder: output\logs
+2025-06-16 14:34:05 - INFO - Setting up Chrome browser...
+2025-06-16 14:34:05 - INFO - Using temporary Chrome profile (you may need to log in)
+2025-06-16 14:34:08 - INFO - ✅ Chrome browser setup successful
+2025-06-16 14:34:24 - INFO - Not logged in, checking for sign-in options...
+2025-06-16 14:35:05 - ERROR - Login verification failed: Message: 
+
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\outlook_automation_email.py", line 148, in login_to_outlook
+    WebDriverWait(self.driver, 10).until(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        EC.any_of(
+        ^^^^^^^^^^
+    ...<3 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 138, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\outlook_automation_email.py", line 191, in login_to_outlook
+    WebDriverWait(self.driver, 30).until(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        EC.any_of(
+        ^^^^^^^^^^
+    ...<3 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\support\wait.py", line 138, in until
+    raise TimeoutException(message, screen, stacktrace)
+selenium.common.exceptions.TimeoutException: Message: 
+
+
+2025-06-16 14:35:05 - ERROR - Outlook login failed. Cannot proceed.
+2025-06-16 14:35:07 - INFO - Browser cleanup completed
+2025-06-16 14:38:51 - INFO - 🚀 Starting Outlook Web email automation check for 2025-06-16
+2025-06-16 14:38:51 - INFO - 📁 Output folder: output
+2025-06-16 14:38:51 - INFO - 📝 Logs folder: output\logs
+2025-06-16 14:38:51 - INFO - Setting up Chrome browser...
+2025-06-16 14:38:51 - INFO - Using temporary Chrome profile (you may need to log in)
+2025-06-16 14:38:53 - INFO - ✅ Chrome browser setup successful
+2025-06-16 14:39:10 - INFO - Not logged in, checking for sign-in options...
+2025-06-16 14:40:17 - INFO - 🚀 Starting Outlook Web email automation check for 2025-06-16
+2025-06-16 14:40:17 - INFO - 📁 Output folder: output
+2025-06-16 14:40:17 - INFO - 📝 Logs folder: output\logs
+2025-06-16 14:40:17 - INFO - Setting up Chrome browser...
+2025-06-16 14:40:17 - INFO - Using temporary Chrome profile (you may need to log in)
+2025-06-16 14:40:19 - INFO - ✅ Chrome browser setup successful
+2025-06-16 14:40:36 - INFO - Not logged in, checking for sign-in options...
+2025-06-16 14:45:33 - INFO - 🚀 Starting Outlook Web email automation check for 2025-06-16
+2025-06-16 14:45:33 - INFO - 📁 Output folder: output
+2025-06-16 14:45:33 - INFO - 📝 Logs folder: output\logs
+2025-06-16 14:45:33 - INFO - Setting up Chrome browser...
+2025-06-16 14:45:33 - INFO - Using Chrome profile: C:/Users/Administrator/AppData/Local/Google/Chrome/User Data/
+2025-06-16 14:45:37 - ERROR - Failed to setup browser: Message: session not created: Chrome failed to start: crashed.
+  (session not created: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location C:\Program Files\Google\Chrome\Application\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+Stacktrace:
+	GetHandleVerifier [0x0x333783+63299]
+	GetHandleVerifier [0x0x3337c4+63364]
+	(No symbol) [0x0x161113]
+	(No symbol) [0x0x1963fa]
+	(No symbol) [0x0x190459]
+	(No symbol) [0x0x1da3c2]
+	(No symbol) [0x0x1d9c5a]
+	(No symbol) [0x0x1ce376]
+	(No symbol) [0x0x19d6e0]
+	(No symbol) [0x0x19e544]
+	GetHandleVerifier [0x0x58e073+2531379]
+	GetHandleVerifier [0x0x589372+2511666]
+	GetHandleVerifier [0x0x359efa+220858]
+	GetHandleVerifier [0x0x34a548+156936]
+	GetHandleVerifier [0x0x350c7d+183357]
+	GetHandleVerifier [0x0x33b6e8+95912]
+	GetHandleVerifier [0x0x33b890+96336]
+	GetHandleVerifier [0x0x32666a+9770]
+	BaseThreadInitThunk [0x0x76455d49+25]
+	RtlInitializeExceptionChain [0x0x7791d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7791d021+561]
+	(No symbol) [0x0]
+
+Traceback (most recent call last):
+  File "c:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\outlook_automation_email.py", line 124, in setup_browser
+    self.driver = webdriver.Chrome(service=service, options=chrome_options)
+                  ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 47, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        browser_name=DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive=keep_alive,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 69, in __init__
+    super().__init__(command_executor=executor, options=options)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 257, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 356, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 447, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\Administrator\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome failed to start: crashed.
+  (session not created: DevToolsActivePort file doesn't exist)
+  (The process started from chrome location C:\Program Files\Google\Chrome\Application\chrome.exe is no longer running, so ChromeDriver is assuming that Chrome has crashed.)
+Stacktrace:
+	GetHandleVerifier [0x0x333783+63299]
+	GetHandleVerifier [0x0x3337c4+63364]
+	(No symbol) [0x0x161113]
+	(No symbol) [0x0x1963fa]
+	(No symbol) [0x0x190459]
+	(No symbol) [0x0x1da3c2]
+	(No symbol) [0x0x1d9c5a]
+	(No symbol) [0x0x1ce376]
+	(No symbol) [0x0x19d6e0]
+	(No symbol) [0x0x19e544]
+	GetHandleVerifier [0x0x58e073+2531379]
+	GetHandleVerifier [0x0x589372+2511666]
+	GetHandleVerifier [0x0x359efa+220858]
+	GetHandleVerifier [0x0x34a548+156936]
+	GetHandleVerifier [0x0x350c7d+183357]
+	GetHandleVerifier [0x0x33b6e8+95912]
+	GetHandleVerifier [0x0x33b890+96336]
+	GetHandleVerifier [0x0x32666a+9770]
+	BaseThreadInitThunk [0x0x76455d49+25]
+	RtlInitializeExceptionChain [0x0x7791d09b+107]
+	RtlGetAppContainerNamedObjectPath [0x0x7791d021+561]
+	(No symbol) [0x0]
+
+
+2025-06-16 14:45:37 - ERROR - Browser setup failed. Cannot proceed.
+2025-06-16 14:46:40 - INFO - 🚀 Starting Outlook Web email automation check for 2025-06-16
+2025-06-16 14:46:40 - INFO - 📁 Output folder: output
+2025-06-16 14:46:40 - INFO - 📝 Logs folder: output\logs
+2025-06-16 14:46:40 - INFO - Setting up Chrome browser...
+2025-06-16 14:46:40 - INFO - Using Chrome profile: C:/Users/Administrator/AppData/Local/Google/Chrome/User Data/Profile 3
+2025-06-16 14:46:43 - INFO - ✅ Chrome browser setup successful
+2025-06-16 14:46:59 - INFO - Not logged in, checking for sign-in options...
