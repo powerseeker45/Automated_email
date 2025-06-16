@@ -100,6 +100,51 @@ class OutlookWebEmailAutomation:
             'traceback': traceback.format_exc() if exception else None
         })
     
+    def debug_page_state(self) -> None:
+        """Debug helper to understand current page state"""
+        try:
+            if not self.driver:
+                self.logger.error("No driver available for debugging")
+                return
+                
+            self.logger.info("=== PAGE DEBUG INFO ===")
+            self.logger.info(f"Current URL: {self.driver.current_url}")
+            self.logger.info(f"Page Title: {self.driver.title}")
+            
+            # Check for common elements
+            common_selectors = [
+                ("Compose button", "//button[contains(@aria-label, 'New message')]"),
+                ("Inbox", "//div[contains(@aria-label, 'Inbox')]"),
+                ("Sign in", "//a[contains(text(), 'Sign in')]"),
+                ("Profile", "//button[contains(@aria-label, 'Account manager')]"),
+                ("Mail list", "//div[contains(@role, 'list')]")
+            ]
+            
+            for name, selector in common_selectors:
+                try:
+                    elements = self.driver.find_elements(By.XPATH, selector)
+                    self.logger.info(f"{name}: Found {len(elements)} elements")
+                    if elements:
+                        element = elements[0]
+                        self.logger.info(f"  - Visible: {element.is_displayed()}")
+                        self.logger.info(f"  - Enabled: {element.is_enabled()}")
+                        self.logger.info(f"  - Text: {element.text[:50]}...")
+                except Exception as e:
+                    self.logger.info(f"{name}: Error checking - {e}")
+            
+            # Take a screenshot for debugging
+            try:
+                screenshot_path = os.path.join(self.output_folder, f"debug_screenshot_{int(time.time())}.png")
+                self.driver.save_screenshot(screenshot_path)
+                self.logger.info(f"Debug screenshot saved: {screenshot_path}")
+            except Exception as e:
+                self.logger.warning(f"Could not save screenshot: {e}")
+                
+            self.logger.info("=== END DEBUG INFO ===")
+            
+        except Exception as e:
+            self.logger.error(f"Error in debug_page_state: {e}")
+
     def setup_browser(self) -> bool:
         """Setup Chrome browser with appropriate options"""
         try:
@@ -251,83 +296,144 @@ class OutlookWebEmailAutomation:
                 
             self.logger.info(f"Composing email to {recipient_email}")
             
-            # Click compose/new message button
+            # Enhanced compose button detection
             compose_selectors = [
+                # Primary selectors for compose button
                 "//button[contains(@aria-label, 'New message')]",
                 "//button[contains(@aria-label, 'Compose')]",
-                "//div[contains(@data-testid, 'compose')]//button",
+                "//button[contains(@title, 'New message')]",
+                "//button[contains(@title, 'Compose')]",
+                "//button[contains(@data-testid, 'compose')]",
+                
+                # Alternative selectors
+                "//div[contains(@data-testid, 'compose-button')]//button",
                 "//span[contains(text(), 'New message')]/..",
-                "//button[contains(@class, 'compose')]"
+                "//span[contains(text(), 'Compose')]/..",
+                "//button[contains(@class, 'compose')]",
+                "//a[contains(@aria-label, 'New message')]",
+                "//a[contains(@aria-label, 'Compose')]",
+                
+                # Fallback selectors
+                "//div[contains(@class, 'new-message')]//button",
+                "//div[contains(@class, 'compose')]//button",
+                "//button[contains(text(), 'New')]",
+                "//button[contains(text(), 'Compose')]"
             ]
             
             compose_clicked = False
-            for selector in compose_selectors:
+            for i, selector in enumerate(compose_selectors):
                 try:
                     if not self.driver:
                         raise Exception("Browser driver not available")
-                        
+                    
+                    self.logger.debug(f"Trying compose selector {i+1}/{len(compose_selectors)}: {selector}")
                     compose_button = WebDriverWait(self.driver, 5).until(
                         EC.element_to_be_clickable((By.XPATH, selector))
                     )
                     compose_button.click()
                     compose_clicked = True
-                    self.logger.info("Clicked compose button")
+                    self.logger.info(f"✅ Clicked compose button using selector: {selector}")
                     break
-                except:
+                except Exception as e:
+                    self.logger.debug(f"Compose selector {i+1} failed: {e}")
                     continue
             
             if not compose_clicked:
-                raise Exception("Could not find compose button")
+                # Try JavaScript click as fallback
+                try:
+                    for selector in compose_selectors[:5]:  # Try top 5 with JS
+                        try:
+                            element = self.driver.find_element(By.XPATH, selector)
+                            self.driver.execute_script("arguments[0].click();", element)
+                            compose_clicked = True
+                            self.logger.info(f"✅ Clicked compose button using JavaScript")
+                            break
+                        except:
+                            continue
+                except Exception as e:
+                    self.logger.debug(f"JavaScript click fallback failed: {e}")
+            
+            if not compose_clicked:
+                raise Exception("Could not find or click send button")
+            
+        except Exception as e:
+            self.log_error(f"Error sending email to {recipient_email}", e)
+            return False find or click compose button")
             
             # Wait for compose window to open
             time.sleep(3)
             
-            # Fill in recipient
+            # Enhanced recipient field detection
             to_selectors = [
                 "//input[contains(@aria-label, 'To')]",
                 "//input[contains(@placeholder, 'To')]",
+                "//input[contains(@placeholder, 'Enter names or email addresses')]",
                 "//div[contains(@aria-label, 'To')]//input",
-                "//input[contains(@class, 'to')]"
+                "//div[contains(@data-testid, 'to-field')]//input",
+                "//input[contains(@class, 'to')]",
+                "//input[contains(@name, 'to')]",
+                "//input[contains(@id, 'to')]",
+                "//div[contains(@class, 'recipient')]//input",
+                "//textarea[contains(@aria-label, 'To')]"
             ]
             
-            for selector in to_selectors:
+            recipient_filled = False
+            for i, selector in enumerate(to_selectors):
                 try:
                     if not self.driver:
                         raise Exception("Browser driver not available")
-                        
+                    
+                    self.logger.debug(f"Trying recipient selector {i+1}/{len(to_selectors)}: {selector}")
                     to_field = WebDriverWait(self.driver, 5).until(
                         EC.element_to_be_clickable((By.XPATH, selector))
                     )
                     to_field.clear()
                     to_field.send_keys(recipient_email)
+                    recipient_filled = True
+                    self.logger.info(f"✅ Filled recipient: {recipient_email}")
                     time.sleep(1)
-                    self.logger.info(f"Filled recipient: {recipient_email}")
                     break
-                except:
+                except Exception as e:
+                    self.logger.debug(f"Recipient selector {i+1} failed: {e}")
                     continue
             
-            # Fill in subject
+            if not recipient_filled:
+                raise Exception("Could not find recipient field")
+            
+            # Enhanced subject field detection
             subject_selectors = [
                 "//input[contains(@aria-label, 'Subject')]",
                 "//input[contains(@placeholder, 'Subject')]",
-                "//input[contains(@class, 'subject')]"
+                "//input[contains(@placeholder, 'Add a subject')]",
+                "//input[contains(@class, 'subject')]",
+                "//input[contains(@name, 'subject')]",
+                "//input[contains(@id, 'subject')]",
+                "//div[contains(@data-testid, 'subject')]//input",
+                "//div[contains(@aria-label, 'Subject')]//input"
             ]
             
-            for selector in subject_selectors:
+            subject_filled = False
+            for i, selector in enumerate(subject_selectors):
                 try:
                     if not self.driver:
                         raise Exception("Browser driver not available")
-                        
+                    
+                    self.logger.debug(f"Trying subject selector {i+1}/{len(subject_selectors)}: {selector}")
                     subject_field = WebDriverWait(self.driver, 5).until(
                         EC.element_to_be_clickable((By.XPATH, selector))
                     )
                     subject_field.clear()
                     subject_field.send_keys(subject)
+                    subject_filled = True
+                    self.logger.info(f"✅ Filled subject: {subject}")
                     time.sleep(1)
-                    self.logger.info(f"Filled subject: {subject}")
                     break
-                except:
+                except Exception as e:
+                    self.logger.debug(f"Subject selector {i+1} failed: {e}")
                     continue
+            
+            if not subject_filled:
+                self.logger.warning("Could not find subject field, continuing without subject")
             
             # Attach image if provided
             if image_bytes:
@@ -336,23 +442,33 @@ class OutlookWebEmailAutomation:
                 with open(temp_image_path, 'wb') as f:
                     f.write(image_bytes)
                 
-                # Look for attachment button
+                # Enhanced attachment selectors
                 attach_selectors = [
                     "//button[contains(@aria-label, 'Attach')]",
                     "//button[contains(@title, 'Attach')]",
+                    "//button[contains(@aria-label, 'Insert')]",
                     "//input[@type='file']",
-                    "//button[contains(@class, 'attach')]"
+                    "//button[contains(@class, 'attach')]",
+                    "//button[contains(@data-testid, 'attach')]",
+                    "//div[contains(@aria-label, 'Attach')]//button",
+                    "//span[contains(text(), 'Attach')]/..",
+                    "//button[contains(text(), 'Attach')]"
                 ]
                 
-                for selector in attach_selectors:
+                image_attached = False
+                for i, selector in enumerate(attach_selectors):
                     try:
                         if not self.driver:
                             raise Exception("Browser driver not available")
-                            
-                        if 'input' in selector:
+                        
+                        self.logger.debug(f"Trying attachment selector {i+1}/{len(attach_selectors)}: {selector}")
+                        
+                        if 'input' in selector and '@type=\'file\'' in selector:
                             # Direct file input
                             file_input = self.driver.find_element(By.XPATH, selector)
                             file_input.send_keys(temp_image_path)
+                            image_attached = True
+                            self.logger.info("✅ Image attached via file input")
                         else:
                             # Button that opens file dialog
                             attach_button = WebDriverWait(self.driver, 5).until(
@@ -362,15 +478,30 @@ class OutlookWebEmailAutomation:
                             time.sleep(2)
                             
                             # Look for file input after clicking
-                            file_input = WebDriverWait(self.driver, 5).until(
-                                EC.presence_of_element_located((By.XPATH, "//input[@type='file']"))
-                            )
-                            file_input.send_keys(temp_image_path)
+                            file_input_selectors = [
+                                "//input[@type='file']",
+                                "//input[contains(@accept, 'image')]",
+                                "//input[contains(@name, 'file')]"
+                            ]
+                            
+                            for file_selector in file_input_selectors:
+                                try:
+                                    file_input = WebDriverWait(self.driver, 5).until(
+                                        EC.presence_of_element_located((By.XPATH, file_selector))
+                                    )
+                                    file_input.send_keys(temp_image_path)
+                                    image_attached = True
+                                    self.logger.info("✅ Image attached via dialog")
+                                    break
+                                except:
+                                    continue
                         
-                        time.sleep(3)  # Wait for upload
-                        self.logger.info("Image attached successfully")
-                        break
-                    except:
+                        if image_attached:
+                            time.sleep(3)  # Wait for upload
+                            break
+                            
+                    except Exception as e:
+                        self.logger.debug(f"Attachment selector {i+1} failed: {e}")
                         continue
                 
                 # Clean up temp file
@@ -378,31 +509,66 @@ class OutlookWebEmailAutomation:
                     os.remove(temp_image_path)
                 except:
                     pass
+                
+                if not image_attached:
+                    self.logger.warning("Could not attach image, sending email without attachment")
             
-            # Send the email
+            # Enhanced send button detection
             send_selectors = [
                 "//button[contains(@aria-label, 'Send')]",
                 "//button[contains(text(), 'Send')]",
+                "//button[contains(@title, 'Send')]",
                 "//button[contains(@class, 'send')]",
-                "//div[contains(@aria-label, 'Send')]//button"
+                "//button[contains(@data-testid, 'send')]",
+                "//div[contains(@aria-label, 'Send')]//button",
+                "//span[contains(text(), 'Send')]/..",
+                "//input[@type='submit' and contains(@value, 'Send')]",
+                "//button[contains(@name, 'send')]"
             ]
             
-            for selector in send_selectors:
+            email_sent = False
+            for i, selector in enumerate(send_selectors):
                 try:
                     if not self.driver:
                         raise Exception("Browser driver not available")
-                        
+                    
+                    self.logger.debug(f"Trying send selector {i+1}/{len(send_selectors)}: {selector}")
                     send_button = WebDriverWait(self.driver, 5).until(
                         EC.element_to_be_clickable((By.XPATH, selector))
                     )
                     send_button.click()
-                    time.sleep(2)
+                    email_sent = True
                     self.logger.info(f"✅ Email sent to {recipient_email}")
+                    time.sleep(2)
                     return True
-                except:
+                except Exception as e:
+                    self.logger.debug(f"Send selector {i+1} failed: {e}")
                     continue
             
-            raise Exception("Could not find send button")
+            if not email_sent:
+                # Try JavaScript click as fallback
+                try:
+                    for selector in send_selectors[:3]:  # Try top 3 with JS
+                        try:
+                            element = self.driver.find_element(By.XPATH, selector)
+                            self.driver.execute_script("arguments[0].click();", element)
+                            email_sent = True
+                            self.logger.info(f"✅ Email sent using JavaScript click")
+                            time.sleep(2)
+                            return True
+                        except:
+                            continue
+                except Exception as e:
+                    self.logger.debug(f"JavaScript send fallback failed: {e}")
+            
+            if not email_sent:
+                raise Exception("Could not find or click send button")
+            
+            return False
+            
+        except Exception as e:
+            self.log_error(f"Error sending email to {recipient_email}", e)
+            return False find send button")
             
         except Exception as e:
             self.log_error(f"Error sending email to {recipient_email}", e)
@@ -1110,10 +1276,10 @@ if __name__ == "__main__":
     # Uncomment one of these lines for setup help:
     
     # Create web automation configuration template
-    #create_web_env_template()
+    # create_web_env_template()
     
     # Show detailed setup instructions
-    #show_setup_instructions()
+    # show_setup_instructions()
     
     # Run the main automation
     main()
