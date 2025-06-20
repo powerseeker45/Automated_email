@@ -526,3 +526,32 @@ smtplib.SMTPServerDisconnected: Connection unexpectedly closed: [WinError 10054]
 2025-06-09 16:39:57 - INFO - Email sent successfully to sophie.williams@example.com
 2025-06-09 16:39:57 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
 2025-06-09 16:39:57 - INFO - Personalized image saved: output\birthday_Lisa_Anderson_20250609.jpg
+2025-06-20 14:31:02 - INFO - Starting daily email automation check for 2025-06-20
+2025-06-20 14:31:02 - INFO - Output folder: output
+2025-06-20 14:31:02 - INFO - Logs folder: output\logs
+2025-06-20 14:31:02 - INFO - Loaded 5 employee records from employees_test_today.csv
+2025-06-20 14:31:02 - WARNING - Invalid birthday dates for employees: ['mark.taylor@example.com']
+2025-06-20 14:31:02 - INFO - Checking for birthday emails...
+2025-06-20 14:31:02 - INFO - Found 0 employees with birthdays today
+2025-06-20 14:31:02 - INFO - Checking for marriage anniversary emails...
+2025-06-20 14:31:02 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-20 14:31:08 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-20 14:31:08 - INFO - Daily report sent successfully
+2025-06-20 14:31:08 - INFO - Daily email automation check completed
+2025-06-20 14:32:17 - INFO - Starting daily email automation check for 2025-06-20
+2025-06-20 14:32:17 - INFO - Output folder: output
+2025-06-20 14:32:17 - INFO - Logs folder: output\logs
+2025-06-20 14:32:17 - INFO - Loaded 5 employee records from employees.csv
+2025-06-20 14:32:17 - INFO - Checking for birthday emails...
+2025-06-20 14:32:17 - INFO - Found 1 employees with birthdays today
+2025-06-20 14:32:17 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-20 14:32:17 - INFO - Personalized image saved: output\birthday_John_Doe_20250620.jpg
+2025-06-20 14:32:23 - INFO - Email sent successfully to john.doe@example.com
+2025-06-20 14:32:23 - INFO - Checking for marriage anniversary emails...
+2025-06-20 14:32:23 - INFO - Found 1 employees with marriage anniversaries today
+2025-06-20 14:32:23 - INFO - Using custom font: C:/Windows/Fonts/HTOWERT.TTF with size 72
+2025-06-20 14:32:23 - INFO - Personalized image saved: output\anniversary_John_Doe_20250620.jpg
+2025-06-20 14:32:28 - INFO - Email sent successfully to john.doe@example.com
+2025-06-20 14:32:34 - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-20 14:32:34 - INFO - Daily report sent successfully
+2025-06-20 14:32:34 - INFO - Daily email automation check completed

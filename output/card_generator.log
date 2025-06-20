@@ -1,0 +1,26 @@
+2025-06-20 14:39:36 - INFO - Starting daily card generation for 2025-06-20
+2025-06-20 14:39:36 - INFO - Loaded 5 employee records from employees.csv
+2025-06-20 14:39:36 - INFO - Checking for birthdays today...
+2025-06-20 14:39:36 - INFO - Found 1 employees with birthdays today
+2025-06-20 14:39:36 - INFO - Checking for marriage anniversaries today...
+2025-06-20 14:39:36 - INFO - Found 1 employees with marriage anniversaries today
+2025-06-20 14:39:36 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-20 14:39:36 - INFO - Personalized image saved: output\birthday_John_Doe_20250620.jpg
+2025-06-20 14:39:36 - INFO - Created birthday card for John Doe
+2025-06-20 14:39:36 - INFO - Using custom font: C:/Windows/Fonts/HTOWERT.TTF with size 72
+2025-06-20 14:39:36 - INFO - Personalized image saved: output\anniversary_John_Doe_20250620.jpg
+2025-06-20 14:39:36 - INFO - Created anniversary card for John Doe (0 years)
+2025-06-20 14:39:36 - INFO - Card generation completed. Created 1 birthday cards and 1 anniversary cards
+2025-06-20 14:45:36 - INFO - Starting daily card generation for 2025-06-20
+2025-06-20 14:45:36 - INFO - Loaded 5 employee records from employees.csv
+2025-06-20 14:45:36 - INFO - Checking for birthdays today...
+2025-06-20 14:45:36 - INFO - Found 1 employees with birthdays today
+2025-06-20 14:45:36 - INFO - Checking for marriage anniversaries today...
+2025-06-20 14:45:36 - INFO - Found 1 employees with marriage anniversaries today
+2025-06-20 14:45:36 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-20 14:45:36 - INFO - Personalized image saved: output\birthday_John_Doe_20250620.jpg
+2025-06-20 14:45:36 - INFO - Created birthday card for John Doe
+2025-06-20 14:45:37 - INFO - Using custom font: C:/Windows/Fonts/HTOWERT.TTF with size 72
+2025-06-20 14:45:37 - INFO - Personalized image saved: output\anniversary_John_Doe_20250620.jpg
+2025-06-20 14:45:37 - INFO - Created anniversary card for John Doe (0 years)
+2025-06-20 14:45:37 - INFO - Card generation completed. Created 1 birthday cards and 1 anniversary cards

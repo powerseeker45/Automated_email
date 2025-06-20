@@ -1,0 +1,201 @@
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - SMTP Email Automation system initialized
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Output folder: output
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Logs folder: output\logs
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - SMTP Server: smtp.gmail.com:587
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Sender Email: shashwat.airtel@gmail.com
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Starting daily SMTP email automation for 2025-06-20
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - CSV file: employees.csv
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Step 1: Generating birthday and anniversary cards
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Cards generated successfully - Birthday: 1, Anniversary: 1
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Step 2: Sending birthday emails
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Processing 1 birthday emails
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Processing birthday email 1/1 for John Doe (age 0)
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Loaded birthday card image: output\birthday_John_Doe_20250620.jpg
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Creating email message for John (john.doe@example.com)
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Image attached to email for John
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Email message created successfully for John
+2025-06-20 14:39:36 - SMTPEmailAutomation - INFO - Attempting to send email to john.doe@example.com
+2025-06-20 14:39:37 - SMTPEmailAutomation - INFO - SMTP connection established, authenticating...
+2025-06-20 14:39:38 - SMTPEmailAutomation - INFO - SMTP authentication successful
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Email sent successfully to john.doe@example.com
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Birthday email sent successfully to John Doe
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Step 3: Sending anniversary emails
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Processing 1 anniversary emails
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Processing anniversary email 1/1 for John Doe (0 years)
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Loaded anniversary card image: output\anniversary_John_Doe_20250620.jpg
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Creating email message for John (john.doe@example.com)
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Image attached to email for John
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Email message created successfully for John
+2025-06-20 14:39:41 - SMTPEmailAutomation - INFO - Attempting to send email to john.doe@example.com
+2025-06-20 14:39:42 - SMTPEmailAutomation - INFO - SMTP connection established, authenticating...
+2025-06-20 14:39:43 - SMTPEmailAutomation - INFO - SMTP authentication successful
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Email sent successfully to john.doe@example.com
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Anniversary email sent successfully to John Doe (0 years)
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Step 4: Sending daily report
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Generating and sending daily report
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Summary report generated
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Daily report saved to: output\daily_report_20250620.txt
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Log file attached to daily report
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Report file attached to daily report
+2025-06-20 14:39:47 - SMTPEmailAutomation - INFO - Attempting to send email to shashwat.airtel@gmail.com
+2025-06-20 14:39:48 - SMTPEmailAutomation - INFO - SMTP connection established, authenticating...
+2025-06-20 14:39:49 - SMTPEmailAutomation - INFO - SMTP authentication successful
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Email sent successfully to shashwat.airtel@gmail.com
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Daily report sent successfully
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - === SMTP EMAIL AUTOMATION COMPLETE ===
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Duration: 0:00:15.618501
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Total cards generated: 2
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Birthday emails sent: 1
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Anniversary emails sent: 1
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Total emails sent: 2
+2025-06-20 14:39:51 - SMTPEmailAutomation - INFO - Failed emails: 0
+2025-06-20 14:45:36 - OutlookEmailSender - INFO - PyAutoGUI safety features enabled - FAILSAFE: True, PAUSE: 0.5s
+2025-06-20 14:45:36 - OutlookEmailSender - INFO - Safety tip: Move mouse to top-left corner to stop automation
+2025-06-20 14:45:36 - OutlookEmailSender - INFO - OutlookEmailSender initialized
+2025-06-20 14:45:36 - OutlookEmailSender - INFO - Output folder: output
+2025-06-20 14:45:36 - OutlookEmailSender - INFO - Logs folder: output\logs
+2025-06-20 14:45:36 - OutlookEmailSender - INFO - Configuration: {'insert_tab_coords': (178, 89), 'picture_button_coords': (554, 156), 'deselect_coords': (400, 300), 'wait_time_short': 1, 'wait_time_medium': 2, 'wait_time_long': 3}
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - IntegratedEmailAutomation system initialized
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - Output folder: output
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - Logs folder: output\logs
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - ================================================================================
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - STARTING COMPLETE OUTLOOK EMAIL AUTOMATION PROCESS
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - ================================================================================
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - CSV file: employees.csv
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - Birthday config: pos=(50,300), size=64, color=#4b446a, center=False
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - Anniversary config: pos=(0,200), size=72, color=#72719f, center=True
+2025-06-20 14:45:36 - IntegratedAutomation - INFO - STEP 1: Generating birthday and anniversary cards
+2025-06-20 14:45:37 - IntegratedAutomation - INFO - Cards generated successfully:
+2025-06-20 14:45:37 - IntegratedAutomation - INFO -   - Birthday cards: 1
+2025-06-20 14:45:37 - IntegratedAutomation - INFO -   - Anniversary cards: 1
+2025-06-20 14:45:37 - IntegratedAutomation - INFO -   - Total cards: 2
+2025-06-20 14:45:37 - IntegratedAutomation - INFO - STEP 2: Sending birthday emails
+2025-06-20 14:45:37 - IntegratedAutomation - INFO - Processing 1 birthday emails
+2025-06-20 14:45:37 - IntegratedAutomation - INFO - Processing birthday email 1/1 for John Doe (age 0)
+2025-06-20 14:45:37 - IntegratedAutomation - INFO - Sending birthday email to John Doe (john.doe@example.com)
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Starting email automation for john.doe@example.com
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Subject: Happy Birthday, John! 🎉
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Image path: output\birthday_John_Doe_20250620.jpg
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Body: (empty)
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - STEP 1: Opening Outlook with mailto
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Opening Outlook mailto for recipient: john.doe@example.com
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Subject: Happy Birthday, John! 🎉
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Mailto URL constructed without body content
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Mailto URL opened successfully for john.doe@example.com
+2025-06-20 14:45:37 - OutlookEmailSender - INFO - Waiting 3 seconds for Outlook to open...
+2025-06-20 14:45:40 - OutlookEmailSender - INFO - Outlook should now be open and ready
+2025-06-20 14:45:40 - OutlookEmailSender - INFO - STEP 2: Maximizing Outlook window
+2025-06-20 14:45:40 - OutlookEmailSender - INFO - Attempting to maximize Outlook window
+2025-06-20 14:45:41 - OutlookEmailSender - INFO - Window maximized successfully (waited 1s)
+2025-06-20 14:45:41 - OutlookEmailSender - INFO - STEP 3: Clicking Insert tab
+2025-06-20 14:45:41 - OutlookEmailSender - INFO - Clicking Insert tab at coordinates (178, 89)
+2025-06-20 14:45:43 - OutlookEmailSender - INFO - Insert tab clicked successfully (waited 1s)
+2025-06-20 14:45:43 - OutlookEmailSender - INFO - STEP 4: Clicking Picture button
+2025-06-20 14:45:43 - OutlookEmailSender - INFO - Clicking Picture button at coordinates (554, 156)
+2025-06-20 14:45:45 - OutlookEmailSender - INFO - Picture button clicked successfully (waited 2s)
+2025-06-20 14:45:45 - OutlookEmailSender - INFO - STEP 5: Inserting image from dialog
+2025-06-20 14:45:45 - OutlookEmailSender - INFO - Inserting image from path: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_John_Doe_20250620.jpg
+2025-06-20 14:45:45 - OutlookEmailSender - INFO - Typing file path in dialog
+2025-06-20 14:45:47 - OutlookEmailSender - INFO - File path typed (waited 1s)
+2025-06-20 14:45:47 - OutlookEmailSender - INFO - Pressing Enter to select file
+2025-06-20 14:45:49 - OutlookEmailSender - INFO - Image inserted successfully: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_John_Doe_20250620.jpg (waited 2s)
+2025-06-20 14:45:49 - OutlookEmailSender - INFO - STEP 6: Deselecting image
+2025-06-20 14:45:49 - OutlookEmailSender - INFO - Deselecting image by clicking at coordinates (400, 300)
+2025-06-20 14:45:51 - OutlookEmailSender - INFO - Image deselected successfully (waited 1s)
+2025-06-20 14:45:51 - OutlookEmailSender - INFO - STEP 7: Sending email
+2025-06-20 14:45:51 - OutlookEmailSender - INFO - Sending email using Ctrl+Enter shortcut
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - Email sent successfully using keyboard shortcut (waited 1s)
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - Email automation COMPLETED SUCCESSFULLY for john.doe@example.com
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - Total automation duration: 0:00:15.959764
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:45:52 - IntegratedAutomation - INFO - Birthday email sent successfully to John Doe
+2025-06-20 14:45:52 - IntegratedAutomation - INFO - STEP 3: Sending anniversary emails
+2025-06-20 14:45:52 - IntegratedAutomation - INFO - Processing 1 anniversary emails
+2025-06-20 14:45:52 - IntegratedAutomation - INFO - Processing anniversary email 1/1 for John Doe (0 years)
+2025-06-20 14:45:52 - IntegratedAutomation - INFO - Sending anniversary email to John Doe (john.doe@example.com)
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - Starting email automation for john.doe@example.com
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - Subject: Happy Anniversary, John! 💕
+2025-06-20 14:45:52 - OutlookEmailSender - INFO - Image path: output\anniversary_John_Doe_20250620.jpg
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - Body: (empty)
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - STEP 1: Opening Outlook with mailto
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - Opening Outlook mailto for recipient: john.doe@example.com
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - Subject: Happy Anniversary, John! 💕
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - Mailto URL constructed without body content
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - Mailto URL opened successfully for john.doe@example.com
+2025-06-20 14:45:53 - OutlookEmailSender - INFO - Waiting 3 seconds for Outlook to open...
+2025-06-20 14:45:56 - OutlookEmailSender - INFO - Outlook should now be open and ready
+2025-06-20 14:45:56 - OutlookEmailSender - INFO - STEP 2: Maximizing Outlook window
+2025-06-20 14:45:56 - OutlookEmailSender - INFO - Attempting to maximize Outlook window
+2025-06-20 14:45:57 - OutlookEmailSender - INFO - Window maximized successfully (waited 1s)
+2025-06-20 14:45:57 - OutlookEmailSender - INFO - STEP 3: Clicking Insert tab
+2025-06-20 14:45:57 - OutlookEmailSender - INFO - Clicking Insert tab at coordinates (178, 89)
+2025-06-20 14:45:59 - OutlookEmailSender - INFO - Insert tab clicked successfully (waited 1s)
+2025-06-20 14:45:59 - OutlookEmailSender - INFO - STEP 4: Clicking Picture button
+2025-06-20 14:45:59 - OutlookEmailSender - INFO - Clicking Picture button at coordinates (554, 156)
+2025-06-20 14:46:01 - OutlookEmailSender - INFO - Picture button clicked successfully (waited 2s)
+2025-06-20 14:46:01 - OutlookEmailSender - INFO - STEP 5: Inserting image from dialog
+2025-06-20 14:46:01 - OutlookEmailSender - INFO - Inserting image from path: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\anniversary_John_Doe_20250620.jpg
+2025-06-20 14:46:01 - OutlookEmailSender - INFO - Typing file path in dialog
+2025-06-20 14:46:03 - OutlookEmailSender - INFO - File path typed (waited 1s)
+2025-06-20 14:46:03 - OutlookEmailSender - INFO - Pressing Enter to select file
+2025-06-20 14:46:05 - OutlookEmailSender - INFO - Image inserted successfully: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\anniversary_John_Doe_20250620.jpg (waited 2s)
+2025-06-20 14:46:05 - OutlookEmailSender - INFO - STEP 6: Deselecting image
+2025-06-20 14:46:05 - OutlookEmailSender - INFO - Deselecting image by clicking at coordinates (400, 300)
+2025-06-20 14:46:07 - OutlookEmailSender - INFO - Image deselected successfully (waited 1s)
+2025-06-20 14:46:07 - OutlookEmailSender - INFO - STEP 7: Sending email
+2025-06-20 14:46:07 - OutlookEmailSender - INFO - Sending email using Ctrl+Enter shortcut
+2025-06-20 14:46:08 - OutlookEmailSender - INFO - Email sent successfully using keyboard shortcut (waited 1s)
+2025-06-20 14:46:08 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:46:08 - OutlookEmailSender - INFO - Email automation COMPLETED SUCCESSFULLY for john.doe@example.com
+2025-06-20 14:46:08 - OutlookEmailSender - INFO - Total automation duration: 0:00:15.795073
+2025-06-20 14:46:08 - OutlookEmailSender - INFO - ============================================================
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Anniversary email sent successfully to John Doe (0 years)
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - STEP 4: Generating daily report
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Generating daily report
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Daily report saved to: output\outlook_daily_report_20250620.txt
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - === DAILY SUMMARY ===
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Daily Outlook Email Automation Report - June 20, 2025
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - ================================================================
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - EXECUTION SUMMARY:
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Start Time: 14:45:36
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - End Time: 14:46:08
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Duration: 0:00:31.880076
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - BIRTHDAY PROCESSING:
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Cards Generated: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Emails Sent Successfully: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Birthdays Today: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - ANNIVERSARY PROCESSING:
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Cards Generated: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Emails Sent Successfully: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Anniversaries Today: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - TOTAL SUMMARY:
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Total Cards Generated: 2
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Total Emails Sent: 2
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - Total Errors: 0
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - BIRTHDAYS TODAY:
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - John Doe (john.doe@example.com) - Age: 0
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - ANNIVERSARIES TODAY:
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - - John Doe (john.doe@example.com) - 0 years
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - === END DAILY SUMMARY ===
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - ================================================================================
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - OUTLOOK EMAIL AUTOMATION COMPLETE
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - ================================================================================
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Duration: 0:00:31.905993
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Total cards generated: 2
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Birthday emails sent: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Anniversary emails sent: 1
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Total emails sent: 2
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Failed emails: 0
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - Total errors: 0
+2025-06-20 14:46:08 - IntegratedAutomation - INFO - ================================================================================
