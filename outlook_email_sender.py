@@ -82,9 +82,9 @@ class OutlookEmailSender:
             'insert_tab_coords': (178, 89),
             'picture_button_coords': (554, 156),
             'deselect_coords': (400, 300),
-            'wait_time_short': 1,
-            'wait_time_medium': 2,
-            'wait_time_long': 3
+            'wait_time_short': 5,
+            'wait_time_medium': 10,
+            'wait_time_long': 20
         }
         
         # Load coordinates from environment variables if available
@@ -226,7 +226,7 @@ class OutlookEmailSender:
             self.logger.info("Typing file path in dialog")
             pyautogui.typewrite(abs_image_path)
             
-            wait_time = self.config['wait_time_short']
+            wait_time = self.config['wait_time_medium']
             time.sleep(wait_time)
             self.logger.info(f"File path typed (waited {wait_time}s)")
             
@@ -234,7 +234,7 @@ class OutlookEmailSender:
             self.logger.info("Pressing Enter to select file")
             pyautogui.press('enter')
             
-            wait_time = self.config['wait_time_medium']
+            wait_time = self.config['wait_time_long']
             time.sleep(wait_time)
             self.logger.info(f"Image inserted successfully: {abs_image_path} (waited {wait_time}s)")
             

@@ -24,3 +24,57 @@
 2025-06-20 14:45:37 - INFO - Personalized image saved: output\anniversary_John_Doe_20250620.jpg
 2025-06-20 14:45:37 - INFO - Created anniversary card for John Doe (0 years)
 2025-06-20 14:45:37 - INFO - Card generation completed. Created 1 birthday cards and 1 anniversary cards
+2025-06-25 11:48:51 - INFO - Starting daily card generation for 2025-06-25
+2025-06-25 11:48:51 - INFO - Loaded 5 employee records from employees.csv
+2025-06-25 11:48:51 - INFO - Checking for birthdays today...
+2025-06-25 11:48:51 - INFO - Found 0 employees with birthdays today
+2025-06-25 11:48:51 - INFO - Checking for marriage anniversaries today...
+2025-06-25 11:48:51 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-25 11:48:51 - INFO - Card generation completed. Created 0 birthday cards and 0 anniversary cards
+2025-06-25 12:05:57 - INFO - Starting daily card generation for 2025-06-25
+2025-06-25 12:05:57 - INFO - Loaded 5 employee records from employees.csv
+2025-06-25 12:05:57 - INFO - Checking for birthdays today...
+2025-06-25 12:05:57 - INFO - Found 0 employees with birthdays today
+2025-06-25 12:05:57 - INFO - Checking for marriage anniversaries today...
+2025-06-25 12:05:57 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-25 12:05:57 - INFO - Card generation completed. Created 0 birthday cards and 0 anniversary cards
+2025-06-25 12:06:22 - INFO - Starting daily card generation for 2025-06-25
+2025-06-25 12:06:22 - INFO - Loaded 5 employee records from employees.csv
+2025-06-25 12:06:22 - INFO - Checking for birthdays today...
+2025-06-25 12:06:22 - INFO - Found 1 employees with birthdays today
+2025-06-25 12:06:22 - INFO - Checking for marriage anniversaries today...
+2025-06-25 12:06:22 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-25 12:06:22 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-25 12:06:22 - INFO - Personalized image saved: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:06:22 - INFO - Created birthday card for David Wilson
+2025-06-25 12:06:22 - INFO - Card generation completed. Created 1 birthday cards and 0 anniversary cards
+2025-06-25 12:06:48 - INFO - Starting daily card generation for 2025-06-25
+2025-06-25 12:06:48 - INFO - Loaded 5 employee records from employees.csv
+2025-06-25 12:06:48 - INFO - Checking for birthdays today...
+2025-06-25 12:06:48 - INFO - Found 1 employees with birthdays today
+2025-06-25 12:06:48 - INFO - Checking for marriage anniversaries today...
+2025-06-25 12:06:48 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-25 12:06:48 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-25 12:06:48 - INFO - Personalized image saved: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:06:48 - INFO - Created birthday card for David Wilson
+2025-06-25 12:06:48 - INFO - Card generation completed. Created 1 birthday cards and 0 anniversary cards
+2025-06-25 12:09:35 - INFO - Starting daily card generation for 2025-06-25
+2025-06-25 12:09:35 - INFO - Loaded 5 employee records from employees.csv
+2025-06-25 12:09:35 - INFO - Checking for birthdays today...
+2025-06-25 12:09:35 - INFO - Found 1 employees with birthdays today
+2025-06-25 12:09:35 - INFO - Checking for marriage anniversaries today...
+2025-06-25 12:09:35 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-25 12:09:35 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-25 12:09:35 - INFO - Personalized image saved: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:09:35 - INFO - Created birthday card for David Wilson
+2025-06-25 12:09:35 - INFO - Card generation completed. Created 1 birthday cards and 0 anniversary cards
+2025-06-25 12:12:16 - INFO - Starting daily card generation for 2025-06-25
+2025-06-25 12:12:16 - INFO - Loaded 5 employee records from employees.csv
+2025-06-25 12:12:16 - INFO - Checking for birthdays today...
+2025-06-25 12:12:16 - INFO - Found 1 employees with birthdays today
+2025-06-25 12:12:16 - INFO - Checking for marriage anniversaries today...
+2025-06-25 12:12:16 - INFO - Found 0 employees with marriage anniversaries today
+2025-06-25 12:12:16 - INFO - Using custom font: fonts/Inkfree.ttf with size 64
+2025-06-25 12:12:16 - INFO - Personalized image saved: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:12:16 - INFO - Created birthday card for David Wilson
+2025-06-25 12:12:16 - INFO - Card generation completed. Created 1 birthday cards and 0 anniversary cards

@@ -199,3 +199,539 @@
 2025-06-20 14:46:08 - IntegratedAutomation - INFO - Failed emails: 0
 2025-06-20 14:46:08 - IntegratedAutomation - INFO - Total errors: 0
 2025-06-20 14:46:08 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 11:48:51 - OutlookEmailSender - INFO - PyAutoGUI safety features enabled - FAILSAFE: True, PAUSE: 0.5s
+2025-06-25 11:48:51 - OutlookEmailSender - INFO - Safety tip: Move mouse to top-left corner to stop automation
+2025-06-25 11:48:51 - OutlookEmailSender - INFO - OutlookEmailSender initialized
+2025-06-25 11:48:51 - OutlookEmailSender - INFO - Output folder: output
+2025-06-25 11:48:51 - OutlookEmailSender - INFO - Logs folder: output\logs
+2025-06-25 11:48:51 - OutlookEmailSender - INFO - Configuration: {'insert_tab_coords': (178, 89), 'picture_button_coords': (554, 156), 'deselect_coords': (400, 300), 'wait_time_short': 1, 'wait_time_medium': 2, 'wait_time_long': 3}
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - IntegratedEmailAutomation system initialized
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Output folder: output
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Logs folder: output\logs
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - STARTING COMPLETE OUTLOOK EMAIL AUTOMATION PROCESS
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - CSV file: employees.csv
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Birthday config: pos=(50,300), size=64, color=#4b446a, center=False
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Anniversary config: pos=(0,200), size=72, color=#72719f, center=True
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - STEP 1: Generating birthday and anniversary cards
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Cards generated successfully:
+2025-06-25 11:48:51 - IntegratedAutomation - INFO -   - Birthday cards: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO -   - Anniversary cards: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO -   - Total cards: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - STEP 2: No birthday emails to send today
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - STEP 3: No anniversary emails to send today
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - STEP 4: Generating daily report
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Generating daily report
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Daily report saved to: output\outlook_daily_report_20250625.txt
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - === DAILY SUMMARY ===
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Daily Outlook Email Automation Report - June 25, 2025
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - ================================================================
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - EXECUTION SUMMARY:
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Start Time: 11:48:51
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - End Time: 11:48:51
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Duration: 0:00:00.051149
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - BIRTHDAY PROCESSING:
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Birthdays Today: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - ANNIVERSARY PROCESSING:
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Anniversaries Today: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - TOTAL SUMMARY:
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Total Cards Generated: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Total Emails Sent: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - - Total Errors: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - === END DAILY SUMMARY ===
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - OUTLOOK EMAIL AUTOMATION COMPLETE
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Duration: 0:00:00.063315
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Total cards generated: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Birthday emails sent: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Anniversary emails sent: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Total emails sent: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Failed emails: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - Total errors: 0
+2025-06-25 11:48:51 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:05:57 - OutlookEmailSender - INFO - PyAutoGUI safety features enabled - FAILSAFE: True, PAUSE: 0.5s
+2025-06-25 12:05:57 - OutlookEmailSender - INFO - Safety tip: Move mouse to top-left corner to stop automation
+2025-06-25 12:05:57 - OutlookEmailSender - INFO - OutlookEmailSender initialized
+2025-06-25 12:05:57 - OutlookEmailSender - INFO - Output folder: output
+2025-06-25 12:05:57 - OutlookEmailSender - INFO - Logs folder: output\logs
+2025-06-25 12:05:57 - OutlookEmailSender - INFO - Configuration: {'insert_tab_coords': (178, 89), 'picture_button_coords': (554, 156), 'deselect_coords': (400, 300), 'wait_time_short': 1, 'wait_time_medium': 2, 'wait_time_long': 3}
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - IntegratedEmailAutomation system initialized
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Output folder: output
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Logs folder: output\logs
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - STARTING COMPLETE OUTLOOK EMAIL AUTOMATION PROCESS
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - CSV file: employees.csv
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Birthday config: pos=(50,300), size=64, color=#4b446a, center=False
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Anniversary config: pos=(0,200), size=72, color=#72719f, center=True
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - STEP 1: Generating birthday and anniversary cards
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Cards generated successfully:
+2025-06-25 12:05:57 - IntegratedAutomation - INFO -   - Birthday cards: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO -   - Anniversary cards: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO -   - Total cards: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - STEP 2: No birthday emails to send today
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - STEP 3: No anniversary emails to send today
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - STEP 4: Generating daily report
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Generating daily report
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Daily report saved to: output\outlook_daily_report_20250625.txt
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - === DAILY SUMMARY ===
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Daily Outlook Email Automation Report - June 25, 2025
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - ================================================================
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - EXECUTION SUMMARY:
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Start Time: 12:05:57
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - End Time: 12:05:57
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Duration: 0:00:00.022192
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - BIRTHDAY PROCESSING:
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Birthdays Today: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - ANNIVERSARY PROCESSING:
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Anniversaries Today: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - TOTAL SUMMARY:
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Total Cards Generated: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Total Emails Sent: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - - Total Errors: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - === END DAILY SUMMARY ===
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - OUTLOOK EMAIL AUTOMATION COMPLETE
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Duration: 0:00:00.036069
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Total cards generated: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Birthday emails sent: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Anniversary emails sent: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Total emails sent: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Failed emails: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - Total errors: 0
+2025-06-25 12:05:57 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - PyAutoGUI safety features enabled - FAILSAFE: True, PAUSE: 0.5s
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Safety tip: Move mouse to top-left corner to stop automation
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - OutlookEmailSender initialized
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Output folder: output
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Logs folder: output\logs
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Configuration: {'insert_tab_coords': (178, 89), 'picture_button_coords': (554, 156), 'deselect_coords': (400, 300), 'wait_time_short': 1, 'wait_time_medium': 2, 'wait_time_long': 3}
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - IntegratedEmailAutomation system initialized
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Output folder: output
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Logs folder: output\logs
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - STARTING COMPLETE OUTLOOK EMAIL AUTOMATION PROCESS
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - CSV file: employees.csv
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Birthday config: pos=(50,300), size=64, color=#4b446a, center=False
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Anniversary config: pos=(0,200), size=72, color=#72719f, center=True
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - STEP 1: Generating birthday and anniversary cards
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Cards generated successfully:
+2025-06-25 12:06:22 - IntegratedAutomation - INFO -   - Birthday cards: 1
+2025-06-25 12:06:22 - IntegratedAutomation - INFO -   - Anniversary cards: 0
+2025-06-25 12:06:22 - IntegratedAutomation - INFO -   - Total cards: 1
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - STEP 2: Sending birthday emails
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Processing 1 birthday emails
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Processing birthday email 1/1 for David Wilson (age 0)
+2025-06-25 12:06:22 - IntegratedAutomation - INFO - Sending birthday email to David Wilson (david.wilson@example.com)
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Starting email automation for david.wilson@example.com
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Image path: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Body: (empty)
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - STEP 1: Opening Outlook with mailto
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Opening Outlook mailto for recipient: david.wilson@example.com
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:06:22 - OutlookEmailSender - INFO - Mailto URL constructed without body content
+2025-06-25 12:06:23 - OutlookEmailSender - INFO - Mailto URL opened successfully for david.wilson@example.com
+2025-06-25 12:06:23 - OutlookEmailSender - INFO - Waiting 3 seconds for Outlook to open...
+2025-06-25 12:06:26 - OutlookEmailSender - INFO - Outlook should now be open and ready
+2025-06-25 12:06:26 - OutlookEmailSender - INFO - STEP 2: Maximizing Outlook window
+2025-06-25 12:06:26 - OutlookEmailSender - INFO - Attempting to maximize Outlook window
+2025-06-25 12:06:27 - OutlookEmailSender - INFO - Window maximized successfully (waited 1s)
+2025-06-25 12:06:27 - OutlookEmailSender - INFO - STEP 3: Clicking Insert tab
+2025-06-25 12:06:27 - OutlookEmailSender - INFO - Clicking Insert tab at coordinates (178, 89)
+2025-06-25 12:06:29 - OutlookEmailSender - INFO - Insert tab clicked successfully (waited 1s)
+2025-06-25 12:06:29 - OutlookEmailSender - INFO - STEP 4: Clicking Picture button
+2025-06-25 12:06:29 - OutlookEmailSender - INFO - Clicking Picture button at coordinates (554, 156)
+2025-06-25 12:06:31 - OutlookEmailSender - INFO - Picture button clicked successfully (waited 2s)
+2025-06-25 12:06:31 - OutlookEmailSender - INFO - STEP 5: Inserting image from dialog
+2025-06-25 12:06:31 - OutlookEmailSender - INFO - Inserting image from path: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:06:31 - OutlookEmailSender - INFO - Typing file path in dialog
+2025-06-25 12:06:33 - OutlookEmailSender - INFO - File path typed (waited 1s)
+2025-06-25 12:06:33 - OutlookEmailSender - INFO - Pressing Enter to select file
+2025-06-25 12:06:35 - OutlookEmailSender - INFO - Image inserted successfully: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg (waited 2s)
+2025-06-25 12:06:35 - OutlookEmailSender - INFO - STEP 6: Deselecting image
+2025-06-25 12:06:35 - OutlookEmailSender - INFO - Deselecting image by clicking at coordinates (400, 300)
+2025-06-25 12:06:37 - OutlookEmailSender - INFO - Image deselected successfully (waited 1s)
+2025-06-25 12:06:37 - OutlookEmailSender - INFO - STEP 7: Sending email
+2025-06-25 12:06:37 - OutlookEmailSender - INFO - Sending email using Ctrl+Enter shortcut
+2025-06-25 12:06:38 - OutlookEmailSender - INFO - Email sent successfully using keyboard shortcut (waited 1s)
+2025-06-25 12:06:38 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:06:38 - OutlookEmailSender - INFO - Email automation COMPLETED SUCCESSFULLY for david.wilson@example.com
+2025-06-25 12:06:38 - OutlookEmailSender - INFO - Total automation duration: 0:00:16.029143
+2025-06-25 12:06:38 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Birthday email sent successfully to David Wilson
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - STEP 3: No anniversary emails to send today
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - STEP 4: Generating daily report
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Generating daily report
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Daily report saved to: output\outlook_daily_report_20250625.txt
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - === DAILY SUMMARY ===
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Daily Outlook Email Automation Report - June 25, 2025
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - ================================================================
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - EXECUTION SUMMARY:
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Start Time: 12:06:22
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - End Time: 12:06:38
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Duration: 0:00:16.205653
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - BIRTHDAY PROCESSING:
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Cards Generated: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Emails Sent Successfully: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Birthdays Today: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - ANNIVERSARY PROCESSING:
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Anniversaries Today: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - TOTAL SUMMARY:
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Total Cards Generated: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Total Emails Sent: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - Total Errors: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - BIRTHDAYS TODAY:
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - - David Wilson (david.wilson@example.com) - Age: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - === END DAILY SUMMARY ===
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - OUTLOOK EMAIL AUTOMATION COMPLETE
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Duration: 0:00:16.226412
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Total cards generated: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Birthday emails sent: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Anniversary emails sent: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Total emails sent: 1
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Failed emails: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - Total errors: 0
+2025-06-25 12:06:38 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - PyAutoGUI safety features enabled - FAILSAFE: True, PAUSE: 0.5s
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Safety tip: Move mouse to top-left corner to stop automation
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - OutlookEmailSender initialized
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Output folder: output
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Logs folder: output\logs
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Configuration: {'insert_tab_coords': (178, 89), 'picture_button_coords': (554, 156), 'deselect_coords': (400, 300), 'wait_time_short': 1, 'wait_time_medium': 2, 'wait_time_long': 3}
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - IntegratedEmailAutomation system initialized
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Output folder: output
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Logs folder: output\logs
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - STARTING COMPLETE OUTLOOK EMAIL AUTOMATION PROCESS
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - CSV file: employees.csv
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Birthday config: pos=(50,300), size=64, color=#4b446a, center=False
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Anniversary config: pos=(0,200), size=72, color=#72719f, center=True
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - STEP 1: Generating birthday and anniversary cards
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Cards generated successfully:
+2025-06-25 12:06:48 - IntegratedAutomation - INFO -   - Birthday cards: 1
+2025-06-25 12:06:48 - IntegratedAutomation - INFO -   - Anniversary cards: 0
+2025-06-25 12:06:48 - IntegratedAutomation - INFO -   - Total cards: 1
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - STEP 2: Sending birthday emails
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Processing 1 birthday emails
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Processing birthday email 1/1 for David Wilson (age 0)
+2025-06-25 12:06:48 - IntegratedAutomation - INFO - Sending birthday email to David Wilson (david.wilson@example.com)
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Starting email automation for david.wilson@example.com
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Image path: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Body: (empty)
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - STEP 1: Opening Outlook with mailto
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Opening Outlook mailto for recipient: david.wilson@example.com
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:06:48 - OutlookEmailSender - INFO - Mailto URL constructed without body content
+2025-06-25 12:06:49 - OutlookEmailSender - INFO - Mailto URL opened successfully for david.wilson@example.com
+2025-06-25 12:06:49 - OutlookEmailSender - INFO - Waiting 3 seconds for Outlook to open...
+2025-06-25 12:06:52 - OutlookEmailSender - INFO - Outlook should now be open and ready
+2025-06-25 12:06:52 - OutlookEmailSender - INFO - STEP 2: Maximizing Outlook window
+2025-06-25 12:06:52 - OutlookEmailSender - INFO - Attempting to maximize Outlook window
+2025-06-25 12:06:53 - OutlookEmailSender - INFO - Window maximized successfully (waited 1s)
+2025-06-25 12:06:53 - OutlookEmailSender - INFO - STEP 3: Clicking Insert tab
+2025-06-25 12:06:53 - OutlookEmailSender - INFO - Clicking Insert tab at coordinates (178, 89)
+2025-06-25 12:06:55 - OutlookEmailSender - INFO - Insert tab clicked successfully (waited 1s)
+2025-06-25 12:06:55 - OutlookEmailSender - INFO - STEP 4: Clicking Picture button
+2025-06-25 12:06:55 - OutlookEmailSender - INFO - Clicking Picture button at coordinates (554, 156)
+2025-06-25 12:06:57 - OutlookEmailSender - INFO - Picture button clicked successfully (waited 2s)
+2025-06-25 12:06:57 - OutlookEmailSender - INFO - STEP 5: Inserting image from dialog
+2025-06-25 12:06:57 - OutlookEmailSender - INFO - Inserting image from path: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:06:57 - OutlookEmailSender - INFO - Typing file path in dialog
+2025-06-25 12:06:59 - OutlookEmailSender - INFO - File path typed (waited 1s)
+2025-06-25 12:06:59 - OutlookEmailSender - INFO - Pressing Enter to select file
+2025-06-25 12:07:01 - OutlookEmailSender - INFO - Image inserted successfully: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg (waited 2s)
+2025-06-25 12:07:01 - OutlookEmailSender - INFO - STEP 6: Deselecting image
+2025-06-25 12:07:01 - OutlookEmailSender - INFO - Deselecting image by clicking at coordinates (400, 300)
+2025-06-25 12:07:03 - OutlookEmailSender - INFO - Image deselected successfully (waited 1s)
+2025-06-25 12:07:03 - OutlookEmailSender - INFO - STEP 7: Sending email
+2025-06-25 12:07:03 - OutlookEmailSender - INFO - Sending email using Ctrl+Enter shortcut
+2025-06-25 12:07:04 - OutlookEmailSender - INFO - Email sent successfully using keyboard shortcut (waited 1s)
+2025-06-25 12:07:04 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:07:04 - OutlookEmailSender - INFO - Email automation COMPLETED SUCCESSFULLY for david.wilson@example.com
+2025-06-25 12:07:04 - OutlookEmailSender - INFO - Total automation duration: 0:00:15.783979
+2025-06-25 12:07:04 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Birthday email sent successfully to David Wilson
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - STEP 3: No anniversary emails to send today
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - STEP 4: Generating daily report
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Generating daily report
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Daily report saved to: output\outlook_daily_report_20250625.txt
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - === DAILY SUMMARY ===
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Daily Outlook Email Automation Report - June 25, 2025
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - ================================================================
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - EXECUTION SUMMARY:
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Start Time: 12:06:48
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - End Time: 12:07:04
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Duration: 0:00:15.855682
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - BIRTHDAY PROCESSING:
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Cards Generated: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Emails Sent Successfully: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Birthdays Today: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - ANNIVERSARY PROCESSING:
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Anniversaries Today: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - TOTAL SUMMARY:
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Total Cards Generated: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Total Emails Sent: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - Total Errors: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - BIRTHDAYS TODAY:
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - - David Wilson (david.wilson@example.com) - Age: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - === END DAILY SUMMARY ===
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - OUTLOOK EMAIL AUTOMATION COMPLETE
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Duration: 0:00:15.886005
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Total cards generated: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Birthday emails sent: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Anniversary emails sent: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Total emails sent: 1
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Failed emails: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - Total errors: 0
+2025-06-25 12:07:04 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - PyAutoGUI safety features enabled - FAILSAFE: True, PAUSE: 0.5s
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Safety tip: Move mouse to top-left corner to stop automation
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - OutlookEmailSender initialized
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Output folder: output
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Logs folder: output\logs
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Configuration: {'insert_tab_coords': (178, 89), 'picture_button_coords': (554, 156), 'deselect_coords': (400, 300), 'wait_time_short': 3, 'wait_time_medium': 5, 'wait_time_long': 10}
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - IntegratedEmailAutomation system initialized
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Output folder: output
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Logs folder: output\logs
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - STARTING COMPLETE OUTLOOK EMAIL AUTOMATION PROCESS
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - CSV file: employees.csv
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Birthday config: pos=(50,300), size=64, color=#4b446a, center=False
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Anniversary config: pos=(0,200), size=72, color=#72719f, center=True
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - STEP 1: Generating birthday and anniversary cards
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Cards generated successfully:
+2025-06-25 12:09:35 - IntegratedAutomation - INFO -   - Birthday cards: 1
+2025-06-25 12:09:35 - IntegratedAutomation - INFO -   - Anniversary cards: 0
+2025-06-25 12:09:35 - IntegratedAutomation - INFO -   - Total cards: 1
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - STEP 2: Sending birthday emails
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Processing 1 birthday emails
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Processing birthday email 1/1 for David Wilson (age 0)
+2025-06-25 12:09:35 - IntegratedAutomation - INFO - Sending birthday email to David Wilson (david.wilson@example.com)
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Starting email automation for david.wilson@example.com
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Image path: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Body: (empty)
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - STEP 1: Opening Outlook with mailto
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Opening Outlook mailto for recipient: david.wilson@example.com
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Mailto URL constructed without body content
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Mailto URL opened successfully for david.wilson@example.com
+2025-06-25 12:09:35 - OutlookEmailSender - INFO - Waiting 10 seconds for Outlook to open...
+2025-06-25 12:09:45 - OutlookEmailSender - INFO - Outlook should now be open and ready
+2025-06-25 12:09:45 - OutlookEmailSender - INFO - STEP 2: Maximizing Outlook window
+2025-06-25 12:09:45 - OutlookEmailSender - INFO - Attempting to maximize Outlook window
+2025-06-25 12:09:49 - OutlookEmailSender - INFO - Window maximized successfully (waited 3s)
+2025-06-25 12:09:49 - OutlookEmailSender - INFO - STEP 3: Clicking Insert tab
+2025-06-25 12:09:49 - OutlookEmailSender - INFO - Clicking Insert tab at coordinates (178, 89)
+2025-06-25 12:09:52 - OutlookEmailSender - INFO - Insert tab clicked successfully (waited 3s)
+2025-06-25 12:09:52 - OutlookEmailSender - INFO - STEP 4: Clicking Picture button
+2025-06-25 12:09:52 - OutlookEmailSender - INFO - Clicking Picture button at coordinates (554, 156)
+2025-06-25 12:09:58 - OutlookEmailSender - INFO - Picture button clicked successfully (waited 5s)
+2025-06-25 12:09:58 - OutlookEmailSender - INFO - STEP 5: Inserting image from dialog
+2025-06-25 12:09:58 - OutlookEmailSender - INFO - Inserting image from path: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:09:58 - OutlookEmailSender - INFO - Typing file path in dialog
+2025-06-25 12:10:01 - OutlookEmailSender - INFO - File path typed (waited 3s)
+2025-06-25 12:10:01 - OutlookEmailSender - INFO - Pressing Enter to select file
+2025-06-25 12:10:07 - OutlookEmailSender - INFO - Image inserted successfully: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg (waited 5s)
+2025-06-25 12:10:07 - OutlookEmailSender - INFO - STEP 6: Deselecting image
+2025-06-25 12:10:07 - OutlookEmailSender - INFO - Deselecting image by clicking at coordinates (400, 300)
+2025-06-25 12:10:10 - OutlookEmailSender - INFO - Image deselected successfully (waited 3s)
+2025-06-25 12:10:10 - OutlookEmailSender - INFO - STEP 7: Sending email
+2025-06-25 12:10:10 - OutlookEmailSender - INFO - Sending email using Ctrl+Enter shortcut
+2025-06-25 12:10:14 - OutlookEmailSender - INFO - Email sent successfully using keyboard shortcut (waited 3s)
+2025-06-25 12:10:14 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:10:14 - OutlookEmailSender - INFO - Email automation COMPLETED SUCCESSFULLY for david.wilson@example.com
+2025-06-25 12:10:14 - OutlookEmailSender - INFO - Total automation duration: 0:00:38.804404
+2025-06-25 12:10:14 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Birthday email sent successfully to David Wilson
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - STEP 3: No anniversary emails to send today
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - STEP 4: Generating daily report
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Generating daily report
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Daily report saved to: output\outlook_daily_report_20250625.txt
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - === DAILY SUMMARY ===
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Daily Outlook Email Automation Report - June 25, 2025
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - ================================================================
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - EXECUTION SUMMARY:
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Start Time: 12:09:35
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - End Time: 12:10:14
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Duration: 0:00:38.886850
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - BIRTHDAY PROCESSING:
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Cards Generated: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Emails Sent Successfully: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Birthdays Today: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - ANNIVERSARY PROCESSING:
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Anniversaries Today: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - TOTAL SUMMARY:
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Total Cards Generated: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Total Emails Sent: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - Total Errors: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - BIRTHDAYS TODAY:
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - - David Wilson (david.wilson@example.com) - Age: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - === END DAILY SUMMARY ===
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - OUTLOOK EMAIL AUTOMATION COMPLETE
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Duration: 0:00:38.912127
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Total cards generated: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Birthday emails sent: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Anniversary emails sent: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Total emails sent: 1
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Failed emails: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - Total errors: 0
+2025-06-25 12:10:14 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - PyAutoGUI safety features enabled - FAILSAFE: True, PAUSE: 0.5s
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Safety tip: Move mouse to top-left corner to stop automation
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - OutlookEmailSender initialized
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Output folder: output
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Logs folder: output\logs
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Configuration: {'insert_tab_coords': (178, 89), 'picture_button_coords': (554, 156), 'deselect_coords': (400, 300), 'wait_time_short': 3, 'wait_time_medium': 5, 'wait_time_long': 10}
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - IntegratedEmailAutomation system initialized
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Output folder: output
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Logs folder: output\logs
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - STARTING COMPLETE OUTLOOK EMAIL AUTOMATION PROCESS
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - CSV file: employees.csv
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Birthday card template: assets\Slide2.PNG
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Anniversary card template: assets\Slide1.PNG
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Birthday config: pos=(50,300), size=64, color=#4b446a, center=False
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Anniversary config: pos=(0,200), size=72, color=#72719f, center=True
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - STEP 1: Generating birthday and anniversary cards
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Cards generated successfully:
+2025-06-25 12:12:16 - IntegratedAutomation - INFO -   - Birthday cards: 1
+2025-06-25 12:12:16 - IntegratedAutomation - INFO -   - Anniversary cards: 0
+2025-06-25 12:12:16 - IntegratedAutomation - INFO -   - Total cards: 1
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - STEP 2: Sending birthday emails
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Processing 1 birthday emails
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Processing birthday email 1/1 for David Wilson (age 0)
+2025-06-25 12:12:16 - IntegratedAutomation - INFO - Sending birthday email to David Wilson (david.wilson@example.com)
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Starting email automation for david.wilson@example.com
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Image path: output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Body: (empty)
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - STEP 1: Opening Outlook with mailto
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Opening Outlook mailto for recipient: david.wilson@example.com
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Subject: Happy Birthday, David! 🎉
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Mailto URL constructed without body content
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Mailto URL opened successfully for david.wilson@example.com
+2025-06-25 12:12:16 - OutlookEmailSender - INFO - Waiting 10 seconds for Outlook to open...
+2025-06-25 12:12:26 - OutlookEmailSender - INFO - Outlook should now be open and ready
+2025-06-25 12:12:26 - OutlookEmailSender - INFO - STEP 2: Maximizing Outlook window
+2025-06-25 12:12:26 - OutlookEmailSender - INFO - Attempting to maximize Outlook window
+2025-06-25 12:12:30 - OutlookEmailSender - INFO - Window maximized successfully (waited 3s)
+2025-06-25 12:12:30 - OutlookEmailSender - INFO - STEP 3: Clicking Insert tab
+2025-06-25 12:12:30 - OutlookEmailSender - INFO - Clicking Insert tab at coordinates (178, 89)
+2025-06-25 12:12:33 - OutlookEmailSender - INFO - Insert tab clicked successfully (waited 3s)
+2025-06-25 12:12:33 - OutlookEmailSender - INFO - STEP 4: Clicking Picture button
+2025-06-25 12:12:33 - OutlookEmailSender - INFO - Clicking Picture button at coordinates (554, 156)
+2025-06-25 12:12:39 - OutlookEmailSender - INFO - Picture button clicked successfully (waited 5s)
+2025-06-25 12:12:39 - OutlookEmailSender - INFO - STEP 5: Inserting image from dialog
+2025-06-25 12:12:39 - OutlookEmailSender - INFO - Inserting image from path: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg
+2025-06-25 12:12:39 - OutlookEmailSender - INFO - Typing file path in dialog
+2025-06-25 12:12:44 - OutlookEmailSender - INFO - File path typed (waited 5s)
+2025-06-25 12:12:44 - OutlookEmailSender - INFO - Pressing Enter to select file
+2025-06-25 12:12:55 - OutlookEmailSender - INFO - Image inserted successfully: C:\Users\Administrator\Desktop\Shashwat_intern\Automated_email\output\birthday_David_Wilson_20250625.jpg (waited 10s)
+2025-06-25 12:12:55 - OutlookEmailSender - INFO - STEP 6: Deselecting image
+2025-06-25 12:12:55 - OutlookEmailSender - INFO - Deselecting image by clicking at coordinates (400, 300)
+2025-06-25 12:12:58 - OutlookEmailSender - INFO - Image deselected successfully (waited 3s)
+2025-06-25 12:12:58 - OutlookEmailSender - INFO - STEP 7: Sending email
+2025-06-25 12:12:58 - OutlookEmailSender - INFO - Sending email using Ctrl+Enter shortcut
+2025-06-25 12:13:02 - OutlookEmailSender - INFO - Email sent successfully using keyboard shortcut (waited 3s)
+2025-06-25 12:13:02 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:13:02 - OutlookEmailSender - INFO - Email automation COMPLETED SUCCESSFULLY for david.wilson@example.com
+2025-06-25 12:13:02 - OutlookEmailSender - INFO - Total automation duration: 0:00:45.774296
+2025-06-25 12:13:02 - OutlookEmailSender - INFO - ============================================================
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Birthday email sent successfully to David Wilson
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - STEP 3: No anniversary emails to send today
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - STEP 4: Generating daily report
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Generating daily report
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Daily report saved to: output\outlook_daily_report_20250625.txt
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - === DAILY SUMMARY ===
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Daily Outlook Email Automation Report - June 25, 2025
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - ================================================================
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - EXECUTION SUMMARY:
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Start Time: 12:12:16
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - End Time: 12:13:02
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Duration: 0:00:45.847980
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - BIRTHDAY PROCESSING:
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Cards Generated: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Emails Sent Successfully: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Birthdays Today: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - ANNIVERSARY PROCESSING:
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Cards Generated: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Emails Sent Successfully: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Emails Failed: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Anniversaries Today: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - TOTAL SUMMARY:
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Total Cards Generated: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Total Emails Sent: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - Total Errors: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - BIRTHDAYS TODAY:
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - - David Wilson (david.wilson@example.com) - Age: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - === END DAILY SUMMARY ===
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - OUTLOOK EMAIL AUTOMATION COMPLETE
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - ================================================================================
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Duration: 0:00:45.878086
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Total cards generated: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Birthday emails sent: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Anniversary emails sent: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Total emails sent: 1
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Failed emails: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - Total errors: 0
+2025-06-25 12:13:02 - IntegratedAutomation - INFO - ================================================================================
